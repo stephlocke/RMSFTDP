@@ -1,12 +1,19 @@
 Package: RMSFTDP
-Title: What the Package Does (one line, title case)
+Title: R in the Microsoft Data Platform
 Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
-Depends: R (>= 3.2.4)
-License: What license is it under?
+Authors@R: c(
+           person("Stephanie", "Locke", email = "stephanie.g.locke@gmail.com", role = c("aut", "cre")),
+           person("Andrew", "Fryer", email = "andrew.fryer@microsoft.com", role = c("aut"))
+           )
+Description: Contains materials for the R in the Microsoft Data Platform training day,
+             developed by Steph Locke and Andrew Fryer.
+Depends:
+    R (>= 3.2.4)
+License: file LICENSE
 LazyData: true
-Suggests: Rtraining,
+Suggests:
+    Rtraining,
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+RoxygenNote: 5.0.1
