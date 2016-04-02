@@ -4,4 +4,8 @@
 \name{RMSFTDP}
 \alias{RMSFTDP}
 \alias{RMSFTDP-package}
+\title{R in the Microsoft Data Platform}
+\description{
+R in the Microsoft Data Platform
+}
 

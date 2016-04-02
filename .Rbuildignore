@@ -3,3 +3,4 @@
 ^\.travis\.yml$
 ^README\.Rmd$
 ^README-.*\.png$
+.push_gh_pages.sh
