@@ -1,4 +1,6 @@
 language: r
 warnings_are_errors: true
 cache: packages
-after_success: .push_gh_pages.sh
+before_install:
+  - chmod 755 ./.push_gh_pages.s
+after_success: ./.push_gh_pages.sh
