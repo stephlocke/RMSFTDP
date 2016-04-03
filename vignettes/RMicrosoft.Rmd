@@ -2,7 +2,7 @@
 title: "R and Microsoft"
 author: "Steph Locke"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+output: rmarkdown::html_document
 vignette: >
   %\VignetteIndexEntry{R and Microsoft}
   %\VignetteEngine{knitr::rmarkdown}
@@ -13,10 +13,17 @@ vignette: >
 > R is an integrated suite of software facilities for data manipulation, calculation and graphical display
 
 - Open source
-- In-memory, single-core (by default), multi-platform
+- In-memory & single-core (by default)
+- Multi-platform
 - Extensible environment
-- Super-useful
-- <http://www.r-project.org/>
+- Delivered by the [R Foundation](), supported by the [R Consortium](), grown by R developers 
+- [r-project.org](http://www.r-project.org/)
+
+## There's a package for that
+- R is extended with packages of functionality
+- More than 8,000 active packages according to [MetaCRAN](http://www.r-pkg.org/)
+- [Comprehensive R Archive Network (CRAN)](https://cran.r-project.org/)
+- [Github](https://github.com) via [devtools](https://cran.r-project.org/package=devtools)
 
 ## How it hangs together
 ```{r,echo=FALSE,warning=FALSE}
@@ -33,11 +40,12 @@ V --> Do[Document]
 Do --> O
 V --> I[Interactive report]
 I --> O
+S --> W[Webservice]
 end
 subgraph Package View
 Dp[RDBMS, flat file, nosql, xml] --> Rp[data.table, RODBC, httr, rvest, readxl, readr,...]
 Rp --> DMp[data.table, dplyr, zoo, lubridate, stringr, ...]
-DMp --> Vp[ggplot2, DiagrammeR, ggvis, googleVis, ...]
+DMp --> Vp[ggplot2, DiagrammeR, vegalite, ...]
 DMp --> Sp[caret, survival, nnet, ...]
 DMp --> Op[base, readr, RODBC, ...]
 Sp --> Vp
@@ -45,6 +53,8 @@ Vp --> Dop[knitr, rmarkdown, ...]
 Dop --> Op
 Vp --> Ip[shiny, ...]
 Ip --> Op
+S --> W[AzureML, jug, ...]
 end"
 mermaid(hangs)
 ```
+
