@@ -3,8 +3,7 @@ title: "R in the Microsoft Data Platform - outline"
 author: "Steph Locke & Andrew Fryer"
 date: "`r Sys.Date()`"
 output: 
-  rmarkdown::html_vignette:
-    css: custom.css
+  rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Outline}
   %\VignetteEngine{knitr::rmarkdown}
@@ -14,7 +13,7 @@ vignette: >
 The SQL Server BI world has been kind of static for a long time, now they’re bringing out a funky new platform and they’re putting R everywhere. This hands-on pre-con will take you through the fundamentals of working with R and then show how it can easily be integrated into the Microsoft stack.
 
 ## Contents
-- R + Microsoft
+- [R + Microsoft](RMicrosoft.html)
 - Getting started with R
 - Data manipulation fundamentals
 - Data visualisation basics
