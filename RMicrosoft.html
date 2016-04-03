@@ -124,6 +124,7 @@ $(document).ready(function () {
 </div>
 
 
+<p><a href="index.html">Home</a> | <a href="index.html">Prev</a> | <a href="GettingStarted.html">Next</a></p>
 <div id="r" class="section level1">
 <h1>R</h1>
 <blockquote>
@@ -134,7 +135,7 @@ $(document).ready(function () {
 <li>In-memory &amp; single-core (by default)</li>
 <li>Multi-platform</li>
 <li>Extensible environment</li>
-<li>Delivered by the <a href>R Foundation</a>, supported by the <a href>R Consortium</a>, grown by R developers</li>
+<li>Delivered by the <a href="https://www.r-project.org/foundation/">R Foundation</a>, supported by the <a href="https://www.r-consortium.org/">R Consortium</a>, grown by R developers</li>
 <li><a href="http://www.r-project.org/">r-project.org</a></li>
 </ul>
 <div id="theres-a-package-for-that" class="section level2">
@@ -148,16 +149,49 @@ $(document).ready(function () {
 </div>
 <div id="how-it-hangs-together" class="section level2">
 <h2>How it hangs together</h2>
-<p><div id="htmlwidget-7430" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7430">{"x":{"diagram":"graph TB\nsubgraph High Level\nD[Data] --> R[Read into memory]\nR --> DM[Data manipulation]\nDM --> V[Visualisation]\nDM --> S[Statistical Analysis]\nDM --> O[Output]\nS --> V\nV --> Do[Document]\nDo --> O\nV --> I[Interactive report]\nI --> O\nS --> W[Webservice]\nW --> I\nW --> O\nend\nsubgraph Package View\nDp[RDBMS, flat file, nosql, xml] --> Rp[data.table, RODBC, httr, rvest, readxl, readr,...]\nRp --> DMp[data.table, dplyr, zoo, lubridate, stringr, ...]\nDMp --> Vp[ggplot2, DiagrammeR, vegalite, ...]\nDMp --> Sp[caret, survival, nnet, ...]\nDMp --> Op[base, readr, RODBC, ...]\nSp --> Vp\nVp --> Dop[knitr, rmarkdown, ...]\nDop --> Op\nVp --> Ip[shiny, ...]\nIp --> Op\nSp --> Wp[AzureML, jug, ...]\nWp --> Ip\nWp --> Op\nend"},"evals":[],"jsHooks":[]}</script></p>
+<p><div id="htmlwidget-5096" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5096">{"x":{"diagram":"graph TB\nsubgraph High Level\nD[Data] --> R[Read into memory]\nR --> DM[Data manipulation]\nDM --> V[Visualisation]\nDM --> S[Statistical Analysis]\nDM --> O[Output]\nS --> V\nV --> Do[Document]\nDo --> O\nV --> I[Interactive report]\nI --> O\nS --> W[Webservice]\nW --> I\nW --> O\nend\nsubgraph Package View\nDp[RDBMS, flat file, nosql, xml] --> Rp[data.table, RODBC, httr, rvest, readxl, readr,...]\nRp --> DMp[data.table, dplyr, zoo, lubridate, stringr, ...]\nDMp --> Vp[ggplot2, DiagrammeR, vegalite, ...]\nDMp --> Sp[caret, survival, nnet, ...]\nDMp --> Op[base, readr, RODBC, ...]\nSp --> Vp\nVp --> Dop[knitr, rmarkdown, ...]\nDop --> Op\nVp --> Ip[shiny, ...]\nIp --> Op\nSp --> Wp[AzureML, jug, ...]\nWp --> Ip\nWp --> Op\nend"},"evals":[],"jsHooks":[]}</script></p>
 </div>
 </div>
 <div id="microsoft-data-platform" class="section level1">
 <h1>Microsoft Data Platform</h1>
 <div id="how-it-hangs-together-1" class="section level2">
 <h2>How it hangs together</h2>
-<p><div id="htmlwidget-3755" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3755">{"x":{"diagram":"graph TB\nsubgraph High Level\nD[Data] --> R[ETL]\nR --> DM[Database]\nDM --> S[Cube]\nDM --> I[Itneractive reports]\nDM --> Do[Static reports]\nDM --> W[Webservices]\nDM --> O[Output]\nS --> I\nS --> Do\nS --> O\nI --> O\nDo --> O\nW --> I\nW --> O\nend\nsubgraph Software View\nDm[Data] --> Rm[SSIS, Data Factory]\nRm --> DMm[SQL Server, Azure SQL]\nDMm --> Sm[SSAS]\nDMm --> Im[PowerBI]\nDMm --> Dom[SSRS]\nDMm --> Wm[AzureML]\nDMm --> Om[Output]\nSm --> Im\nSm --> Dom\nSm --> Om\nIm --> Om\nDom --> Om\nWm --> Im\nWm --> Om\nWm --> Om\nend"},"evals":[],"jsHooks":[]}</script></p>
+<p><div id="htmlwidget-3338" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3338">{"x":{"diagram":"graph TB\nsubgraph High Level\nD[Data] --> R[ETL]\nR --> DM[Database]\nDM --> S[Cube]\nDM --> I[Itneractive reports]\nDM --> Do[Static reports]\nDM --> W[Webservices]\nDM --> O[Output]\nS --> I\nS --> Do\nS --> O\nI --> O\nDo --> O\nW --> I\nW --> O\nend\nsubgraph Software View\nDm[Data] --> Rm[SSIS, Data Factory]\nRm --> DMm[SQL Server, Azure SQL]\nDMm --> Sm[SSAS]\nDMm --> Im[PowerBI]\nDMm --> Dom[SSRS]\nDMm --> Wm[AzureML]\nDMm --> Om[Output]\nSm --> Im\nSm --> Dom\nSm --> Om\nIm --> Om\nDom --> Om\nWm --> Im\nWm --> Om\nWm --> Om\nend"},"evals":[],"jsHooks":[]}</script></p>
+</div>
+</div>
+<div id="r-microsoft" class="section level1">
+<h1>R + Microsoft</h1>
+<div id="microsoft-r-server" class="section level2">
+<h2>Microsoft R Server</h2>
+<ul>
+<li>Previously, Revolution R for Enterprise</li>
+<li>Available on Windows and Linux</li>
+<li>Specialised connectors available for SQL Server, Hadoop, Oracle, &amp; Teradata</li>
+</ul>
+</div>
+<div id="azureml" class="section level2">
+<h2>AzureML</h2>
+<ul>
+<li>Uses R throughout</li>
+</ul>
+</div>
+<div id="powerbi" class="section level2">
+<h2>PowerBI</h2>
+<ul>
+<li>R as a data source</li>
+<li>Use R for data visualisations</li>
+<li>Any R variant</li>
+</ul>
+</div>
+<div id="sql-server" class="section level2">
+<h2>SQL Server</h2>
+<ul>
+<li>Call R from inside SQL</li>
+</ul>
+<hr />
+<p><a href="index.html">Home</a> | <a href="index.html">Prev</a> | <a href="GettingStarted.html">Next</a></p>
 </div>
 </div>
 
