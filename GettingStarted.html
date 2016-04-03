@@ -222,6 +222,7 @@ div.tocify {
 <p><a href="index.html">Home</a> | <a href="RMicrosoft.html">Prev</a> | <a href>Next</a></p>
 <div id="the-software" class="section level1 tabset">
 <h1><span class="header-section-number">1</span> The software</h1>
+<!-- Source: github.com/stephlocke/Rtraining/inst/handouts/infrastructure/setting-up-a-windows-r-machine -->
 <p>This section outlines installation instructions for getting up to speed</p>
 <div id="r" class="section level2">
 <h2><span class="header-section-number">1.1</span> R</h2>
@@ -281,9 +282,378 @@ div.tocify {
 <ul>
 <li><code>vignettes/</code> - use <code>devtools::build_vignettes()</code> to generate a local copy of the training materials</li>
 </ul>
+</div>
+</div>
+<div id="r-syntax" class="section level1 tabset">
+<h1><span class="header-section-number">4</span> R Syntax</h1>
+<!-- Source: github.com/stephlocke/Rtraining/inst/handouts/fundamentals/syntax -->
+<div id="basic-operators" class="section level2">
+<h2><span class="header-section-number">4.1</span> Basic operators</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Action</th>
+<th align="left">Operator</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Subtract</td>
+<td align="left">-</td>
+<td align="left"><code>5 - 4</code> = 1</td>
+</tr>
+<tr class="even">
+<td align="left">Add</td>
+<td align="left">+</td>
+<td align="left"><code>5 + 4</code> = 9</td>
+</tr>
+<tr class="odd">
+<td align="left">Multiply</td>
+<td align="left">*</td>
+<td align="left"><code>5 * 4</code> = 20</td>
+</tr>
+<tr class="even">
+<td align="left">Divide</td>
+<td align="left">/</td>
+<td align="left"><code>5 / 4</code> = 1.25</td>
+</tr>
+<tr class="odd">
+<td align="left">Raise to the power</td>
+<td align="left">^</td>
+<td align="left"><code>5 ^ 4</code> = 625</td>
+</tr>
+<tr class="even">
+<td align="left">Modulus</td>
+<td align="left">%%</td>
+<td align="left"><code>10 %% 4</code> = 2</td>
+</tr>
+<tr class="odd">
+<td align="left">Absolute remainder</td>
+<td align="left">%/%</td>
+<td align="left"><code>9 %/% 4</code> = 2</td>
+</tr>
+<tr class="even">
+<td align="left">Basic sequence</td>
+<td align="left">:</td>
+<td align="left"><code>sum(1:3)</code> = 6</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="comparison-operators" class="section level2">
+<h2><span class="header-section-number">4.2</span> Comparison operators</h2>
+<table style="width:58%;">
+<colgroup>
+<col width="19%"></col>
+<col width="19%"></col>
+<col width="19%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Action</th>
+<th align="left">Operator</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Less than</td>
+<td align="left">&lt;</td>
+<td align="left"><code>5 &lt; 5</code> = FALSE</td>
+</tr>
+<tr class="even">
+<td align="left">Less than or equal to</td>
+<td align="left">&lt;=</td>
+<td align="left"><code>5 &lt;= 5</code> = TRUE</td>
+</tr>
+<tr class="odd">
+<td align="left">Greater than</td>
+<td align="left">&gt;</td>
+<td align="left"><code>5 &gt; 5</code> = FALSE</td>
+</tr>
+<tr class="even">
+<td align="left">Greater than or equal to</td>
+<td align="left">&gt;=</td>
+<td align="left"><code>5 &gt;= 5</code> = TRUE</td>
+</tr>
+<tr class="odd">
+<td align="left">Exactly equal</td>
+<td align="left">==</td>
+<td align="left"><code>(0.5 - 0.3) == (0.3 - 0.1)</code> is FALSE, 2 == 2 is TRUE</td>
+</tr>
+<tr class="even">
+<td align="left">Not equal</td>
+<td align="left">!=</td>
+<td align="left"><code>(0.5 - 0.3) != (0.3 - 0.1)</code> is TRUE, 2 != 2 is FALSE</td>
+</tr>
+<tr class="odd">
+<td align="left">Equal</td>
+<td align="left">all.equal()</td>
+<td align="left"><code>all.equal(0.5 - 0.3,0.3 - 0.1)</code> is TRUE</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="states" class="section level2">
+<h2><span class="header-section-number">4.3</span> States</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">States</th>
+<th align="left">Representation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">True</td>
+<td align="left"><code>TRUE</code> <code>1</code></td>
+</tr>
+<tr class="even">
+<td align="left">False</td>
+<td align="left"><code>FALSE</code> <code>0</code></td>
+</tr>
+<tr class="odd">
+<td align="left">Empty</td>
+<td align="left"><code>NULL</code></td>
+</tr>
+<tr class="even">
+<td align="left">Unknown</td>
+<td align="left"><code>NA</code></td>
+</tr>
+<tr class="odd">
+<td align="left">Not a number e.g. <code>0/0</code></td>
+<td align="left"><code>NaN</code></td>
+</tr>
+<tr class="even">
+<td align="left">Infinite e.g. <code>1/0</code></td>
+<td align="left"><code>Inf</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="logical-operators" class="section level2">
+<h2><span class="header-section-number">4.4</span> Logical operators</h2>
+<table style="width:58%;">
+<colgroup>
+<col width="19%"></col>
+<col width="19%"></col>
+<col width="19%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Action</th>
+<th align="left">Operator</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Not</td>
+<td align="left">!</td>
+<td align="left"><code>!TRUE</code> is FALSE</td>
+</tr>
+<tr class="even">
+<td align="left">And</td>
+<td align="left">&amp;</td>
+<td align="left"><code>TRUE &amp; FALSE</code> is FALSE, <code>c(TRUE,TRUE) &amp; c(FALSE,TRUE)</code> is FALSE, TRUE</td>
+</tr>
+<tr class="odd">
+<td align="left">Or</td>
+<td align="left"><code>|</code></td>
+<td align="left"><code>TRUE | FALSE</code> is TRUE, <code>c(TRUE,FALSE) | c(FALSE,FALSE)</code> is TRUE, FALSE</td>
+</tr>
+<tr class="even">
+<td align="left">Xor</td>
+<td align="left">xor()</td>
+<td align="left"><code>xor(TRUE,FALSE)</code> is TRUE</td>
+</tr>
+<tr class="odd">
+<td align="left">Bitwise And</td>
+<td align="left">&amp;&amp;</td>
+<td align="left"><code>c(TRUE,TRUE) &amp;&amp; c(FALSE,TRUE)</code> is FALSE</td>
+</tr>
+<tr class="even">
+<td align="left">Bitwise Or</td>
+<td align="left"><code>||</code></td>
+<td align="left"><code>c(TRUE,FALSE) || c(FALSE,FALSE)</code> is TRUE</td>
+</tr>
+<tr class="odd">
+<td align="left">In</td>
+<td align="left">%in%</td>
+<td align="left"><code>&quot;Red&quot; %in% c(&quot;Blue&quot;,&quot;Red&quot;)</code> is TRUE</td>
+</tr>
+<tr class="even">
+<td align="left">Not in</td>
+<td align="left">!( x %in% y)</td>
+<td align="left"><code>!(&quot;Red&quot; %in% c(&quot;Blue&quot;,&quot;Red&quot;))</code> = FALSE</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="control-constructs" class="section level2">
+<h2><span class="header-section-number">4.5</span> Control constructs</h2>
+<table style="width:58%;">
+<colgroup>
+<col width="19%"></col>
+<col width="19%"></col>
+<col width="19%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Type</th>
+<th align="left">Implementation</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">If</td>
+<td align="left">if(condition) {dosomething}</td>
+<td align="left"><code>if(TRUE) { 2 }</code> is 2</td>
+</tr>
+<tr class="even">
+<td align="left">If else</td>
+<td align="left">if(condition) {do something} else {do something different} or ifelse(condition, do something, do something else)</td>
+<td align="left"><code>if(FALSE) { 2 } else { 3 }</code> is 3 <code>ifelse(FALSE, 2, 3)</code> is 3</td>
+</tr>
+<tr class="odd">
+<td align="left">For loop</td>
+<td align="left">for(i in seq) {dosomething} or foreach(i=1:3) %do% {something}</td>
+<td align="left"><code>for(i in 1:3) {print(i)}</code> is 1, 2, 3</td>
+</tr>
+<tr class="even">
+<td align="left">While loop</td>
+<td align="left">while(condition) {do something }</td>
+<td align="left"><code>a&lt;-0 ; while(a&lt;3){a&lt;-a+1} ; a</code> is 3</td>
+</tr>
+<tr class="odd">
+<td align="left">Switch</td>
+<td align="left">switch(value, …)</td>
+<td align="left"><code>switch(2, &quot;a&quot;, &quot;b&quot;)</code> is b</td>
+</tr>
+<tr class="even">
+<td align="left">Case</td>
+<td align="left">memisc::cases(…)</td>
+<td align="left"><code>cases(&quot;pi&lt;3&quot;=pi&lt;3, &quot;pi=3&quot;=pi==3,&quot;pi&gt;3&quot;=pi&gt;3)</code> is pi&gt;3</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>NB: If you find yourself using a loop, there’s probably a better, faster solution</p>
+</blockquote>
+</div>
+<div id="assignment-operators" class="section level2">
+<h2><span class="header-section-number">4.6</span> Assignment operators</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Action</th>
+<th align="left">Operator</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Create / update a variable</td>
+<td align="left">&lt;-</td>
+<td align="left"><code>a &lt;- 10</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>NB: There are others you could use, but this is the best practice</p>
+</blockquote>
+</div>
+<div id="accessors" class="section level2">
+<h2><span class="header-section-number">4.7</span> Accessors</h2>
+<table style="width:58%;">
+<colgroup>
+<col width="19%"></col>
+<col width="19%"></col>
+<col width="19%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Action</th>
+<th align="left">Operator</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Use public function from package</td>
+<td align="left">::</td>
+<td align="left"><code>memisc::cases()</code></td>
+</tr>
+<tr class="even">
+<td align="left">Use private function from package</td>
+<td align="left">:::</td>
+<td align="left"><code>optiRum:::pounds_format()</code></td>
+</tr>
+<tr class="odd">
+<td align="left">Get a component e.g a data.frame column</td>
+<td align="left">$</td>
+<td align="left"><code>iris$Sepal.Length</code></td>
+</tr>
+<tr class="even">
+<td align="left">Extract a property from a class</td>
+<td align="left"><code>@</code></td>
+<td align="left"><em>Won’t be used in this course</em></td>
+</tr>
+<tr class="odd">
+<td align="left">Refer to positions in a data.frame or vector</td>
+<td align="left">[ ]</td>
+<td align="left"><code>iris[5:10,1]</code></td>
+</tr>
+<tr class="even">
+<td align="left">Refer to item in a list</td>
+<td align="left">[[ ]]</td>
+<td align="left"><code>list(iris=iris,mtcars=mtcars)[[&quot;iris&quot;]]</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="meta-operators" class="section level2">
+<h2><span class="header-section-number">4.8</span> Meta-operators</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Action</th>
+<th align="left">Operator</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Comment</td>
+<td align="left">#</td>
+<td align="left"><code># This is my comment</code></td>
+</tr>
+<tr class="even">
+<td align="left">Help</td>
+<td align="left">?</td>
+<td align="left"><code>?data.table</code></td>
+</tr>
+<tr class="odd">
+<td align="left">Identifier</td>
+<td align="left">`</td>
+<td align="left"><code>`1`&lt;-2</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="r-data-structures" class="section level1">
+<h1><span class="header-section-number">5</span> R Data structures</h1>
+</div>
+<div id="r-functions" class="section level1">
+<h1><span class="header-section-number">6</span> R Functions</h1>
+</div>
+<div id="exercises" class="section level1">
+<h1><span class="header-section-number">7</span> Exercises</h1>
 <hr />
 <p><a href="index.html">Home</a> | <a href="RMicrosoft.html">Prev</a> | <a href>Next</a></p>
-</div>
 </div>
 
 
