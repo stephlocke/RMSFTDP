@@ -14,7 +14,8 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
-
+[Home](index.html) | [Prev](RMicrosoft.html) | [Next]()
+-------
 # The software {.tabset}
 
 This section outlines installation instructions for getting up to speed
@@ -52,3 +53,6 @@ This section outlines installation instructions for getting up to speed
 devtools::install_github("stephlocke/RMSFTDP")
 ```
  * Get the project from source control by going to New Project in Rstudio, selecting from version control, and pasting in the URL ```https://github.com/stephlocke/RMSFTDP.git```
+ 
+-------
+[Home](index.html) | [Prev](RMicrosoft.html) | [Next]()
