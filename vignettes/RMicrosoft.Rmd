@@ -41,6 +41,8 @@ Do --> O
 V --> I[Interactive report]
 I --> O
 S --> W[Webservice]
+W --> I
+W --> O
 end
 subgraph Package View
 Dp[RDBMS, flat file, nosql, xml] --> Rp[data.table, RODBC, httr, rvest, readxl, readr,...]
@@ -53,8 +55,51 @@ Vp --> Dop[knitr, rmarkdown, ...]
 Dop --> Op
 Vp --> Ip[shiny, ...]
 Ip --> Op
-S --> W[AzureML, jug, ...]
+Sp --> Wp[AzureML, jug, ...]
+Wp --> Ip
+Wp --> Op
 end"
 mermaid(hangs)
 ```
 
+# Microsoft Data Platform
+
+## How it hangs togethers
+```{r,echo=FALSE,warning=FALSE}
+library(DiagrammeR)
+hangs<-"graph TB
+subgraph High Level
+D[Data] --> R[ETL]
+R --> DM[Database]
+DM --> S[Cube]
+DM --> I[Itneractive reports]
+DM --> Do[Static reports]
+DM --> W[Webservices]
+DM --> O[Output]
+S --> I
+S --> Do
+S --> O
+I --> O
+Do --> O
+W --> I
+W --> O
+end
+subgraph Software View
+Dm[Data] --> Rm[SSIS, Data Factory]
+Rm --> DMm[SQL Server, Azure SQL]
+DMm --> Sm[SSAS]
+DMm --> Im[PowerBI]
+DMm --> Dom[SSRS]
+DMm --> Wm[AzureML]
+DMm --> Om[Output]
+Sm --> Im
+Sm --> Dom
+Sm --> Om
+Im --> Om
+Dom --> Om
+Wm --> Im
+Wm --> Om
+Wm --> Om
+end"
+mermaid(hangs)
+```
