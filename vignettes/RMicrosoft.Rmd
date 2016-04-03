@@ -64,7 +64,7 @@ mermaid(hangs)
 
 # Microsoft Data Platform
 
-## How it hangs togethers
+## How it hangs together
 ```{r,echo=FALSE,warning=FALSE}
 library(DiagrammeR)
 hangs<-"graph TB
