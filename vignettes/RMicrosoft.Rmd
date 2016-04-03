@@ -16,7 +16,7 @@ vignette: >
 - In-memory & single-core (by default)
 - Multi-platform
 - Extensible environment
-- Delivered by the [R Foundation](), supported by the [R Consortium](), grown by R developers 
+- Delivered by the [R Foundation](https://www.r-project.org/foundation/), supported by the [R Consortium](https://www.r-consortium.org/), grown by R developers 
 - [r-project.org](http://www.r-project.org/)
 
 ## There's a package for that
@@ -103,3 +103,20 @@ Wm --> Om
 end"
 mermaid(hangs)
 ```
+
+# R + Microsoft
+## Microsoft R Server
+- Previously, Revolution R for Enterprise
+- Available on Windows and Linux
+- Specialised connectors available for SQL Server, Hadoop, Oracle, & Teradata
+
+## AzureML
+- Uses R throughout
+
+## PowerBI
+- R as a data source
+- Use R for data visualisations
+- Any R variant
+
+## SQL Server
+- Call R from inside SQL
