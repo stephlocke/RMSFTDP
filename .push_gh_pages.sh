@@ -11,8 +11,8 @@ for files in '*.tar.gz'; do
         tar xfz $files
 done
 
+git clone https://github.com/stephlocke/RMSFTDP.git out --branch gh-pages
 cd out
-git init
 git config user.name "stephs-travis"
 git config user.email "travis"
 
@@ -22,4 +22,4 @@ done
 
 git add .
 git commit -m "$TRAVIS_COMMIT"
-git push --quiet $FULL_REPO master:gh-pages
+git push --quiet $FULL_REPO
