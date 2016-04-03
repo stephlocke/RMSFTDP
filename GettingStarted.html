@@ -219,9 +219,7 @@ div.tocify {
 </div>
 
 
-<div id="home-prev-next" class="section level2">
-<h2><span class="header-section-number">0.1</span> <a href="index.html">Home</a> | <a href="RMicrosoft.html">Prev</a> | <a href>Next</a></h2>
-</div>
+<p><a href="index.html">Home</a> | <a href="RMicrosoft.html">Prev</a> | <a href>Next</a></p>
 <div id="the-software" class="section level1 tabset">
 <h1><span class="header-section-number">1</span> The software</h1>
 <p>This section outlines installation instructions for getting up to speed</p>
@@ -233,51 +231,55 @@ div.tocify {
 <li>Install R then Rtools - if 64bit, install both 32 and 64 as it saves you hassle with other drivers</li>
 </ul>
 </div>
-<div id="rstudio" class="section level2">
-<h2><span class="header-section-number">1.2</span> Rstudio</h2>
-<ul>
-<li>Go to <a href="http://www.rstudio.com/products/rstudio/download/">rstudio.com</a></li>
-<li>Select correct install file for your PC, and install</li>
-</ul>
-</div>
 <div id="git" class="section level2">
-<h2><span class="header-section-number">1.3</span> Git</h2>
+<h2><span class="header-section-number">1.2</span> Git</h2>
 <ul>
 <li>Download latest git version from <a href="https://msysgit.github.io/">msysgit.github.io</a></li>
 <li>Install</li>
+<li>Open up command-prompt
+<ul>
+<li>Run <code>git config --global user.name=&quot;Your name&quot;</code></li>
+<li>Run <code>git config --global user.email=&quot;email@addre.ss&quot;</code></li>
+</ul></li>
 </ul>
 </div>
-<div id="configuration" class="section level2">
-<h2><span class="header-section-number">1.4</span> Configuration</h2>
+<div id="rstudio" class="section level2">
+<h2><span class="header-section-number">1.3</span> Rstudio</h2>
 <ul>
+<li>Go to <a href="http://www.rstudio.com/products/rstudio/download/">rstudio.com</a></li>
+<li>Select correct install file for your PC, and install</li>
 <li>Open Rstudio</li>
 <li>Go to Tools &gt; Global Options and set Rstudio to point at the location of your git.exe file</li>
 <li>Restart Rstudio
 <ul>
 <li>If you don’t automatically get the Git pane (top RHS) then Create a New Project and tick the source control checkbox</li>
 </ul></li>
-<li>Open up command-prompt (or use the Git pane and select Shell in the extra options)
-<ul>
-<li>Run <code>git config --global user.name=&quot;Your name&quot;</code></li>
-<li>Run <code>git config --global user.email=&quot;email@addre.ss&quot;</code></li>
-</ul></li>
-<li>Go to the Packages area (bottom RHS) and select Install. Install devtools and installr
-<ul>
-<li>This can take a while due to dependencies</li>
-<li>If you encounter any packages that could not download or install you won’t be able to install Rtraining successfully, but typically re-performing ths install will pick up any packages a second time around</li>
-</ul></li>
+<li>Go to the Packages area (bottom RHS) and select Install. Install <code>devtools</code></li>
 </ul>
 </div>
-<div id="rmsftdp" class="section level2">
-<h2><span class="header-section-number">1.5</span> RMSFTDP</h2>
+</div>
+<div id="navigating-rstudio" class="section level1 tabset">
+<h1><span class="header-section-number">2</span> Navigating Rstudio</h1>
+<p>This section provides a simple reference for working with Rstudio.</p>
+</div>
+<div id="the-rmsftdp-package" class="section level1 tabset">
+<h1><span class="header-section-number">3</span> The RMSFTDP package</h1>
+<p>This section introduces the package R in the Microsoft Data Platform, or <strong>RMSFTDP</strong> for short.</p>
+<div id="purpose" class="section level2">
+<h2><span class="header-section-number">3.1</span> Purpose</h2>
+</div>
+<div id="get-it" class="section level2">
+<h2><span class="header-section-number">3.2</span> Get it</h2>
 <ul>
-<li>Install RMSFTDP
+<li>Open RStudio</li>
+<li>Get the project from source control by going to New Project in Rstudio, selecting from version control, and pasting in the URL `<a href="https://github.com/stephlocke/RMSFTDP.git" class="uri">https://github.com/stephlocke/RMSFTDP.git</a></li>
+<li>Run <code>devtools::install()</code> to install the package</li>
+</ul>
+</div>
+<div id="contents" class="section level2">
+<h2><span class="header-section-number">3.3</span> Contents</h2>
 <ul>
-<li><p>This can take a while due to dependencies</p>
-<pre class="r"><code># Case-sensitive!
-devtools::install_github(&quot;stephlocke/RMSFTDP&quot;)</code></pre></li>
-</ul></li>
-<li>Get the project from source control by going to New Project in Rstudio, selecting from version control, and pasting in the URL <code>https://github.com/stephlocke/RMSFTDP.git</code></li>
+<li><code>vignettes/</code> - use <code>devtools::build_vignettes()</code> to generate a local copy of the training materials</li>
 </ul>
 <hr />
 <p><a href="index.html">Home</a> | <a href="RMicrosoft.html">Prev</a> | <a href>Next</a></p>
