@@ -13,6 +13,7 @@ License: file LICENSE
 LazyData: true
 Suggests:
     knitr,
-    rmarkdown
+    rmarkdown,
+    DiagrammeR
 VignetteBuilder: knitr
 RoxygenNote: 5.0.1
