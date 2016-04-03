@@ -2,7 +2,13 @@
 title: "Getting started with R"
 author: "Steph Locke"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_document
+output: 
+  rmarkdown::html_document: 
+    code_folding: show
+    number_sections: yes
+    toc: yes
+    toc_float: true
+    toc_depth: 2
 vignette: >
   %\VignetteIndexEntry{Getting started with R}
   %\VignetteEngine{knitr::rmarkdown}
