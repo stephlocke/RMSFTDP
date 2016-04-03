@@ -14,7 +14,7 @@ The SQL Server BI world has been kind of static for a long time, now they’re b
 
 ## Contents
 - [R + Microsoft](RMicrosoft.html)
-- Getting started with R
+- [Getting started with R](GettingStarted.html)
 - Data manipulation fundamentals
 - Data visualisation basics
 - Interactive data visualisations

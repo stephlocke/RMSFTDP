@@ -8,6 +8,7 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+[Home](index.html) | [Prev](index.html) | [Next](GettingStarted.html)
 
 # R
 > R is an integrated suite of software facilities for data manipulation, calculation and graphical display
@@ -120,3 +121,6 @@ mermaid(hangs)
 
 ## SQL Server
 - Call R from inside SQL
+
+-------
+[Home](index.html) | [Prev](index.html) | [Next](GettingStarted.html)
