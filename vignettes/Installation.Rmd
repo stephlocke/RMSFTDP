@@ -1,0 +1,64 @@
+---
+title: "Installation Instructions"
+author: "Steph Locke"
+date: "`r Sys.Date()`"
+output: 
+  rmarkdown::html_document: 
+    code_folding: show
+    number_sections: yes
+    toc: yes
+    toc_float: true
+    toc_depth: 2
+vignette: >
+  %\VignetteIndexEntry{Installation Instructions}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+[Home](index.html) | [Prev](RMicrosoft.html) | [Next](GettingStarted.html)
+
+# The software {.tabset}
+<!-- Source: github.com/stephlocke/Rtraining/inst/handouts/infrastructure/setting-up-a-windows-r-machine -->
+This section outlines installation instructions for getting up to speed
+
+## R
+ * Download latest base R exe file from [cran.rstudio.com](http://cran.rstudio.com/)
+ * Also download Rtools latest exe (if using Windows)
+ * Install R then Rtools - if 64bit, install both 32 and 64 as it saves youz hassle with other drivers
+
+## Git
+ * Download latest git version from [msysgit.github.io](https://msysgit.github.io/)
+ * Install
+ * Open up command-prompt
+     + Run `git config --global user.name="Your name"`
+     + Run `git config --global user.email="email@addre.ss"`
+
+## Use Rstudio
+ * Go to [rstudio.com](http://www.rstudio.com/products/rstudio/download/)
+ * Select correct install file for your PC, and install
+ * Open Rstudio
+ * Go to Tools > Global Options and set Rstudio to point at the location of your git.exe file
+ * Restart Rstudio
+     + If you don't automatically get the Git pane (top RHS) then Create a New Project and tick the source control checkbox
+ * Go to the Packages area (bottom RHS) and select Install. Install `devtools`
+
+## Use Visual Studio with VSRT
+
+# Navigating your IDE {.tabset}
+
+## RStudio
+This section provides a simple reference for working with Rstudio.
+
+## Visual Studio with VSRT
+
+# The RMSFTDP package {.tabset}
+This section introduces the package R in the Microsoft Data Platform, or **RMSFTDP** for short.
+
+## Purpose
+## Get it 
+ * Open RStudio
+ * Get the project from source control by going to New Project in Rstudio, selecting from version control, and pasting in the URL `https://github.com/stephlocke/RMSFTDP.git
+ * Run `devtools::install()` to install the package
+
+## Contents
+ * `vignettes/` - use `devtools::build_vignettes()` to generate a local copy of the training materials

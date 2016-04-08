@@ -28,4 +28,4 @@ The SQL Server BI world has been kind of static for a long time, now they’re b
 - Practical experience of working with R in the Data Platform
 
 ## Prerequisites
-Attendees should be comfortable writing SQL and will ideally having coded a bit in other languages previously. Attendees will need a laptop with R, R Tools, & RStudio.
+Attendees should be comfortable writing SQL and will ideally having coded a bit in other languages previously. Attendees will need a laptop with the necessary software installed. They should follow the [installation instructions](Installation.html) to get everything configured.
