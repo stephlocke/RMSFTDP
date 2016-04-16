@@ -11,7 +11,7 @@
 
 <meta name="author" content="Steph Locke" />
 
-<meta name="date" content="2016-04-08" />
+<meta name="date" content="2016-04-16" />
 
 <title>Getting started with R</title>
 
@@ -106,7 +106,7 @@ $(document).ready(function () {
 <script src="data:application/x-javascript;base64,Cgp3aW5kb3cuaW5pdGlhbGl6ZUNvZGVGb2xkaW5nID0gZnVuY3Rpb24oc2hvdykgewoKICAvLyBoYW5kbGVycyBmb3Igc2hvdy1hbGwgYW5kIGhpZGUgYWxsCiAgJCgiI3JtZC1zaG93LWFsbC1jb2RlIikuY2xpY2soZnVuY3Rpb24oKSB7CiAgICAkKCdkaXYuci1jb2RlLWNvbGxhcHNlJykuZWFjaChmdW5jdGlvbigpIHsKICAgICAgJCh0aGlzKS5jb2xsYXBzZSgnc2hvdycpOwogICAgfSk7CiAgfSk7CiAgJCgiI3JtZC1oaWRlLWFsbC1jb2RlIikuY2xpY2soZnVuY3Rpb24oKSB7CiAgICAkKCdkaXYuci1jb2RlLWNvbGxhcHNlJykuZWFjaChmdW5jdGlvbigpIHsKICAgICAgJCh0aGlzKS5jb2xsYXBzZSgnaGlkZScpOwogICAgfSk7CiAgfSk7CgogIC8vIGluZGV4IGZvciB1bmlxdWUgY29kZSBlbGVtZW50IGlkcwogIHZhciBjdXJyZW50SW5kZXggPSAxOwoKICAvLyBzZWxlY3QgYWxsIFIgY29kZSBibG9ja3MKICB2YXIgckNvZGVCbG9ja3MgPSAkKCdwcmUucicpOwogIHJDb2RlQmxvY2tzLmVhY2goZnVuY3Rpb24oKSB7CgogICAgLy8gY3JlYXRlIGEgY29sbGFwc2FibGUgZGl2IHRvIHdyYXAgdGhlIGNvZGUgaW4KICAgIHZhciBkaXYgPSAkKCc8ZGl2IGNsYXNzPSJjb2xsYXBzZSByLWNvZGUtY29sbGFwc2UiPjwvZGl2PicpOwogICAgaWYgKHNob3cpCiAgICAgIGRpdi5hZGRDbGFzcygnaW4nKTsKICAgIHZhciBpZCA9ICdyY29kZS02NDNFMEYzNicgKyBjdXJyZW50SW5kZXgrKzsKICAgIGRpdi5hdHRyKCdpZCcsIGlkKTsKICAgICQodGhpcykuYmVmb3JlKGRpdik7CiAgICAkKHRoaXMpLmRldGFjaCgpLmFwcGVuZFRvKGRpdik7CgogICAgLy8gYWRkIGEgc2hvdyBjb2RlIGJ1dHRvbiByaWdodCBhYm92ZQogICAgdmFyIHNob3dDb2RlVGV4dCA9ICQoJzxzcGFuIGNsYXNzPSJ0ZXh0LW11dGVkIj4nICsgKHNob3cgPyAnSGlkZScgOiAnQ29kZScpICsgJzwvc3Bhbj4nKTsKICAgIHZhciBzaG93Q29kZUJ1dHRvbiA9ICQoJzxidXR0b24gdHlwZT0iYnV0dG9uIiBjbGFzcz0iYnRuIGJ0bi1kZWZhdWx0IGJ0bi14cyBjb2RlLWZvbGRpbmctYnRuIHB1bGwtcmlnaHQiPjwvYnV0dG9uPicpOwogICAgc2hvd0NvZGVCdXR0b24uYXBwZW5kKHNob3dDb2RlVGV4dCk7CiAgICBzaG93Q29kZUJ1dHRvbgogICAgICAgIC5hdHRyKCdkYXRhLXRvZ2dsZScsICdjb2xsYXBzZScpCiAgICAgICAgLmF0dHIoJ2RhdGEtdGFyZ2V0JywgJyMnICsgaWQpCiAgICAgICAgLmF0dHIoJ2FyaWEtZXhwYW5kZWQnLCB0cnVlKQogICAgICAgIC5hdHRyKCdhcmlhLWNvbnRyb2xzJywgaWQpCiAgICAgICAgLmNzcygnbWFyZ2luLWJvdHRvbScsICc0cHgnKTsKCiAgICB2YXIgYnV0dG9uUm93ID0gJCgnPGRpdiBjbGFzcz0icm93Ij48L2Rpdj4nKTsKICAgIHZhciBidXR0b25Db2wgPSAkKCc8ZGl2IGNsYXNzPSJjb2wtbWQtMTIiPjwvZGl2PicpOwoKICAgIGJ1dHRvbkNvbC5hcHBlbmQoc2hvd0NvZGVCdXR0b24pOwogICAgYnV0dG9uUm93LmFwcGVuZChidXR0b25Db2wpOwoKICAgIGRpdi5iZWZvcmUoYnV0dG9uUm93KTsKCiAgICAvLyB1cGRhdGUgc3RhdGUgb2YgYnV0dG9uIG9uIHNob3cvaGlkZQogICAgZGl2Lm9uKCdoaWRkZW4uYnMuY29sbGFwc2UnLCBmdW5jdGlvbiAoKSB7CiAgICAgIHNob3dDb2RlVGV4dC50ZXh0KCdDb2RlJyk7CiAgICB9KTsKICAgIGRpdi5vbignc2hvdy5icy5jb2xsYXBzZScsIGZ1bmN0aW9uICgpIHsKICAgICAgc2hvd0NvZGVUZXh0LnRleHQoJ0hpZGUnKTsKICAgIH0pOwogIH0pOwoKfQo="></script>
 <script>
 $(document).ready(function () {
-  window.initializeCodeFolding("show" === "show");
+  window.initializeCodeFolding("hide" === "show");
 });
 </script>
 
@@ -214,7 +214,7 @@ div.tocify {
 
 <h1 class="title">Getting started with R</h1>
 <h4 class="author"><em>Steph Locke</em></h4>
-<h4 class="date"><em>2016-04-08</em></h4>
+<h4 class="date"><em>2016-04-16</em></h4>
 
 </div>
 
@@ -222,6 +222,7 @@ div.tocify {
 <p><a href="index.html">Home</a> | <a href="RMicrosoft.html">Prev</a> | <a href>Next</a></p>
 <div id="r-syntax" class="section level1 tabset">
 <h1><span class="header-section-number">1</span> R Syntax</h1>
+<p>Key syntax and operators.</p>
 <!-- Source: github.com/stephlocke/Rtraining/inst/handouts/fundamentals/syntax -->
 <div id="basic-operators" class="section level2">
 <h2><span class="header-section-number">1.1</span> Basic operators</h2>
@@ -262,17 +263,17 @@ div.tocify {
 <tr class="even">
 <td align="left">Modulus</td>
 <td align="left">%%</td>
-<td align="left"><code>10 %% 4</code> = 2</td>
+<td align="left"><code>9 %% 4</code> = 1</td>
 </tr>
 <tr class="odd">
-<td align="left">Absolute remainder</td>
+<td align="left">Integer division</td>
 <td align="left">%/%</td>
 <td align="left"><code>9 %/% 4</code> = 2</td>
 </tr>
 <tr class="even">
 <td align="left">Basic sequence</td>
 <td align="left">:</td>
-<td align="left"><code>sum(1:3)</code> = 6</td>
+<td align="left"><code>1:3</code> = 1, 2, 3</td>
 </tr>
 </tbody>
 </table>
@@ -314,19 +315,19 @@ div.tocify {
 <td align="left"><code>5 &gt;= 5</code> = TRUE</td>
 </tr>
 <tr class="odd">
+<td align="left">Equal</td>
+<td align="left">all.equal()</td>
+<td align="left"><code>all.equal(0.5 - 0.3,0.3 - 0.1)</code> is TRUE</td>
+</tr>
+<tr class="even">
 <td align="left">Exactly equal</td>
 <td align="left">==</td>
 <td align="left"><code>(0.5 - 0.3) == (0.3 - 0.1)</code> is FALSE, 2 == 2 is TRUE</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Not equal</td>
 <td align="left">!=</td>
 <td align="left"><code>(0.5 - 0.3) != (0.3 - 0.1)</code> is TRUE, 2 != 2 is FALSE</td>
-</tr>
-<tr class="odd">
-<td align="left">Equal</td>
-<td align="left">all.equal()</td>
-<td align="left"><code>all.equal(0.5 - 0.3,0.3 - 0.1)</code> is TRUE</td>
 </tr>
 </tbody>
 </table>
@@ -579,15 +580,138 @@ div.tocify {
 </tbody>
 </table>
 </div>
+<div id="exercises" class="section level2">
+<h2><span class="header-section-number">1.9</span> Exercises</h2>
+<ol style="list-style-type: decimal">
+<li>Create a variable called <code>Scores</code> that holds the numbers 1 to 10</li>
+<li>Return whether each number in Scores is an even number</li>
+<li>Get the help text for the function <code>mean</code></li>
+<li>Perform a test to see if R variable names are case sensitive</li>
+</ol>
+<pre class="r"><code>#1
+Scores&lt;-1:10
+#2
+(Scores %% 2) ==0
+#3
+?mean
+#4
+scores
+## Error in eval(expr, envir, enclos): object 'scores' not found</code></pre>
 </div>
-<div id="r-data-structures" class="section level1">
-<h1><span class="header-section-number">2</span> R Data structures</h1>
 </div>
-<div id="r-functions" class="section level1">
+<div id="r-data-types-structures" class="section level1 tabset">
+<h1><span class="header-section-number">2</span> R Data types &amp; structures</h1>
+<!-- Source: github.com/stephlocke/Rtraining/inst/handouts/fundamentals/datatypes -->
+<p>A brief introduction to data structures and types</p>
+<div id="data-types" class="section level2">
+<h2><span class="header-section-number">2.1</span> Data types</h2>
+<p>These are the core data types. There are additonal ones like dates with timestamps(<code>POSIXct</code> and <code>POSIXlt</code>) and ordered factors</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Data type</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Integer</td>
+<td align="left">1</td>
+</tr>
+<tr class="even">
+<td align="left">Logical</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="odd">
+<td align="left">Numeric</td>
+<td align="left">1.1</td>
+</tr>
+<tr class="even">
+<td align="left">String / character</td>
+<td align="left">“Red”</td>
+</tr>
+<tr class="odd">
+<td align="left">Factor (enumerated string)</td>
+<td align="left">“Amber” or 2 in c(“Red”,“Amber”,“Green”)</td>
+</tr>
+<tr class="even">
+<td align="left">Complex</td>
+<td align="left">i</td>
+</tr>
+<tr class="odd">
+<td align="left">Date</td>
+<td align="left">“2016-04-16”</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="data-structures" class="section level2">
+<h2><span class="header-section-number">2.2</span> Data structures</h2>
+<p>These are the out of the box data structures. There are other data structure that use these as the basis like data.table or a time-series object.</p>
+<table style="width:58%;">
+<colgroup>
+<col width="19%"></col>
+<col width="19%"></col>
+<col width="19%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Data type</th>
+<th align="left">Info</th>
+<th align="left">Construction example(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Vector</td>
+<td align="left">A 1D set of values of the same data type</td>
+<td align="left">c(1,“a”) , 1:3 , LETTERS</td>
+</tr>
+<tr class="even">
+<td align="left">Matrix</td>
+<td align="left">A 2D set of values of the same data type</td>
+<td align="left">matrix(LETTERS,nrow=13, ncol=2) , rbind(1:5,2:6)</td>
+</tr>
+<tr class="odd">
+<td align="left">Array</td>
+<td align="left">An nD set of values of the same data type</td>
+<td align="left">array(LETTERS, c(13,2))</td>
+</tr>
+<tr class="even">
+<td align="left">Data.frame</td>
+<td align="left">A 2D set of values of different data types</td>
+<td align="left">data.frame(a=1:26, b=LETTERS)</td>
+</tr>
+<tr class="odd">
+<td align="left">List</td>
+<td align="left">A collection of objects of various data types</td>
+<td align="left">list(vector=c(1,“a”), df=data.frame(a=1:6))</td>
+</tr>
+<tr class="even">
+<td align="left">Classes</td>
+<td align="left">A class is like a formalised list and can also contain functions i.e. methods</td>
+<td align="left"><em>Won’t be covered in this class</em></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="exercises-1" class="section level2">
+<h2><span class="header-section-number">2.3</span> Exercises</h2>
+<ol style="list-style-type: decimal">
+<li>Make a variable called <code>ID</code> containing the numbers 1 to 52</li>
+<li>Make a variable called <code>category</code> holding 52 randomly selected letters (using <code>sample</code>)</li>
+<li>Make a variable called <code>records</code> that is a data.frame containing <code>ID</code> and <code>category</code></li>
+</ol>
+<pre class="r"><code>#1
+ID&lt;-1:52
+#2
+category&lt;-sample(LETTERS,52, replace=TRUE)
+#3
+data.frame(ID,category)</code></pre>
+</div>
+</div>
+<div id="r-functions" class="section level1 tabset">
 <h1><span class="header-section-number">3</span> R Functions</h1>
-</div>
-<div id="exercises" class="section level1">
-<h1><span class="header-section-number">4</span> Exercises</h1>
 </div>
 
 
