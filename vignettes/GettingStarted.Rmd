@@ -4,7 +4,7 @@ author: "Steph Locke"
 date: "`r Sys.Date()`"
 output: 
   rmarkdown::html_document: 
-    code_folding: show
+    code_folding: hide
     number_sections: yes
     toc: yes
     toc_float: true
@@ -18,6 +18,7 @@ vignette: >
 [Home](index.html) | [Prev](RMicrosoft.html) | [Next]()
 
 # R Syntax {.tabset}
+Key syntax and operators.
 
 <!-- Source: github.com/stephlocke/Rtraining/inst/handouts/fundamentals/syntax -->
 ## Basic operators
@@ -29,9 +30,9 @@ Add | + | `5 + 4` = `r 5 + 4`
 Multiply | * | `5 * 4` = `r 5 * 4`
 Divide | / | `5 / 4` = `r 5 / 4`
 Raise to the power | ^ | `5 ^ 4` = `r 5 ^ 4`
-Modulus | %% | `10 %% 4` = `r 10 %% 4`
-Absolute remainder | %/% | `9 %/% 4` = `r 9 %/% 4`
-Basic sequence | : | `sum(1:3)` = `r sum(1:3)`
+Modulus | %% | `9 %% 4` = `r 9 %% 4`
+Integer division | %/% | `9 %/% 4` = `r 9 %/% 4`
+Basic sequence | : | `1:3` = `r 1:3`
 
 ## Comparison operators
 
@@ -41,9 +42,9 @@ Less than | < | `5 < 5` = `r 5 < 5`
 Less than or equal to | <= | `5 <= 5` = `r 5 <= 5`
 Greater than | > | `5 > 5` = `r 5 > 5`
 Greater than or equal to | >= | `5 >= 5` = `r 5 >= 5`
+Equal | all.equal() | `all.equal(0.5 - 0.3,0.3 - 0.1)` is `r all.equal(0.5 - 0.3,0.3 - 0.1)`
 Exactly equal | == | `(0.5 - 0.3) == (0.3 - 0.1)` is `r (0.5 - 0.3) == (0.3 - 0.1)`, 2 == 2 is `r 2==2`
 Not equal | != | `(0.5 - 0.3) != (0.3 - 0.1)` is `r (0.5 - 0.3) != (0.3 - 0.1)`, 2 != 2 is `r 2!=2`
-Equal | all.equal() | `all.equal(0.5 - 0.3,0.3 - 0.1)` is `r all.equal(0.5 - 0.3,0.3 - 0.1)`
 
 ## States
 
@@ -111,8 +112,66 @@ Comment | # | `# This is my comment`
 Help | ? | `?data.table`
 Identifier | \` |  `` `1`<-2``
 
-# R Data structures
-# R Functions
+## Exercises
+1. Create a variable called `Scores` that holds the numbers 1 to 10
+1. Return whether each number in Scores is an even number
+1. Get the help text for the function `mean`
+1. Perform a test to see if R variable names are case sensitive
 
-# Exercises
+```{r results='hide', collapse=TRUE,error=TRUE}
+#1
+Scores<-1:10
+#2
+(Scores %% 2) ==0
+#3
+?mean
+#4
+scores
+```
 
+# R Data types & structures {.tabset}
+<!-- Source: github.com/stephlocke/Rtraining/inst/handouts/fundamentals/datatypes -->
+A brief introduction to data structures and types 
+
+## Data types
+These are the core data types. There are additonal ones like dates with timestamps(`POSIXct` and `POSIXlt`) and ordered factors
+
+Data type | Example
+------------- | -------------
+Integer | 1
+Logical | TRUE
+Numeric | 1.1
+String / character  | "Red"
+Factor (enumerated string) | "Amber" or 2 in c("Red","Amber","Green")
+Complex | i
+Date | "`r Sys.Date()`"
+
+## Data structures
+These are the out of the box data structures. There are other data structure that use these as the basis like data.table or a time-series object.
+
+Data type | Info | Construction example(s)
+------------- | ------------- | -------------
+Vector | A 1D set of values of the same data type | c(1,"a") , 1:3 , LETTERS
+Matrix | A 2D set of values of the same data type | matrix(LETTERS,nrow=13, ncol=2) , rbind(1:5,2:6)
+Array | An nD set of values of the same data type | array(LETTERS, c(13,2))
+Data.frame  | A 2D set of values of different data types | data.frame(a=1:26, b=LETTERS)
+List | A collection of objects of various data types | list(vector=c(1,"a"), df=data.frame(a=1:6))
+Classes | A class is like a formalised list and can also contain functions i.e. methods | *Won't be covered in this class*
+
+
+## Exercises
+1. Make a variable called `ID` containing the numbers 1 to 52
+1. Make a variable called `category` holding 52 randomly selected letters (using `sample`)
+1. Make a variable called `records` that is a data.frame containing `ID` and `category`
+
+```{r results='hide', collapse=TRUE,error=TRUE}
+#1
+ID<-1:52
+#2
+category<-sample(LETTERS,52, replace=TRUE)
+#3
+data.frame(ID,category)
+```
+
+
+# R Functions {.tabset}
