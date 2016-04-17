@@ -175,3 +175,48 @@ data.frame(ID,category)
 
 
 # R Functions {.tabset}
+## Using functions
+- Use an argument's position for well known functions e.g. `sum(iris$Sepal.Width)`
+- Use argument names for less well known functions (or less common arguments) e.g. `seq(from=1, to=5, by=1)`
+- Use argument names to call arguments out of order e.g.`seq(by=1, from=1, to=5 )`
+- Get help for a function that's in a loaded package with `?` e.g. `?mean`
+- Get help for a function that's not loaded with `??` e.g. `??adist`
+- Search for text or a function in the help with `help.search()` e.g. `help.search("concat")`
+- Get the definition of a function by calling it without brackets e.g. `Sys.Date`
+
+## Functions can ...
+- have named arguments e.g. `ifelse(test, yes, no)`
+- take any number of arguments e.g. `mean(...)`
+- take a combination of named and unlimited arguments e.g. `seq.int(from, to, by, length.out, along.with, ...)`
+- act as operators e.g. `+`,`%%`,`%>%`
+- work as you'd would normally expect e.g. `mean(iris$Sepal.Width)`
+- return functions e.g. `scales::gradient_n_pal`
+- have side-effects like making a plot and also returning some data
+
+
+## Basic function writing
+- Functions are created with the syntax `function(args){code}`
+- Functions do not need to be stored to be used
+- Store a function with `myfunc<-function(args){code}`
+- Functions will usually output whatever object was last called but not stored `f<-function(){1}; f()`
+- Use the `return()` function to output something specific `f<-function(){return(1)}; f()`
+- Make an argument optional by providing it with a default value or NULL
+
+## Exercises
+1. Use the function `cut()` to produce split `floor(rnorm(n = 100, mean=50,sd=20))` into 5 bins with numbers representing the bins they were allocated
+1. Write a function that says "Hello world" or says hello to any string or number passed in
+```{r results='hide', collapse=TRUE,error=TRUE}
+#1
+nums<-floor(rnorm(n = 100, mean=50,sd=20))
+bins<-cut(nums, breaks=5, labels=FALSE)
+
+#2
+hello<-function(x=NULL){
+  if(is.null(x)) x<-"world"
+  res<-paste0("Hello ", x, "!")
+  return(res)
+}
+hello()
+hello("Dave")
+hello(c("Dave","Jane", "7"))
+```
