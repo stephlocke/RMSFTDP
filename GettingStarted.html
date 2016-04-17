@@ -11,7 +11,7 @@
 
 <meta name="author" content="Steph Locke" />
 
-<meta name="date" content="2016-04-16" />
+<meta name="date" content="2016-04-17" />
 
 <title>Getting started with R</title>
 
@@ -214,7 +214,7 @@ div.tocify {
 
 <h1 class="title">Getting started with R</h1>
 <h4 class="author"><em>Steph Locke</em></h4>
-<h4 class="date"><em>2016-04-16</em></h4>
+<h4 class="date"><em>2016-04-17</em></h4>
 
 </div>
 
@@ -640,7 +640,7 @@ scores
 </tr>
 <tr class="odd">
 <td align="left">Date</td>
-<td align="left">“2016-04-16”</td>
+<td align="left">“2016-04-17”</td>
 </tr>
 </tbody>
 </table>
@@ -712,6 +712,61 @@ data.frame(ID,category)</code></pre>
 </div>
 <div id="r-functions" class="section level1 tabset">
 <h1><span class="header-section-number">3</span> R Functions</h1>
+<div id="using-functions" class="section level2">
+<h2><span class="header-section-number">3.1</span> Using functions</h2>
+<ul>
+<li>Use an argument’s position for well known functions e.g. <code>sum(iris$Sepal.Width)</code></li>
+<li>Use argument names for less well known functions (or less common arguments) e.g. <code>seq(from=1, to=5, by=1)</code></li>
+<li>Use argument names to call arguments out of order e.g.<code>seq(by=1, from=1, to=5 )</code></li>
+<li>Get help for a function that’s in a loaded package with <code>?</code> e.g. <code>?mean</code></li>
+<li>Get help for a function that’s not loaded with <code>??</code> e.g. <code>??adist</code></li>
+<li>Search for text or a function in the help with <code>help.search()</code> e.g. <code>help.search(&quot;concat&quot;)</code></li>
+<li>Get the definition of a function by calling it without brackets e.g. <code>Sys.Date</code></li>
+</ul>
+</div>
+<div id="functions-can" class="section level2">
+<h2><span class="header-section-number">3.2</span> Functions can …</h2>
+<ul>
+<li>have named arguments e.g. <code>ifelse(test, yes, no)</code></li>
+<li>take any number of arguments e.g. <code>mean(...)</code></li>
+<li>take a combination of named and unlimited arguments e.g. <code>seq.int(from, to, by, length.out, along.with, ...)</code></li>
+<li>act as operators e.g. <code>+</code>,<code>%%</code>,<code>%&gt;%</code></li>
+<li>work as you’d would normally expect e.g. <code>mean(iris$Sepal.Width)</code></li>
+<li>return functions e.g. <code>scales::gradient_n_pal</code></li>
+<li>have side-effects like making a plot and also returning some data</li>
+</ul>
+</div>
+<div id="basic-function-writing" class="section level2">
+<h2><span class="header-section-number">3.3</span> Basic function writing</h2>
+<ul>
+<li>Functions are created with the syntax <code>function(args){code}</code></li>
+<li>Functions do not need to be stored to be used</li>
+<li>Store a function with <code>myfunc&lt;-function(args){code}</code></li>
+<li>Functions will usually output whatever object was last called but not stored <code>f&lt;-function(){1}; f()</code></li>
+<li>Use the <code>return()</code> function to output something specific <code>f&lt;-function(){return(1)}; f()</code></li>
+<li>Make an argument optional by providing it with a default value or NULL</li>
+</ul>
+</div>
+<div id="exercises-2" class="section level2">
+<h2><span class="header-section-number">3.4</span> Exercises</h2>
+<ol style="list-style-type: decimal">
+<li>Use the function <code>cut()</code> to produce split <code>floor(rnorm(n = 100, mean=50,sd=20))</code> into 5 bins with numbers representing the bins they were allocated</li>
+<li>Write a function that says “Hello world” or says hello to any string or number passed in</li>
+</ol>
+<pre class="r"><code>#1
+nums&lt;-floor(rnorm(n = 100, mean=50,sd=20))
+bins&lt;-cut(nums, breaks=5, labels=FALSE)
+
+#2
+hello&lt;-function(x=NULL){
+  if(is.null(x)) x&lt;-&quot;world&quot;
+  res&lt;-paste0(&quot;Hello &quot;, x, &quot;!&quot;)
+  return(res)
+}
+hello()
+hello(&quot;Dave&quot;)
+hello(c(&quot;Dave&quot;,&quot;Jane&quot;, &quot;7&quot;))</code></pre>
+</div>
 </div>
 
 
