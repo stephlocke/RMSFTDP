@@ -16,3 +16,61 @@ vignette: >
 ---
 
 [Home](index.html) | [Prev](GettingStarted.html) | [Next]()
+
+# Working with vectors {.tabset}
+## Intro
+Vectors are the building blocks of R. They are 1D arrays that contain data of all the same type - so coercion of data types happens.
+
+- R is a 1-based array system so a vector starts at position 1
+- Items in a vector can have names but can also be referred to by position
+
+## Create
+```{r}
+handCrafted<-c(1,2,3,4)
+seqCrafted<-1:4
+named<-c(a=1,b=2,c=3,d=4)
+
+```
+
+## Update
+```{r}
+handCrafted
+handCrafted[2]<-99
+handCrafted
+
+named
+named["a"]<-99
+named
+```
+
+## Manipulate
+```{r}
+mode(seqCrafted)
+seqCrafted<-as.character(seqCrafted)
+mode(seqCrafted)
+```
+
+## Order
+```{r}
+preOrder<-sample(letters, 6)
+preOrder
+
+# Get order values should appear in
+order(preOrder)
+# Use it
+ordered<-preOrder[order(preOrder)]
+
+
+# Can also sort
+sorted<-sort(preOrder)
+sorted
+```
+
+## Filter
+
+
+# Working with lists
+
+# Working with tables
+
+# Get data from SQL Server
