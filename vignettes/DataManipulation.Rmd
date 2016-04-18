@@ -25,14 +25,27 @@ Vectors are the building blocks of R. They are 1D arrays that contain data of al
 - Items in a vector can have names but can also be referred to by position
 
 ## Create
+You can create vectors using the `c()` function or via a sequence (`:`). Values in an array can be given names - this can be useful when subsetting values/
 ```{r}
 handCrafted<-c(1,2,3,4)
 seqCrafted<-1:4
 named<-c(a=1,b=2,c=3,d=4)
+named
+```
 
+
+## Filter
+Alternatively called subsetting we can filter a vector by using positive notations of position, negative notations of position, the name of a value, or providing a boolean value for each item in the vector.
+```{r}
+handCrafted[1]
+seqCrafted[-1]
+named["b"]
+# Here I use shorthands for TRUE and FALSE for brevity - not generally recommended
+handCrafted[c(T,T,T,F)]
 ```
 
 ## Update
+You can update one or more values in a vector by assigning the new values into the desired subset.
 ```{r}
 handCrafted
 handCrafted[2]<-99
@@ -41,9 +54,15 @@ handCrafted
 named
 named["a"]<-99
 named
+
+# Delete by subsetting without value
+seqCrafted
+seqCrafted<-seqCrafted[-4]
+seqCrafted
 ```
 
 ## Manipulate
+You can manipulate a vector using functions. You can overwrite any object created - this will change mode, class, etc as R is **loosely typed** and doesn't require such things to be specified and fixed up front.
 ```{r}
 mode(seqCrafted)
 seqCrafted<-as.character(seqCrafted)
@@ -51,23 +70,37 @@ mode(seqCrafted)
 ```
 
 ## Order
+Ordering of records works by providing the position numbers of values in a vector and then using those to produce a vector with the original components in new locations
 ```{r}
 preOrder<-sample(letters, 6)
 preOrder
 
-# Get order values should appear in
+# Get order the values should appear in to be alphabetised
 order(preOrder)
-# Use it
+
+# Use it to sort a vector
 ordered<-preOrder[order(preOrder)]
+ordered
 
-
-# Can also sort
+# Alternatively, use the sort() function for brevity
 sorted<-sort(preOrder)
 sorted
 ```
 
-## Filter
+## Metadata
+You can extract various pieces of information about a vector
+```{r}
+names(handCrafted)
+names(named)
 
+dim(named)
+dimnames(named)
+
+length(named)
+class(named)
+mode(named)
+attributes(named)
+```
 
 # Working with lists
 
