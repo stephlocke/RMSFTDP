@@ -149,16 +149,16 @@ $(document).ready(function () {
 </div>
 <div id="how-it-hangs-together" class="section level2">
 <h2>How it hangs together</h2>
-<p><div id="htmlwidget-2709" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2709">{"x":{"diagram":"graph TB\nsubgraph High Level\nD[Data] --> R[Read into memory]\nR --> DM[Data manipulation]\nDM --> V[Visualisation]\nDM --> S[Statistical Analysis]\nDM --> O[Output]\nS --> V\nV --> Do[Document]\nDo --> O\nV --> I[Interactive report]\nI --> O\nS --> W[Webservice]\nW --> I\nW --> O\nend\nsubgraph Package View\nDp[RDBMS, flat file, nosql, xml] --> Rp[data.table, RODBC, httr, rvest, readxl, readr,...]\nRp --> DMp[data.table, dplyr, zoo, lubridate, stringr, ...]\nDMp --> Vp[ggplot2, DiagrammeR, vegalite, ...]\nDMp --> Sp[caret, survival, nnet, ...]\nDMp --> Op[base, readr, RODBC, ...]\nSp --> Vp\nVp --> Dop[knitr, rmarkdown, ...]\nDop --> Op\nVp --> Ip[shiny, ...]\nIp --> Op\nSp --> Wp[AzureML, jug, ...]\nWp --> Ip\nWp --> Op\nend"},"evals":[],"jsHooks":[]}</script></p>
+<p><div id="htmlwidget-786" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-786">{"x":{"diagram":"graph TB\nsubgraph High Level\nD[Data] --> R[Read into memory]\nR --> DM[Data manipulation]\nDM --> V[Visualisation]\nDM --> S[Statistical Analysis]\nDM --> O[Output]\nS --> V\nV --> Do[Document]\nDo --> O\nV --> I[Interactive report]\nI --> O\nS --> W[Webservice]\nW --> I\nW --> O\nend\nsubgraph Package View\nDp[RDBMS, flat file, nosql, xml] --> Rp[data.table, RODBC, httr, rvest, readxl, readr,...]\nRp --> DMp[data.table, dplyr, zoo, lubridate, stringr, ...]\nDMp --> Vp[ggplot2, DiagrammeR, vegalite, ...]\nDMp --> Sp[caret, survival, nnet, ...]\nDMp --> Op[base, readr, RODBC, ...]\nSp --> Vp\nVp --> Dop[knitr, rmarkdown, ...]\nDop --> Op\nVp --> Ip[shiny, ...]\nIp --> Op\nSp --> Wp[AzureML, jug, ...]\nWp --> Ip\nWp --> Op\nend"},"evals":[],"jsHooks":[]}</script></p>
 </div>
 </div>
 <div id="microsoft-data-platform" class="section level1">
 <h1>Microsoft Data Platform</h1>
 <div id="how-it-hangs-together-1" class="section level2">
 <h2>How it hangs together</h2>
-<p><div id="htmlwidget-6971" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6971">{"x":{"diagram":"graph TB\nsubgraph High Level\nD[Data] --> R[ETL]\nR --> DM[Database]\nDM --> S[Cube]\nDM --> I[Itneractive reports]\nDM --> Do[Static reports]\nDM --> W[Webservices]\nDM --> O[Output]\nS --> I\nS --> Do\nS --> O\nI --> O\nDo --> O\nW --> I\nW --> O\nend\nsubgraph Software View\nDm[Data] --> Rm[SSIS, Data Factory]\nRm --> DMm[SQL Server, Azure SQL]\nDMm --> Sm[SSAS]\nDMm --> Im[PowerBI]\nDMm --> Dom[SSRS]\nDMm --> Wm[AzureML]\nDMm --> Om[Output]\nSm --> Im\nSm --> Dom\nSm --> Om\nIm --> Om\nDom --> Om\nWm --> Im\nWm --> Om\nWm --> Om\nend"},"evals":[],"jsHooks":[]}</script></p>
+<p><div id="htmlwidget-3391" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3391">{"x":{"diagram":"graph TB\nsubgraph High Level\nD[Data] --> R[ETL]\nR --> DM[Database]\nDM --> S[Cube]\nDM --> I[Itneractive reports]\nDM --> Do[Static reports]\nDM --> W[Webservices]\nDM --> O[Output]\nS --> I\nS --> Do\nS --> O\nI --> O\nDo --> O\nW --> I\nW --> O\nend\nsubgraph Software View\nDm[Data] --> Rm[SSIS, Data Factory]\nRm --> DMm[SQL Server, Azure SQL]\nDMm --> Sm[SSAS]\nDMm --> Im[PowerBI]\nDMm --> Dom[SSRS]\nDMm --> Wm[AzureML]\nDMm --> Om[Output]\nSm --> Im\nSm --> Dom\nSm --> Om\nIm --> Om\nDom --> Om\nWm --> Im\nWm --> Om\nWm --> Om\nend"},"evals":[],"jsHooks":[]}</script></p>
 </div>
 </div>
 <div id="r-microsoft" class="section level1">
