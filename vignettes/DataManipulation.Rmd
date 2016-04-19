@@ -25,7 +25,7 @@ Vectors are the building blocks of R. They are 1D arrays that contain data of al
 - Items in a vector can have names but can also be referred to by position
 
 ## Create
-You can create vectors using the `c()` function or via a sequence (`:`). Values in an array can be given names - this can be useful when subsetting values/
+You can create vectors using the `c()` function or via a sequence (`:`). Values in a vector can be given names - this can be useful when subsetting values.
 ```{r}
 handCrafted<-c(1,2,3,4)
 seqCrafted<-1:4
@@ -35,13 +35,13 @@ named
 
 
 ## Filter
-Alternatively called subsetting we can filter a vector by using positive notations of position, negative notations of position, the name of a value, or providing a boolean value for each item in the vector.
+Alternatively called subsetting, we can filter a vector by using positive notations of position, negative notations of position, the name of a value, or providing a boolean value for each item in the vector.
 ```{r}
 handCrafted[1]
 seqCrafted[-1]
 named["b"]
-# Here I use shorthands for TRUE and FALSE for brevity - not generally recommended
-handCrafted[c(T,T,T,F)]
+
+handCrafted[c(rep(TRUE,3),FALSE)]
 ```
 
 ## Update
@@ -59,6 +59,11 @@ named
 seqCrafted
 seqCrafted<-seqCrafted[-4]
 seqCrafted
+
+# Append by creating a vector combining the original and the additional values
+ordered
+ordered<-c(ordered,5)
+ordered
 ```
 
 ## Manipulate
@@ -99,10 +104,82 @@ dimnames(named)
 length(named)
 class(named)
 mode(named)
+
 attributes(named)
+str(named)
 ```
 
-# Working with lists
+# Working with lists {.tabset}
+## Intro
+Lists hold multiple objects together and form the basis of complex data objects like data.frames and model results.
+
+
+## Create
+You can create lists using the `list()` function or via a sequence (`:`). Objects in a list can be given names.
+```{r}
+basicList<-list(c(1,2,3,4),LETTERS[5:8], rnorm(5))
+namedList<-list(p1=c(1,2,3,4),p2=LETTERS[5:8])
+```
+
+
+## Filter
+Alternatively called subsetting, we can filter a list by using positive notations of position, negative notations of position, or the name of a element, or providing a boolean value for each item in the list. We can also use a `[[ ]]` set of brackets for specifically detailing a *single element*.
+```{r error=TRUE}
+basicList[1]
+basicList[-1]
+namedList["p2"]
+basicList[c(TRUE,FALSE)]
+
+basicList[[1]]
+basicList[[-1]]
+namedList[["p2"]]
+basicList[[c(TRUE,TRUE)]]
+```
+
+## Update
+You can update one or more objects in a list by assigning the new values into the desired object using the same subsetting capabilities as noted in the Filter section.
+```{r}
+basicList[[1]]<-8:12
+basicList[1]
+
+# Delete by subsetting without object
+basicList[2]
+basicList[2]<-NULL
+basicList[2]
+
+# Append by creating a list combining the original and the additional values
+basicList[3]<-LETTERS[5:8]
+```
+
+## Manipulate
+You can manipulate a list using functions, and also manipulate the objects stored in the list.
+```{r}
+lapply(basicList,mode)
+```
+
+## Order
+Ordering of objects in a list is rarely required but you can do it with the `order()` function.
+```{r}
+unorderedList<-list(p2=c(1,2,3,4),p1=LETTERS[5:8])
+unorderedList[order(names(unorderedList))]
+```
+
+## Metadata
+You can extract various pieces of information about a list
+```{r}
+names(basicList)
+names(namedList)
+
+dim(namedList)
+dimnames(namedList)
+
+length(namedList)
+class(namedList)
+mode(namedList)
+attributes(namedList)
+str(namedList)
+```
+
 
 # Working with tables
 
