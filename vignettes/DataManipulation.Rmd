@@ -148,7 +148,7 @@ basicList[2]<-NULL
 basicList[2]
 
 # Append by creating a list combining the original and the additional values
-basicList[3]<-LETTERS[5:8]
+basicList[[3]]<-LETTERS[5:8]
 ```
 
 ## Manipulate
