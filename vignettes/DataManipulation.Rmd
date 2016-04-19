@@ -123,7 +123,7 @@ namedList<-list(p1=c(1,2,3,4),p2=LETTERS[5:8])
 
 
 ## Filter
-Alternatively called subsetting, we can filter a list by using positive notations of position, negative notations of position, or the name of a element, or providing a boolean value for each item in the list. We can also use a `[[ ]]` set of brackets for specifically detailing a *single element*.
+Alternatively called subsetting, we can filter a list by using positive notations of position, negative notations of position, or the name of a element, or providing a boolean value for each item in the list. We can also use `list[[ "elementname" ]]` or `list$elementname for specifically detailing a *single element*. 
 ```{r error=TRUE}
 basicList[1]
 basicList[-1]
@@ -133,6 +133,7 @@ basicList[c(TRUE,FALSE)]
 basicList[[1]]
 basicList[[-1]]
 namedList[["p2"]]
+namedList$p2
 basicList[[c(TRUE,TRUE)]]
 ```
 
@@ -142,7 +143,7 @@ You can update one or more objects in a list by assigning the new values into th
 basicList[[1]]<-8:12
 basicList[1]
 
-# Delete by subsetting without object
+# Elements in a list can be removed by making them NULL
 basicList[2]
 basicList[2]<-NULL
 basicList[2]
@@ -181,6 +182,93 @@ str(namedList)
 ```
 
 
-# Working with tables
+# Working with tables {.tabset}
+## Intro
+Tables or data.frame's as the base structure is called in R can hold multiple columns of different data types. Normally, [data.table](https://cran.r-project.org/package=data.table) or [dplyr](https://cran.r-project.org/package=dplyr) would be taught to super-charge data.frames (see Steph's extended session "Cut the R learning curve" for more on these) but to reduce dependencies and make it easier to transfer code between different systems, we'll use just base R.
 
-# Get data from SQL Server
+- data.frames have a coordinate system like excel so `df[ 1 , 2 ]` selects the intersection of row 1 and column 2
+- Rows and columns can be referenced by name
+- A data.frame is actuallly a list that is presented like a table
+
+## Create
+You can create data.frames using the `data.frame()` function. 
+
+- `data.frame()` will error if you try storing something odd in it. Use `as.data.frame()` to coerce
+```{r}
+df<-data.frame(a=1:4, b=LETTERS[5:8], c=rnorm(4),row.names = letters[9:12])
+df
+```
+
+
+## Filter
+Alternatively called subsetting, we can filter a data.frame by using positive notations of position, negative notations of position, or the name of a element, or providing a boolean value for each item in the list. 
+
+To filter using a condition requires the creation of a boolean vector based on a specific column. columns can be treated as vectors by using `df$colname`
+```{r}
+df[1, ]
+df[ ,1]
+df[1,1]
+df[-(3:4),]
+df[,"a"]
+df[ , c(TRUE, TRUE, FALSE)]
+df[df$a<4,]
+```
+
+## Update
+You can update values in a data.frame by referencing it's position using the same subsetting capabilities as noted in the Filter section.
+```{r}
+df[1,1]<-2
+df
+
+# Columns in a data.frame can be removed by making them NULL
+df[,2]
+df[,2]<-NULL
+df[,2]
+
+# Rows in a data.frame can be removed by subsetting without them
+df[2,]
+df<-df[-2,]
+df[2,]
+
+# Appends can happen in a variety of ways
+superDF<-data.frame(df,d=5:7)
+superDF
+df$newcol<-5:7
+df
+df[4,]<-c(1,1,1)
+df
+```
+<!--
+
+## Manipulate
+You can manipulate a data.frames using functions, and also manipulate the columns in the data.frame
+```{r}
+lapply(basicList,mode)
+```
+-->
+
+## Order
+Ordering of data.frames works by providing the position numbers of row numbers in a vector and then using these to return data.frame rows in a specific order
+```{r}
+# Get order the values should appear in
+order(df$c)
+
+# Use it to sort a table
+ordered<-df[order(df$c),]
+ordered
+```
+
+## Metadata
+You can extract various pieces of information about a list
+```{r}
+names(df)
+
+dim(df)
+dimnames(df)
+
+length(df)
+class(df)
+mode(df)
+attributes(df)
+str(df)
+```
