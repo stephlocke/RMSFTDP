@@ -11,7 +11,7 @@
 
 <meta name="author" content="Steph Locke" />
 
-<meta name="date" content="2016-04-17" />
+<meta name="date" content="2016-04-19" />
 
 <title>Data Manipulation</title>
 
@@ -214,7 +214,7 @@ div.tocify {
 
 <h1 class="title">Data Manipulation</h1>
 <h4 class="author"><em>Steph Locke</em></h4>
-<h4 class="date"><em>2016-04-17</em></h4>
+<h4 class="date"><em>2016-04-19</em></h4>
 
 </div>
 
@@ -232,12 +232,30 @@ div.tocify {
 </div>
 <div id="create" class="section level2">
 <h2><span class="header-section-number">1.2</span> Create</h2>
+<p>You can create vectors using the <code>c()</code> function or via a sequence (<code>:</code>). Values in a vector can be given names - this can be useful when subsetting values.</p>
 <pre class="r"><code>handCrafted&lt;-c(1,2,3,4)
 seqCrafted&lt;-1:4
-named&lt;-c(a=1,b=2,c=3,d=4)</code></pre>
+named&lt;-c(a=1,b=2,c=3,d=4)
+named</code></pre>
+<pre><code>## a b c d 
+## 1 2 3 4</code></pre>
+</div>
+<div id="filter" class="section level2">
+<h2><span class="header-section-number">1.3</span> Filter</h2>
+<p>Alternatively called subsetting, we can filter a vector by using positive notations of position, negative notations of position, the name of a value, or providing a boolean value for each item in the vector.</p>
+<pre class="r"><code>handCrafted[1]</code></pre>
+<pre><code>## [1] 1</code></pre>
+<pre class="r"><code>seqCrafted[-1]</code></pre>
+<pre><code>## [1] 2 3 4</code></pre>
+<pre class="r"><code>named[&quot;b&quot;]</code></pre>
+<pre><code>## b 
+## 2</code></pre>
+<pre class="r"><code>handCrafted[c(rep(TRUE,3),FALSE)]</code></pre>
+<pre><code>## [1] 1 2 3</code></pre>
 </div>
 <div id="update" class="section level2">
-<h2><span class="header-section-number">1.3</span> Update</h2>
+<h2><span class="header-section-number">1.4</span> Update</h2>
+<p>You can update one or more values in a vector by assigning the new values into the desired subset.</p>
 <pre class="r"><code>handCrafted</code></pre>
 <pre><code>## [1] 1 2 3 4</code></pre>
 <pre class="r"><code>handCrafted[2]&lt;-99
@@ -250,9 +268,32 @@ handCrafted</code></pre>
 named</code></pre>
 <pre><code>##  a  b  c  d 
 ## 99  2  3  4</code></pre>
+<pre class="r"><code># Delete by subsetting without value
+seqCrafted</code></pre>
+<pre><code>## [1] 1 2 3 4</code></pre>
+<pre class="r"><code>seqCrafted&lt;-seqCrafted[-4]
+seqCrafted</code></pre>
+<pre><code>## [1] 1 2 3</code></pre>
+<pre class="r"><code># Append by creating a vector combining the original and the additional values
+ordered</code></pre>
+<pre><code>## function (x, ...) 
+## factor(x, ..., ordered = TRUE)
+## &lt;bytecode: 0x3c39770&gt;
+## &lt;environment: namespace:base&gt;</code></pre>
+<pre class="r"><code>ordered&lt;-c(ordered,5)
+ordered</code></pre>
+<pre><code>## [[1]]
+## function (x, ...) 
+## factor(x, ..., ordered = TRUE)
+## &lt;bytecode: 0x3c39770&gt;
+## &lt;environment: namespace:base&gt;
+## 
+## [[2]]
+## [1] 5</code></pre>
 </div>
 <div id="manipulate" class="section level2">
-<h2><span class="header-section-number">1.4</span> Manipulate</h2>
+<h2><span class="header-section-number">1.5</span> Manipulate</h2>
+<p>You can manipulate a vector using functions. You can overwrite any object created - this will change mode, class, etc as R is <strong>loosely typed</strong> and doesn’t require such things to be specified and fixed up front.</p>
 <pre class="r"><code>mode(seqCrafted)</code></pre>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
 <pre class="r"><code>seqCrafted&lt;-as.character(seqCrafted)
@@ -260,28 +301,159 @@ mode(seqCrafted)</code></pre>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 </div>
 <div id="order" class="section level2">
-<h2><span class="header-section-number">1.5</span> Order</h2>
+<h2><span class="header-section-number">1.6</span> Order</h2>
+<p>Ordering of records works by providing the position numbers of values in a vector and then using those to produce a vector with the original components in new locations</p>
 <pre class="r"><code>preOrder&lt;-sample(letters, 6)
 preOrder</code></pre>
-<pre><code>## [1] &quot;g&quot; &quot;p&quot; &quot;o&quot; &quot;w&quot; &quot;a&quot; &quot;y&quot;</code></pre>
-<pre class="r"><code># Get order values should appear in
+<pre><code>## [1] &quot;v&quot; &quot;g&quot; &quot;b&quot; &quot;h&quot; &quot;m&quot; &quot;y&quot;</code></pre>
+<pre class="r"><code># Get order the values should appear in to be alphabetised
 order(preOrder)</code></pre>
-<pre><code>## [1] 5 1 3 2 4 6</code></pre>
-<pre class="r"><code># Use it
+<pre><code>## [1] 3 2 4 5 1 6</code></pre>
+<pre class="r"><code># Use it to sort a vector
 ordered&lt;-preOrder[order(preOrder)]
-
-
-# Can also sort
+ordered</code></pre>
+<pre><code>## [1] &quot;b&quot; &quot;g&quot; &quot;h&quot; &quot;m&quot; &quot;v&quot; &quot;y&quot;</code></pre>
+<pre class="r"><code># Alternatively, use the sort() function for brevity
 sorted&lt;-sort(preOrder)
 sorted</code></pre>
-<pre><code>## [1] &quot;a&quot; &quot;g&quot; &quot;o&quot; &quot;p&quot; &quot;w&quot; &quot;y&quot;</code></pre>
+<pre><code>## [1] &quot;b&quot; &quot;g&quot; &quot;h&quot; &quot;m&quot; &quot;v&quot; &quot;y&quot;</code></pre>
 </div>
-<div id="filter" class="section level2">
-<h2><span class="header-section-number">1.6</span> Filter</h2>
+<div id="metadata" class="section level2">
+<h2><span class="header-section-number">1.7</span> Metadata</h2>
+<p>You can extract various pieces of information about a vector</p>
+<pre class="r"><code>names(handCrafted)</code></pre>
+<pre><code>## NULL</code></pre>
+<pre class="r"><code>names(named)</code></pre>
+<pre><code>## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot;</code></pre>
+<pre class="r"><code>dim(named)</code></pre>
+<pre><code>## NULL</code></pre>
+<pre class="r"><code>dimnames(named)</code></pre>
+<pre><code>## NULL</code></pre>
+<pre class="r"><code>length(named)</code></pre>
+<pre><code>## [1] 4</code></pre>
+<pre class="r"><code>class(named)</code></pre>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<pre class="r"><code>mode(named)</code></pre>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<pre class="r"><code>attributes(named)</code></pre>
+<pre><code>## $names
+## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot;</code></pre>
+<pre class="r"><code>str(named)</code></pre>
+<pre><code>##  Named num [1:4] 99 2 3 4
+##  - attr(*, &quot;names&quot;)= chr [1:4] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot;</code></pre>
 </div>
 </div>
-<div id="working-with-lists" class="section level1">
+<div id="working-with-lists" class="section level1 tabset">
 <h1><span class="header-section-number">2</span> Working with lists</h1>
+<div id="intro-1" class="section level2">
+<h2><span class="header-section-number">2.1</span> Intro</h2>
+<p>Lists hold multiple objects together and form the basis of complex data objects like data.frames and model results.</p>
+</div>
+<div id="create-1" class="section level2">
+<h2><span class="header-section-number">2.2</span> Create</h2>
+<p>You can create lists using the <code>list()</code> function or via a sequence (<code>:</code>). Objects in a list can be given names.</p>
+<pre class="r"><code>basicList&lt;-list(c(1,2,3,4),LETTERS[5:8], rnorm(5))
+namedList&lt;-list(p1=c(1,2,3,4),p2=LETTERS[5:8])</code></pre>
+</div>
+<div id="filter-1" class="section level2">
+<h2><span class="header-section-number">2.3</span> Filter</h2>
+<p>Alternatively called subsetting, we can filter a list by using positive notations of position, negative notations of position, or the name of a element, or providing a boolean value for each item in the list. We can also use a <code>[[ ]]</code> set of brackets for specifically detailing a <em>single element</em>.</p>
+<pre class="r"><code>basicList[1]</code></pre>
+<pre><code>## [[1]]
+## [1] 1 2 3 4</code></pre>
+<pre class="r"><code>basicList[-1]</code></pre>
+<pre><code>## [[1]]
+## [1] &quot;E&quot; &quot;F&quot; &quot;G&quot; &quot;H&quot;
+## 
+## [[2]]
+## [1] -0.6394104 -1.2103040  0.2396190 -0.5166471  1.9085908</code></pre>
+<pre class="r"><code>namedList[&quot;p2&quot;]</code></pre>
+<pre><code>## $p2
+## [1] &quot;E&quot; &quot;F&quot; &quot;G&quot; &quot;H&quot;</code></pre>
+<pre class="r"><code>basicList[c(TRUE,FALSE)]</code></pre>
+<pre><code>## [[1]]
+## [1] 1 2 3 4
+## 
+## [[2]]
+## [1] -0.6394104 -1.2103040  0.2396190 -0.5166471  1.9085908</code></pre>
+<pre class="r"><code>basicList[[1]]</code></pre>
+<pre><code>## [1] 1 2 3 4</code></pre>
+<pre class="r"><code>basicList[[-1]]</code></pre>
+<pre><code>## Error in basicList[[-1]]: attempt to select more than one element</code></pre>
+<pre class="r"><code>namedList[[&quot;p2&quot;]]</code></pre>
+<pre><code>## [1] &quot;E&quot; &quot;F&quot; &quot;G&quot; &quot;H&quot;</code></pre>
+<pre class="r"><code>basicList[[c(TRUE,TRUE)]]</code></pre>
+<pre><code>## [1] 1</code></pre>
+</div>
+<div id="update-1" class="section level2">
+<h2><span class="header-section-number">2.4</span> Update</h2>
+<p>You can update one or more objects in a list by assigning the new values into the desired object using the same subsetting capabilities as noted in the Filter section.</p>
+<pre class="r"><code>basicList[[1]]&lt;-8:12
+basicList[1]</code></pre>
+<pre><code>## [[1]]
+## [1]  8  9 10 11 12</code></pre>
+<pre class="r"><code># Delete by subsetting without object
+basicList[2]</code></pre>
+<pre><code>## [[1]]
+## [1] &quot;E&quot; &quot;F&quot; &quot;G&quot; &quot;H&quot;</code></pre>
+<pre class="r"><code>basicList[2]&lt;-NULL
+basicList[2]</code></pre>
+<pre><code>## [[1]]
+## [1] -0.6394104 -1.2103040  0.2396190 -0.5166471  1.9085908</code></pre>
+<pre class="r"><code># Append by creating a list combining the original and the additional values
+basicList[3]&lt;-LETTERS[5:8]</code></pre>
+<pre><code>## Warning in basicList[3] &lt;- LETTERS[5:8]: number of items to replace is not
+## a multiple of replacement length</code></pre>
+</div>
+<div id="manipulate-1" class="section level2">
+<h2><span class="header-section-number">2.5</span> Manipulate</h2>
+<p>You can manipulate a list using functions, and also manipulate the objects stored in the list.</p>
+<pre class="r"><code>lapply(basicList,mode)</code></pre>
+<pre><code>## [[1]]
+## [1] &quot;numeric&quot;
+## 
+## [[2]]
+## [1] &quot;numeric&quot;
+## 
+## [[3]]
+## [1] &quot;character&quot;</code></pre>
+</div>
+<div id="order-1" class="section level2">
+<h2><span class="header-section-number">2.6</span> Order</h2>
+<p>Ordering of objects in a list is rarely required but you can do it with the <code>order()</code> function.</p>
+<pre class="r"><code>unorderedList&lt;-list(p2=c(1,2,3,4),p1=LETTERS[5:8])
+unorderedList[order(names(unorderedList))]</code></pre>
+<pre><code>## $p1
+## [1] &quot;E&quot; &quot;F&quot; &quot;G&quot; &quot;H&quot;
+## 
+## $p2
+## [1] 1 2 3 4</code></pre>
+</div>
+<div id="metadata-1" class="section level2">
+<h2><span class="header-section-number">2.7</span> Metadata</h2>
+<p>You can extract various pieces of information about a list</p>
+<pre class="r"><code>names(basicList)</code></pre>
+<pre><code>## NULL</code></pre>
+<pre class="r"><code>names(namedList)</code></pre>
+<pre><code>## [1] &quot;p1&quot; &quot;p2&quot;</code></pre>
+<pre class="r"><code>dim(namedList)</code></pre>
+<pre><code>## NULL</code></pre>
+<pre class="r"><code>dimnames(namedList)</code></pre>
+<pre><code>## NULL</code></pre>
+<pre class="r"><code>length(namedList)</code></pre>
+<pre><code>## [1] 2</code></pre>
+<pre class="r"><code>class(namedList)</code></pre>
+<pre><code>## [1] &quot;list&quot;</code></pre>
+<pre class="r"><code>mode(namedList)</code></pre>
+<pre><code>## [1] &quot;list&quot;</code></pre>
+<pre class="r"><code>attributes(namedList)</code></pre>
+<pre><code>## $names
+## [1] &quot;p1&quot; &quot;p2&quot;</code></pre>
+<pre class="r"><code>str(namedList)</code></pre>
+<pre><code>## List of 2
+##  $ p1: num [1:4] 1 2 3 4
+##  $ p2: chr [1:4] &quot;E&quot; &quot;F&quot; &quot;G&quot; &quot;H&quot;</code></pre>
+</div>
 </div>
 <div id="working-with-tables" class="section level1">
 <h1><span class="header-section-number">3</span> Working with tables</h1>
