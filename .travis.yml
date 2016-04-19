@@ -6,6 +6,6 @@ r_github_packages:
   - rich-iannone/DiagrammeR
 before_install:
   - chmod 755 ./.push_gh_pages.sh
-  - wget https://download.microsoft.com/download/2/E/5/2E58F097-805C-4AB8-9FC6-71288AB4409D/msodbcsql-13.0.0.0.tar.gz
+  - wget https://download.microsoft.com/download/2/E/5/2E58F097-805C-4AB8-9FC6-71288AB4409D/msodbcsql-13.0.0.0.tar.gz -P ..
 after_success:
   - ./.push_gh_pages.sh
