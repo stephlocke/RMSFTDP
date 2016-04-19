@@ -278,14 +278,14 @@ seqCrafted</code></pre>
 ordered</code></pre>
 <pre><code>## function (x, ...) 
 ## factor(x, ..., ordered = TRUE)
-## &lt;bytecode: 0x3c39770&gt;
+## &lt;bytecode: 0x29b64c0&gt;
 ## &lt;environment: namespace:base&gt;</code></pre>
 <pre class="r"><code>ordered&lt;-c(ordered,5)
 ordered</code></pre>
 <pre><code>## [[1]]
 ## function (x, ...) 
 ## factor(x, ..., ordered = TRUE)
-## &lt;bytecode: 0x3c39770&gt;
+## &lt;bytecode: 0x29b64c0&gt;
 ## &lt;environment: namespace:base&gt;
 ## 
 ## [[2]]
@@ -305,18 +305,18 @@ mode(seqCrafted)</code></pre>
 <p>Ordering of records works by providing the position numbers of values in a vector and then using those to produce a vector with the original components in new locations</p>
 <pre class="r"><code>preOrder&lt;-sample(letters, 6)
 preOrder</code></pre>
-<pre><code>## [1] &quot;v&quot; &quot;g&quot; &quot;b&quot; &quot;h&quot; &quot;m&quot; &quot;y&quot;</code></pre>
+<pre><code>## [1] &quot;g&quot; &quot;q&quot; &quot;r&quot; &quot;w&quot; &quot;p&quot; &quot;f&quot;</code></pre>
 <pre class="r"><code># Get order the values should appear in to be alphabetised
 order(preOrder)</code></pre>
-<pre><code>## [1] 3 2 4 5 1 6</code></pre>
+<pre><code>## [1] 6 1 5 2 3 4</code></pre>
 <pre class="r"><code># Use it to sort a vector
 ordered&lt;-preOrder[order(preOrder)]
 ordered</code></pre>
-<pre><code>## [1] &quot;b&quot; &quot;g&quot; &quot;h&quot; &quot;m&quot; &quot;v&quot; &quot;y&quot;</code></pre>
+<pre><code>## [1] &quot;f&quot; &quot;g&quot; &quot;p&quot; &quot;q&quot; &quot;r&quot; &quot;w&quot;</code></pre>
 <pre class="r"><code># Alternatively, use the sort() function for brevity
 sorted&lt;-sort(preOrder)
 sorted</code></pre>
-<pre><code>## [1] &quot;b&quot; &quot;g&quot; &quot;h&quot; &quot;m&quot; &quot;v&quot; &quot;y&quot;</code></pre>
+<pre><code>## [1] &quot;f&quot; &quot;g&quot; &quot;p&quot; &quot;q&quot; &quot;r&quot; &quot;w&quot;</code></pre>
 </div>
 <div id="metadata" class="section level2">
 <h2><span class="header-section-number">1.7</span> Metadata</h2>
@@ -366,7 +366,7 @@ namedList&lt;-list(p1=c(1,2,3,4),p2=LETTERS[5:8])</code></pre>
 ## [1] &quot;E&quot; &quot;F&quot; &quot;G&quot; &quot;H&quot;
 ## 
 ## [[2]]
-## [1] -0.6394104 -1.2103040  0.2396190 -0.5166471  1.9085908</code></pre>
+## [1]  0.4536546  0.3118810 -1.1193694  0.8176840  0.5379330</code></pre>
 <pre class="r"><code>namedList[&quot;p2&quot;]</code></pre>
 <pre><code>## $p2
 ## [1] &quot;E&quot; &quot;F&quot; &quot;G&quot; &quot;H&quot;</code></pre>
@@ -375,7 +375,7 @@ namedList&lt;-list(p1=c(1,2,3,4),p2=LETTERS[5:8])</code></pre>
 ## [1] 1 2 3 4
 ## 
 ## [[2]]
-## [1] -0.6394104 -1.2103040  0.2396190 -0.5166471  1.9085908</code></pre>
+## [1]  0.4536546  0.3118810 -1.1193694  0.8176840  0.5379330</code></pre>
 <pre class="r"><code>basicList[[1]]</code></pre>
 <pre><code>## [1] 1 2 3 4</code></pre>
 <pre class="r"><code>basicList[[-1]]</code></pre>
@@ -399,11 +399,9 @@ basicList[2]</code></pre>
 <pre class="r"><code>basicList[2]&lt;-NULL
 basicList[2]</code></pre>
 <pre><code>## [[1]]
-## [1] -0.6394104 -1.2103040  0.2396190 -0.5166471  1.9085908</code></pre>
+## [1]  0.4536546  0.3118810 -1.1193694  0.8176840  0.5379330</code></pre>
 <pre class="r"><code># Append by creating a list combining the original and the additional values
-basicList[3]&lt;-LETTERS[5:8]</code></pre>
-<pre><code>## Warning in basicList[3] &lt;- LETTERS[5:8]: number of items to replace is not
-## a multiple of replacement length</code></pre>
+basicList[[3]]&lt;-LETTERS[5:8]</code></pre>
 </div>
 <div id="manipulate-1" class="section level2">
 <h2><span class="header-section-number">2.5</span> Manipulate</h2>
