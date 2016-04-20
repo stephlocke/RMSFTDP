@@ -23,4 +23,5 @@ before_install:
 
 after_success:
   - ./.push_gh_pages.sh
-after_failure: "cat /tmp/odbcinstalls/install.log"`
+after_failure:
+  - cat /tmp/odbcinstalls/install.log
