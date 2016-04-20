@@ -13,7 +13,6 @@ before_install:
   - ../msodbcsql-13.0.0.0/build_dm.sh --accept-warning
   - cd /tmp/odbcbuilds/unixODBC-2.3.1
   - sudo make install
-  - cd $HOME
-  - ls -R
+  - cd $HOME/$TRAVIS_REPO_SLUG
 after_success:
   - ./.push_gh_pages.sh
