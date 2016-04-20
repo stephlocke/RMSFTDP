@@ -11,6 +11,6 @@ before_install:
   - sed -i '14d' ../msodbcsql-13.0.0.0/build_dm.sh
   - sed -i '/tmp=/c\tmp=/tmp/odbcbuilds'  ../msodbcsql-13.0.0.0/build_dm.sh
   - ../msodbcsql-13.0.0.0/build_dm.sh --accept-warning
-  - cd ../tmp/odbcbuilds/unixODBC-2.3.1; make install
+  - cd /tmp/odbcbuilds/unixODBC-2.3.1; make install
 after_success:
   - ./.push_gh_pages.sh
