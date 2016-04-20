@@ -15,7 +15,7 @@ before_install:
   - sudo make install
   - cd $TRAVIS_BUILD_DIR
   - ../msodbcsql-13.0.0.0/install.sh --verify
-  - ../msodbcsql-13.0.0.0/install.sh --accept-warning
+  - ../msodbcsql-13.0.0.0/install.sh --accept-license
   - odbcinst -q -d -n "ODBC Driver 13 for SQL Server"
 
 after_success:
