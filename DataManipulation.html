@@ -278,14 +278,14 @@ seqCrafted</code></pre>
 ordered</code></pre>
 <pre><code>## function (x, ...) 
 ## factor(x, ..., ordered = TRUE)
-## &lt;bytecode: 0x4069de8&gt;
+## &lt;bytecode: 0x30e58f8&gt;
 ## &lt;environment: namespace:base&gt;</code></pre>
 <pre class="r"><code>ordered&lt;-c(ordered,5)
 ordered</code></pre>
 <pre><code>## [[1]]
 ## function (x, ...) 
 ## factor(x, ..., ordered = TRUE)
-## &lt;bytecode: 0x4069de8&gt;
+## &lt;bytecode: 0x30e58f8&gt;
 ## &lt;environment: namespace:base&gt;
 ## 
 ## [[2]]
@@ -305,18 +305,18 @@ mode(seqCrafted)</code></pre>
 <p>Ordering of records works by providing the position numbers of values in a vector and then using those to produce a vector with the original components in new locations</p>
 <pre class="r"><code>preOrder&lt;-sample(letters, 6)
 preOrder</code></pre>
-<pre><code>## [1] &quot;u&quot; &quot;h&quot; &quot;w&quot; &quot;d&quot; &quot;e&quot; &quot;n&quot;</code></pre>
+<pre><code>## [1] &quot;a&quot; &quot;s&quot; &quot;o&quot; &quot;h&quot; &quot;e&quot; &quot;u&quot;</code></pre>
 <pre class="r"><code># Get order the values should appear in to be alphabetised
 order(preOrder)</code></pre>
-<pre><code>## [1] 4 5 2 6 1 3</code></pre>
+<pre><code>## [1] 1 5 4 3 2 6</code></pre>
 <pre class="r"><code># Use it to sort a vector
 ordered&lt;-preOrder[order(preOrder)]
 ordered</code></pre>
-<pre><code>## [1] &quot;d&quot; &quot;e&quot; &quot;h&quot; &quot;n&quot; &quot;u&quot; &quot;w&quot;</code></pre>
+<pre><code>## [1] &quot;a&quot; &quot;e&quot; &quot;h&quot; &quot;o&quot; &quot;s&quot; &quot;u&quot;</code></pre>
 <pre class="r"><code># Alternatively, use the sort() function for brevity
 sorted&lt;-sort(preOrder)
 sorted</code></pre>
-<pre><code>## [1] &quot;d&quot; &quot;e&quot; &quot;h&quot; &quot;n&quot; &quot;u&quot; &quot;w&quot;</code></pre>
+<pre><code>## [1] &quot;a&quot; &quot;e&quot; &quot;h&quot; &quot;o&quot; &quot;s&quot; &quot;u&quot;</code></pre>
 </div>
 <div id="metadata" class="section level2">
 <h2><span class="header-section-number">1.7</span> Metadata</h2>
@@ -366,7 +366,7 @@ namedList&lt;-list(p1=c(1,2,3,4),p2=LETTERS[5:8])</code></pre>
 ## [1] &quot;E&quot; &quot;F&quot; &quot;G&quot; &quot;H&quot;
 ## 
 ## [[2]]
-## [1] 0.03758230 0.03222826 0.79155299 0.57204245 0.44368929</code></pre>
+## [1]  1.0522874 -0.3016379 -1.2439827 -1.0046105 -0.1189467</code></pre>
 <pre class="r"><code>namedList[&quot;p2&quot;]</code></pre>
 <pre><code>## $p2
 ## [1] &quot;E&quot; &quot;F&quot; &quot;G&quot; &quot;H&quot;</code></pre>
@@ -375,7 +375,7 @@ namedList&lt;-list(p1=c(1,2,3,4),p2=LETTERS[5:8])</code></pre>
 ## [1] 1 2 3 4
 ## 
 ## [[2]]
-## [1] 0.03758230 0.03222826 0.79155299 0.57204245 0.44368929</code></pre>
+## [1]  1.0522874 -0.3016379 -1.2439827 -1.0046105 -0.1189467</code></pre>
 <pre class="r"><code>basicList[[1]]</code></pre>
 <pre><code>## [1] 1 2 3 4</code></pre>
 <pre class="r"><code>basicList[[-1]]</code></pre>
@@ -401,7 +401,7 @@ basicList[2]</code></pre>
 <pre class="r"><code>basicList[2]&lt;-NULL
 basicList[2]</code></pre>
 <pre><code>## [[1]]
-## [1] 0.03758230 0.03222826 0.79155299 0.57204245 0.44368929</code></pre>
+## [1]  1.0522874 -0.3016379 -1.2439827 -1.0046105 -0.1189467</code></pre>
 <pre class="r"><code># Append by creating a list combining the original and the additional values
 basicList[[3]]&lt;-LETTERS[5:8]</code></pre>
 </div>
@@ -475,26 +475,26 @@ unorderedList[order(names(unorderedList))]</code></pre>
 <pre class="r"><code>df&lt;-data.frame(a=1:4, b=LETTERS[5:8], c=rnorm(4),row.names = letters[9:12])
 df</code></pre>
 <pre><code>##   a b          c
-## i 1 E  1.8832275
-## j 2 F  2.1131858
-## k 3 G -0.6757069
-## l 4 H -0.7286973</code></pre>
+## i 1 E  0.1658834
+## j 2 F  0.6125644
+## k 3 G -1.1643617
+## l 4 H  0.7073909</code></pre>
 </div>
 <div id="filter-2" class="section level2">
 <h2><span class="header-section-number">3.3</span> Filter</h2>
 <p>Alternatively called subsetting, we can filter a data.frame by using positive notations of position, negative notations of position, or the name of a element, or providing a boolean value for each item in the list.</p>
 <p>To filter using a condition requires the creation of a boolean vector based on a specific column. columns can be treated as vectors by using <code>df$colname</code></p>
 <pre class="r"><code>df[1, ]</code></pre>
-<pre><code>##   a b        c
-## i 1 E 1.883228</code></pre>
+<pre><code>##   a b         c
+## i 1 E 0.1658834</code></pre>
 <pre class="r"><code>df[ ,1]</code></pre>
 <pre><code>## [1] 1 2 3 4</code></pre>
 <pre class="r"><code>df[1,1]</code></pre>
 <pre><code>## [1] 1</code></pre>
 <pre class="r"><code>df[-(3:4),]</code></pre>
-<pre><code>##   a b        c
-## i 1 E 1.883228
-## j 2 F 2.113186</code></pre>
+<pre><code>##   a b         c
+## i 1 E 0.1658834
+## j 2 F 0.6125644</code></pre>
 <pre class="r"><code>df[,&quot;a&quot;]</code></pre>
 <pre><code>## [1] 1 2 3 4</code></pre>
 <pre class="r"><code>df[ , c(TRUE, TRUE, FALSE)]</code></pre>
@@ -505,9 +505,9 @@ df</code></pre>
 ## l 4 H</code></pre>
 <pre class="r"><code>df[df$a&lt;4,]</code></pre>
 <pre><code>##   a b          c
-## i 1 E  1.8832275
-## j 2 F  2.1131858
-## k 3 G -0.6757069</code></pre>
+## i 1 E  0.1658834
+## j 2 F  0.6125644
+## k 3 G -1.1643617</code></pre>
 </div>
 <div id="update-2" class="section level2">
 <h2><span class="header-section-number">3.4</span> Update</h2>
@@ -515,44 +515,44 @@ df</code></pre>
 <pre class="r"><code>df[1,1]&lt;-2
 df</code></pre>
 <pre><code>##   a b          c
-## i 2 E  1.8832275
-## j 2 F  2.1131858
-## k 3 G -0.6757069
-## l 4 H -0.7286973</code></pre>
+## i 2 E  0.1658834
+## j 2 F  0.6125644
+## k 3 G -1.1643617
+## l 4 H  0.7073909</code></pre>
 <pre class="r"><code># Columns in a data.frame can be removed by making them NULL
 df[,2]</code></pre>
 <pre><code>## [1] E F G H
 ## Levels: E F G H</code></pre>
 <pre class="r"><code>df[,2]&lt;-NULL
 df[,2]</code></pre>
-<pre><code>## [1]  1.8832275  2.1131858 -0.6757069 -0.7286973</code></pre>
+<pre><code>## [1]  0.1658834  0.6125644 -1.1643617  0.7073909</code></pre>
 <pre class="r"><code># Rows in a data.frame can be removed by subsetting without them
 df[2,]</code></pre>
-<pre><code>##   a        c
-## j 2 2.113186</code></pre>
+<pre><code>##   a         c
+## j 2 0.6125644</code></pre>
 <pre class="r"><code>df&lt;-df[-2,]
 df[2,]</code></pre>
-<pre><code>##   a          c
-## k 3 -0.6757069</code></pre>
+<pre><code>##   a         c
+## k 3 -1.164362</code></pre>
 <pre class="r"><code># Appends can happen in a variety of ways
 superDF&lt;-data.frame(df,d=5:7)
 superDF</code></pre>
 <pre><code>##   a          c d
-## i 2  1.8832275 5
-## k 3 -0.6757069 6
-## l 4 -0.7286973 7</code></pre>
+## i 2  0.1658834 5
+## k 3 -1.1643617 6
+## l 4  0.7073909 7</code></pre>
 <pre class="r"><code>df$newcol&lt;-5:7
 df</code></pre>
 <pre><code>##   a          c newcol
-## i 2  1.8832275      5
-## k 3 -0.6757069      6
-## l 4 -0.7286973      7</code></pre>
+## i 2  0.1658834      5
+## k 3 -1.1643617      6
+## l 4  0.7073909      7</code></pre>
 <pre class="r"><code>df[4,]&lt;-c(1,1,1)
 df</code></pre>
 <pre><code>##   a          c newcol
-## i 2  1.8832275      5
-## k 3 -0.6757069      6
-## l 4 -0.7286973      7
+## i 2  0.1658834      5
+## k 3 -1.1643617      6
+## l 4  0.7073909      7
 ## 4 1  1.0000000      1</code></pre>
 <!--
 
@@ -580,15 +580,15 @@ lapply(basicList,mode)
 <p>Ordering of data.frames works by providing the position numbers of row numbers in a vector and then using these to return data.frame rows in a specific order</p>
 <pre class="r"><code># Get order the values should appear in
 order(df$c)</code></pre>
-<pre><code>## [1] 3 2 4 1</code></pre>
+<pre><code>## [1] 2 1 3 4</code></pre>
 <pre class="r"><code># Use it to sort a table
 ordered&lt;-df[order(df$c),]
 ordered</code></pre>
 <pre><code>##   a          c newcol
-## l 4 -0.7286973      7
-## k 3 -0.6757069      6
-## 4 1  1.0000000      1
-## i 2  1.8832275      5</code></pre>
+## k 3 -1.1643617      6
+## i 2  0.1658834      5
+## l 4  0.7073909      7
+## 4 1  1.0000000      1</code></pre>
 </div>
 <div id="metadata-2" class="section level2">
 <h2><span class="header-section-number">3.6</span> Metadata</h2>
@@ -621,7 +621,7 @@ ordered</code></pre>
 <pre class="r"><code>str(df)</code></pre>
 <pre><code>## 'data.frame':    4 obs. of  3 variables:
 ##  $ a     : num  2 3 4 1
-##  $ c     : num  1.883 -0.676 -0.729 1
+##  $ c     : num  0.166 -1.164 0.707 1
 ##  $ newcol: num  5 6 7 1</code></pre>
 </div>
 </div>
