@@ -17,6 +17,7 @@ before_install:
   - sudo apt-get install libgss3 -y
   - ../msodbcsql-13.0.0.0/install.sh verify
   - sed -i '/tmp=/c\tmp=/tmp/odbcinstalls'  ../msodbcsql-13.0.0.0/install.sh
+  - tail -f /tmp/odbcinstalls/install.log &
   - sudo ../msodbcsql-13.0.0.0/install.sh install --accept-license
   - odbcinst -q -d -n "ODBC Driver 13 for SQL Server"
 
