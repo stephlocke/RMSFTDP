@@ -16,7 +16,7 @@ before_install:
   - cd $TRAVIS_BUILD_DIR
   - sudo apt-get install libgss3 -y
   - ../msodbcsql-13.0.0.0/install.sh verify
-  - ../msodbcsql-13.0.0.0/install.sh install --accept-license
+  - sudo ../msodbcsql-13.0.0.0/install.sh install --accept-license
   - odbcinst -q -d -n "ODBC Driver 13 for SQL Server"
 
 after_success:
