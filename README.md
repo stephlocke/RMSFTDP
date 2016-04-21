@@ -9,6 +9,7 @@ Contents
 -   R + Microsoft
 -   Getting started with R
 -   Data manipulation fundamentals
+-   Getting data from SQL Server into R and vice versa
 -   Data visualisation basics
 -   Interactive data visualisations
 -   Making predictions with R & Azure ML
