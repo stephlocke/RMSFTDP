@@ -22,7 +22,7 @@ vignette: >
 This section outlines installation instructions for getting up to speed
 
 ## ODBC Driver
-Get the relevant SQL Server ODBC 13 Preview driver for your OS and install it. You can't currently use the native drivers when connecting from R.
+Get the relevant [SQL Server ODBC 13 Preview](https://blogs.technet.microsoft.com/dataplatforminsider/2016/01/11/preview-the-newest-odbc-sql-server-driver-for-windows-and-linux/) driver for your OS and install it. You can't currently use the native drivers when connecting from R.
 
 ## R
  * Download latest base R exe file from [cran.rstudio.com](http://cran.rstudio.com/)
