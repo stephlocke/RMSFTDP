@@ -19,6 +19,7 @@ before_install:
   - cd ../msodbcsql-13.0.0.0/
   - sudo ./install.sh install --accept-license
   - cd $TRAVIS_BUILD_DIR
+  - sudo apt-get install unixodbc-dev
   - odbcinst -q -d -n "ODBC Driver 13 for SQL Server"
 
 after_success:

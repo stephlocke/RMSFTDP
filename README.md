@@ -9,6 +9,7 @@ Contents
 -   R + Microsoft
 -   Getting started with R
 -   Data manipulation fundamentals
+-   Getting data from SQL Server into R and vice versa
 -   Data visualisation basics
 -   Interactive data visualisations
 -   Making predictions with R & Azure ML
@@ -25,4 +26,4 @@ Objectives
 Prerequisites
 -------------
 
-Attendees should be comfortable writing SQL and will ideally having coded a bit in other languages previously. Attendees will need a laptop with R, R Tools, & RStudio.
+Attendees should be comfortable writing SQL and will ideally having coded a bit in other languages previously. Attendees will need a laptop with: - R - R Tools (if using Windows) - SQL Server ODBC Driver 13 - An IDE + Rstudio + Visual Studio plus Visual Studio R Tools

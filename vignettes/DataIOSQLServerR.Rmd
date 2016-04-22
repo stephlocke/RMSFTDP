@@ -1,0 +1,21 @@
+---
+title: "Calling SQL Server from R and vice versa"
+author: "Steph Locke"
+date: "`r Sys.Date()`"
+output: 
+  rmarkdown::html_document: 
+    code_folding: show
+    number_sections: yes
+    toc: yes
+    toc_float: true
+    toc_depth: 2
+vignette: >
+  %\VignetteIndexEntry{Calling SQL Server from R and vice versa}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+[Home](index.html) | [Prev](DataManipulation.html) | [Next]()
+
+# Calling SQL Server from R {.tabset}
+# Calling R from SQL Server {.tabset}

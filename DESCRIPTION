@@ -8,7 +8,8 @@ Authors@R: c(
 Description: Contains materials for the R in the Microsoft Data Platform training day,
              developed by Steph Locke and Andrew Fryer.
 Depends:
-    R (>= 3.2.4)
+    R (>= 3.2.4),
+    RODBC
 License: file LICENSE
 LazyData: true
 Suggests:
