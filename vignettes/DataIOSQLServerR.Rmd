@@ -18,4 +18,18 @@ vignette: >
 [Home](index.html) | [Prev](DataManipulation.html) | [Next]()
 
 # Calling SQL Server from R {.tabset}
+
+```{r}
+library(RODBC)
+host<-"Insufficientdata.northeurope.cloudapp.azure.com"
+db<-"AdventureWorks2016CTP3"
+uname<-"Rdemo"
+pwd<-"SQLbits16!"
+connstring<-sprintf("Driver={ODBC Driver 13 for SQL Server};Server=%1$s;
+Database=%2$s;Uid=%3$s;Pwd=%4$s;",host,db,uname,pwd)
+
+conn<-odbcDriverConnect(connstring)
+sqlTables(conn,schema = "dbo")
+```
+
 # Calling R from SQL Server {.tabset}
