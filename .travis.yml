@@ -20,10 +20,8 @@ before_install:
   - sudo ./install.sh install --accept-license
   - cd $TRAVIS_BUILD_DIR
   - sudo apt-get install unixodbc-dev
-  - sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-  - sudo apt-get update
-  - sudo apt-get install libstdc++6
   - odbcinst -q -d -n "ODBC Driver 13 for SQL Server"
+  - ldd /opt/microsoft/msodbcsql/lib64/libmsodbcsql-13.0.so.0.0
 
 after_success:
   - ./.push_gh_pages.sh
