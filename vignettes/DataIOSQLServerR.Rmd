@@ -25,7 +25,7 @@ host<-"Insufficientdata.northeurope.cloudapp.azure.com"
 db<-"AdventureWorks2016CTP3"
 uname<-"Rdemo"
 pwd<-"SQLbits16!"
-connstring<-sprintf("DRIVER={ODBC Driver 13 for SQL Server};Server=%1$s;Database=%2$s;Uid=%3$s;Pwd=%4$s;",host,db,uname,pwd)
+connstring<-sprintf("DRIVER={ODBC Driver 11 for SQL Server};Server=%1$s;Database=%2$s;Uid=%3$s;Pwd=%4$s;",host,db,uname,pwd)
 
 conn<-odbcDriverConnect(connstring)
 if(conn!=-1L) sqlTables(conn,schema = "dbo")
