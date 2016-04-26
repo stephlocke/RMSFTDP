@@ -6,7 +6,7 @@ r_github_packages:
   - rich-iannone/DiagrammeR
 before_install:
   - chmod 755 ./.push_gh_pages.sh
-  - wget https://gallery.technet.microsoft.com/scriptcenter/SQLCMD-and-BCP-for-Ubuntu-c88a28cc/file/142121/1/Ubuntu%2014.04%20MSFT%20ODBC%20Driver.sh -P .. -O Driver.sh
+  - wget https://gallery.technet.microsoft.com/scriptcenter/SQLCMD-and-BCP-for-Ubuntu-c88a28cc/file/142121/1/Ubuntu%2014.04%20MSFT%20ODBC%20Driver.sh -O ../Driver.sh
   - sudo bash ../Driver.sh
   - odbcinst -q -d -n "ODBC Driver 11 for SQL Server"
 
