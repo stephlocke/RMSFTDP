@@ -7,7 +7,9 @@ r_github_packages:
 before_install:
   - chmod 755 ./.push_gh_pages.sh
   - wget https://gallery.technet.microsoft.com/scriptcenter/SQLCMD-and-BCP-for-Ubuntu-c88a28cc/file/142121/1/Ubuntu%2014.04%20MSFT%20ODBC%20Driver.sh -O ../Driver.sh
-  - sudo bash ../Driver.sh
+  - cd ..
+  - sudo bash Driver.sh
+  - cd $TRAVIS_BUILD_DIR
   - odbcinst -q -d
 
 after_success:
