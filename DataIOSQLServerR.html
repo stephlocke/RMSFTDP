@@ -11,7 +11,7 @@
 
 <meta name="author" content="Steph Locke" />
 
-<meta name="date" content="2016-04-25" />
+<meta name="date" content="2016-04-26" />
 
 <title>Calling SQL Server from R and vice versa</title>
 
@@ -214,7 +214,7 @@ div.tocify {
 
 <h1 class="title">Calling SQL Server from R and vice versa</h1>
 <h4 class="author"><em>Steph Locke</em></h4>
-<h4 class="date"><em>2016-04-25</em></h4>
+<h4 class="date"><em>2016-04-26</em></h4>
 
 </div>
 
@@ -227,16 +227,15 @@ host&lt;-&quot;Insufficientdata.northeurope.cloudapp.azure.com&quot;
 db&lt;-&quot;AdventureWorks2016CTP3&quot;
 uname&lt;-&quot;Rdemo&quot;
 pwd&lt;-&quot;SQLbits16!&quot;
-connstring&lt;-sprintf(&quot;DRIVER={ODBC Driver 13 for SQL Server};Server=%1$s;Database=%2$s;Uid=%3$s;Pwd=%4$s;&quot;,host,db,uname,pwd)
+connstring&lt;-sprintf(&quot;DRIVER={ODBC Driver 11 for SQL Server};Server=%1$s;Database=%2$s;Uid=%3$s;Pwd=%4$s;&quot;,host,db,uname,pwd)
 
-conn&lt;-odbcDriverConnect(connstring)</code></pre>
-<pre><code>## Warning in odbcDriverConnect(connstring): [RODBC] ERROR: state 01000,
-## code 0, message [unixODBC][Driver Manager]Can't open lib '/opt/microsoft/
-## msodbcsql/lib64/libmsodbcsql-13.0.so.0.0' : file not found</code></pre>
-<pre><code>## Warning in odbcDriverConnect(connstring): ODBC connection failed</code></pre>
-<pre class="r"><code>if(conn!=-1L) sqlTables(conn,schema = &quot;dbo&quot;)
-if(conn==-1L) print(conn)</code></pre>
-<pre><code>## [1] -1</code></pre>
+conn&lt;-odbcDriverConnect(connstring)
+if(conn!=-1L) sqlTables(conn,schema = &quot;dbo&quot;)</code></pre>
+<pre><code>##                TABLE_CAT TABLE_SCHEM     TABLE_NAME TABLE_TYPE REMARKS
+## 1 AdventureWorks2016CTP3         dbo AWBuildVersion      TABLE    &lt;NA&gt;
+## 2 AdventureWorks2016CTP3         dbo    DatabaseLog      TABLE    &lt;NA&gt;
+## 3 AdventureWorks2016CTP3         dbo       ErrorLog      TABLE    &lt;NA&gt;</code></pre>
+<pre class="r"><code>if(conn==-1L) print(conn)</code></pre>
 </div>
 <div id="calling-r-from-sql-server" class="section level1 tabset">
 <h1><span class="header-section-number">2</span> Calling R from SQL Server</h1>
