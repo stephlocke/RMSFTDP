@@ -15,21 +15,27 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-[Home](index.html) | [Prev](DataManipulation.html) | [Next]()
+[Home](index.html) | [Prev](DataViz.html) | [Next]()
 
 # Calling SQL Server from R {.tabset}
 
+## Building a connection
+- Need a driver name!
+- Need credentials (you can do trusted AD connections too)
+- Need to store the connection for use
 ```{r}
 library(RODBC)
 host<-"Insufficientdata.northeurope.cloudapp.azure.com"
 db<-"AdventureWorks2016CTP3"
 uname<-"Rdemo"
 pwd<-"SQLbits16!"
-connstring<-sprintf("DRIVER={ODBC Driver 13 for SQL Server};Server=%1$s;Database=%2$s;Uid=%3$s;Pwd=%4$s;",host,db,uname,pwd)
+connstring<-sprintf("DRIVER={ODBC Driver 11 for SQL Server};Server=%1$s;Database=%2$s;Uid=%3$s;Pwd=%4$s;",host,db,uname,pwd)
 
 conn<-odbcDriverConnect(connstring)
+# Test!
 if(conn!=-1L) sqlTables(conn,schema = "dbo")
-if(conn==-1L) print(conn)
 ```
+
+## Using the connection
 
 # Calling R from SQL Server {.tabset}
