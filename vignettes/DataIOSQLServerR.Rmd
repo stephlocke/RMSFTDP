@@ -36,6 +36,39 @@ conn<-odbcDriverConnect(connstring)
 if(conn!=-1L) sqlTables(conn,schema = "dbo")
 ```
 
-## Using the connection
+## RODBC functions
+RODBC comes with some built-in functions for working with your database
+```{r eval=FALSE}
+dt<- sqlFetch(conn, "DatabaseLog")
+sqlCopy( conn, "select * from DatabaseLog", "DatabaseLog2")
+sqlSave( conn, dt[1:100,], "DatabaseLog2")
+sqlClear(conn, "DatabaseLog2")
+sqlDrop( conn, "DatabaseLog2")
+```
+
+## SQL
+Use normal SQL statements using `sqlQuery()` - must send one statement at a time to get the results back from each.
+
+```{r}
+dt<- sqlQuery(conn,"
+         SELECT 
+          DatabaseLogID
+          ,DatabaseUser
+          ,Event
+          ,[Schema]
+          ,Object
+          FROM DatabaseLog
+         ")
+knitr::kable(head(dt))
+```
+
+
+```{r}
+str( sqlQuery(conn,"
+        SELECT COUNT(*) as Vol FROM DatabaseLog;
+         SELECT DatabaseLogID FROM DatabaseLog;
+         ")
+)
+```
 
 # Calling R from SQL Server {.tabset}
