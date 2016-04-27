@@ -244,8 +244,90 @@ if(conn!=-1L) sqlTables(conn,schema = &quot;dbo&quot;)</code></pre>
 ## 2 AdventureWorks2016CTP3         dbo    DatabaseLog      TABLE    &lt;NA&gt;
 ## 3 AdventureWorks2016CTP3         dbo       ErrorLog      TABLE    &lt;NA&gt;</code></pre>
 </div>
-<div id="using-the-connection" class="section level2">
-<h2><span class="header-section-number">1.2</span> Using the connection</h2>
+<div id="rodbc-functions" class="section level2">
+<h2><span class="header-section-number">1.2</span> RODBC functions</h2>
+<p>RODBC comes with some built-in functions for working with your database</p>
+<pre class="r"><code>dt&lt;- sqlFetch(conn, &quot;DatabaseLog&quot;)
+sqlCopy( conn, &quot;select * from DatabaseLog&quot;, &quot;DatabaseLog2&quot;)
+sqlSave( conn, dt[1:100,], &quot;DatabaseLog2&quot;)
+sqlClear(conn, &quot;DatabaseLog2&quot;)
+sqlDrop( conn, &quot;DatabaseLog2&quot;)</code></pre>
+</div>
+<div id="sql" class="section level2">
+<h2><span class="header-section-number">1.3</span> SQL</h2>
+<p>Use normal SQL statements using <code>sqlQuery()</code> - must send one statement at a time to get the results back from each.</p>
+<pre class="r"><code>dt&lt;- sqlQuery(conn,&quot;
+         SELECT 
+          DatabaseLogID
+          ,DatabaseUser
+          ,Event
+          ,[Schema]
+          ,Object
+          FROM DatabaseLog
+         &quot;)
+knitr::kable(head(dt))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right">DatabaseLogID</th>
+<th align="left">DatabaseUser</th>
+<th align="left">Event</th>
+<th align="left">Schema</th>
+<th align="left">Object</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">dbo</td>
+<td align="left">CREATE_TABLE</td>
+<td align="left">dbo</td>
+<td align="left">ErrorLog</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="left">dbo</td>
+<td align="left">ALTER_TABLE</td>
+<td align="left">dbo</td>
+<td align="left">ErrorLog</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="left">dbo</td>
+<td align="left">CREATE_TYPE</td>
+<td align="left">dbo</td>
+<td align="left">AccountNumber</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="left">dbo</td>
+<td align="left">CREATE_TYPE</td>
+<td align="left">dbo</td>
+<td align="left">Flag</td>
+</tr>
+<tr class="odd">
+<td align="right">21</td>
+<td align="left">dbo</td>
+<td align="left">CREATE_XML_SCHEMA_COLLECTION</td>
+<td align="left">HumanResources</td>
+<td align="left">HRResumeSchemaCollection</td>
+</tr>
+<tr class="even">
+<td align="right">23</td>
+<td align="left">dbo</td>
+<td align="left">ALTER_XML_SCHEMA_COLLECTION</td>
+<td align="left">Production</td>
+<td align="left">ProductDescriptionSchemaCollection</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>str( sqlQuery(conn,&quot;
+        SELECT COUNT(*) as Vol FROM DatabaseLog;
+         SELECT DatabaseLogID FROM DatabaseLog;
+         &quot;)
+)</code></pre>
+<pre><code>## 'data.frame':    1 obs. of  1 variable:
+##  $ Vol: int 179</code></pre>
 </div>
 </div>
 <div id="calling-r-from-sql-server" class="section level1 tabset">
