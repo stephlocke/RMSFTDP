@@ -18,7 +18,7 @@ The SQL Server BI world has been kind of static for a long time, now they’re b
 - [Data manipulation fundamentals](DataManipulation.html)
 - [Data visualisation basics](DataViz.html)
 - [Getting data from SQL Server into R and vice versa](DataIOSQLServerR.html)
-- Interactive data visualisations
+- [Interactive data visualisations](InteractiveViz.html)
 - Making predictions with R & Azure ML
 - Using R in SQL Server - overcoming SQL limitations and making predictions
 - High end dashboards with PowerBI & R

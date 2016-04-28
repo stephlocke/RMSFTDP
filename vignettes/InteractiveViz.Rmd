@@ -1,0 +1,22 @@
+---
+title: "Interactive data visualisations"
+author: "Steph Locke"
+date: "`r Sys.Date()`"
+output: 
+  rmarkdown::html_document: 
+    code_folding: show
+    number_sections: yes
+    toc: yes
+    toc_float: true
+    toc_depth: 2
+vignette: >
+  %\VignetteIndexEntry{Interactive data visualisations}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+[Home](index.html) | [Prev](DataViz.html) | [Next](DataIOSQLServerR.html)
+
+# ggvis {.tabset}
+
+# leaflet {.tabset}
