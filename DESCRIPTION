@@ -10,9 +10,7 @@ Description: Contains materials for the R in the Microsoft Data Platform trainin
 Depends:
     R (>= 3.2.4),
     RODBC,
-    ggplot2,
-    ggvis,
-    leaflet
+    ggplot2
 License: file LICENSE
 LazyData: true
 Suggests:
