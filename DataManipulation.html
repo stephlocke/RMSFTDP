@@ -7,11 +7,11 @@
 <meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
+
 
 <meta name="author" content="Steph Locke" />
 
-<meta name="date" content="2016-04-27" />
+<meta name="date" content="2016-05-03" />
 
 <title>Data Manipulation</title>
 
@@ -43,25 +43,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 
 
 
-
-</head>
-
-<body>
-
 <style type="text/css">
-.main-container {
-  max-width: 940px;
-  margin-left: auto;
-  margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
-}
-img {
-  max-width:100%;
-  height: auto;
-}
 h1 {
   font-size: 34px;
 }
@@ -83,6 +65,30 @@ h5 {
 h6 {
   font-size: 12px;
 }
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type="text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
 .tabbed-pane {
   padding-top: 12px;
 }
@@ -103,7 +109,7 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
-<script src="data:application/x-javascript;base64,Cgp3aW5kb3cuaW5pdGlhbGl6ZUNvZGVGb2xkaW5nID0gZnVuY3Rpb24oc2hvdykgewoKICAvLyBoYW5kbGVycyBmb3Igc2hvdy1hbGwgYW5kIGhpZGUgYWxsCiAgJCgiI3JtZC1zaG93LWFsbC1jb2RlIikuY2xpY2soZnVuY3Rpb24oKSB7CiAgICAkKCdkaXYuci1jb2RlLWNvbGxhcHNlJykuZWFjaChmdW5jdGlvbigpIHsKICAgICAgJCh0aGlzKS5jb2xsYXBzZSgnc2hvdycpOwogICAgfSk7CiAgfSk7CiAgJCgiI3JtZC1oaWRlLWFsbC1jb2RlIikuY2xpY2soZnVuY3Rpb24oKSB7CiAgICAkKCdkaXYuci1jb2RlLWNvbGxhcHNlJykuZWFjaChmdW5jdGlvbigpIHsKICAgICAgJCh0aGlzKS5jb2xsYXBzZSgnaGlkZScpOwogICAgfSk7CiAgfSk7CgogIC8vIGluZGV4IGZvciB1bmlxdWUgY29kZSBlbGVtZW50IGlkcwogIHZhciBjdXJyZW50SW5kZXggPSAxOwoKICAvLyBzZWxlY3QgYWxsIFIgY29kZSBibG9ja3MKICB2YXIgckNvZGVCbG9ja3MgPSAkKCdwcmUucicpOwogIHJDb2RlQmxvY2tzLmVhY2goZnVuY3Rpb24oKSB7CgogICAgLy8gY3JlYXRlIGEgY29sbGFwc2FibGUgZGl2IHRvIHdyYXAgdGhlIGNvZGUgaW4KICAgIHZhciBkaXYgPSAkKCc8ZGl2IGNsYXNzPSJjb2xsYXBzZSByLWNvZGUtY29sbGFwc2UiPjwvZGl2PicpOwogICAgaWYgKHNob3cpCiAgICAgIGRpdi5hZGRDbGFzcygnaW4nKTsKICAgIHZhciBpZCA9ICdyY29kZS02NDNFMEYzNicgKyBjdXJyZW50SW5kZXgrKzsKICAgIGRpdi5hdHRyKCdpZCcsIGlkKTsKICAgICQodGhpcykuYmVmb3JlKGRpdik7CiAgICAkKHRoaXMpLmRldGFjaCgpLmFwcGVuZFRvKGRpdik7CgogICAgLy8gYWRkIGEgc2hvdyBjb2RlIGJ1dHRvbiByaWdodCBhYm92ZQogICAgdmFyIHNob3dDb2RlVGV4dCA9ICQoJzxzcGFuIGNsYXNzPSJ0ZXh0LW11dGVkIj4nICsgKHNob3cgPyAnSGlkZScgOiAnQ29kZScpICsgJzwvc3Bhbj4nKTsKICAgIHZhciBzaG93Q29kZUJ1dHRvbiA9ICQoJzxidXR0b24gdHlwZT0iYnV0dG9uIiBjbGFzcz0iYnRuIGJ0bi1kZWZhdWx0IGJ0bi14cyBjb2RlLWZvbGRpbmctYnRuIHB1bGwtcmlnaHQiPjwvYnV0dG9uPicpOwogICAgc2hvd0NvZGVCdXR0b24uYXBwZW5kKHNob3dDb2RlVGV4dCk7CiAgICBzaG93Q29kZUJ1dHRvbgogICAgICAgIC5hdHRyKCdkYXRhLXRvZ2dsZScsICdjb2xsYXBzZScpCiAgICAgICAgLmF0dHIoJ2RhdGEtdGFyZ2V0JywgJyMnICsgaWQpCiAgICAgICAgLmF0dHIoJ2FyaWEtZXhwYW5kZWQnLCB0cnVlKQogICAgICAgIC5hdHRyKCdhcmlhLWNvbnRyb2xzJywgaWQpCiAgICAgICAgLmNzcygnbWFyZ2luLWJvdHRvbScsICc0cHgnKTsKCiAgICB2YXIgYnV0dG9uUm93ID0gJCgnPGRpdiBjbGFzcz0icm93Ij48L2Rpdj4nKTsKICAgIHZhciBidXR0b25Db2wgPSAkKCc8ZGl2IGNsYXNzPSJjb2wtbWQtMTIiPjwvZGl2PicpOwoKICAgIGJ1dHRvbkNvbC5hcHBlbmQoc2hvd0NvZGVCdXR0b24pOwogICAgYnV0dG9uUm93LmFwcGVuZChidXR0b25Db2wpOwoKICAgIGRpdi5iZWZvcmUoYnV0dG9uUm93KTsKCiAgICAvLyB1cGRhdGUgc3RhdGUgb2YgYnV0dG9uIG9uIHNob3cvaGlkZQogICAgZGl2Lm9uKCdoaWRkZW4uYnMuY29sbGFwc2UnLCBmdW5jdGlvbiAoKSB7CiAgICAgIHNob3dDb2RlVGV4dC50ZXh0KCdDb2RlJyk7CiAgICB9KTsKICAgIGRpdi5vbignc2hvdy5icy5jb2xsYXBzZScsIGZ1bmN0aW9uICgpIHsKICAgICAgc2hvd0NvZGVUZXh0LnRleHQoJ0hpZGUnKTsKICAgIH0pOwogIH0pOwoKfQo="></script>
+<script src="data:application/x-javascript;base64,Cgp3aW5kb3cuaW5pdGlhbGl6ZUNvZGVGb2xkaW5nID0gZnVuY3Rpb24oc2hvdykgewoKICAvLyBoYW5kbGVycyBmb3Igc2hvdy1hbGwgYW5kIGhpZGUgYWxsCiAgJCgiI3JtZC1zaG93LWFsbC1jb2RlIikuY2xpY2soZnVuY3Rpb24oKSB7CiAgICAkKCdkaXYuci1jb2RlLWNvbGxhcHNlJykuZWFjaChmdW5jdGlvbigpIHsKICAgICAgJCh0aGlzKS5jb2xsYXBzZSgnc2hvdycpOwogICAgfSk7CiAgfSk7CiAgJCgiI3JtZC1oaWRlLWFsbC1jb2RlIikuY2xpY2soZnVuY3Rpb24oKSB7CiAgICAkKCdkaXYuci1jb2RlLWNvbGxhcHNlJykuZWFjaChmdW5jdGlvbigpIHsKICAgICAgJCh0aGlzKS5jb2xsYXBzZSgnaGlkZScpOwogICAgfSk7CiAgfSk7CgogIC8vIGluZGV4IGZvciB1bmlxdWUgY29kZSBlbGVtZW50IGlkcwogIHZhciBjdXJyZW50SW5kZXggPSAxOwoKICAvLyBzZWxlY3QgYWxsIFIgY29kZSBibG9ja3MKICB2YXIgckNvZGVCbG9ja3MgPSAkKCdwcmUucicpOwogIHJDb2RlQmxvY2tzLmVhY2goZnVuY3Rpb24oKSB7CgogICAgLy8gY3JlYXRlIGEgY29sbGFwc2FibGUgZGl2IHRvIHdyYXAgdGhlIGNvZGUgaW4KICAgIHZhciBkaXYgPSAkKCc8ZGl2IGNsYXNzPSJjb2xsYXBzZSByLWNvZGUtY29sbGFwc2UiPjwvZGl2PicpOwogICAgaWYgKHNob3cpCiAgICAgIGRpdi5hZGRDbGFzcygnaW4nKTsKICAgIHZhciBpZCA9ICdyY29kZS02NDNFMEYzNicgKyBjdXJyZW50SW5kZXgrKzsKICAgIGRpdi5hdHRyKCdpZCcsIGlkKTsKICAgICQodGhpcykuYmVmb3JlKGRpdik7CiAgICAkKHRoaXMpLmRldGFjaCgpLmFwcGVuZFRvKGRpdik7CgogICAgLy8gYWRkIGEgc2hvdyBjb2RlIGJ1dHRvbiByaWdodCBhYm92ZQogICAgdmFyIHNob3dDb2RlVGV4dCA9ICQoJzxzcGFuPicgKyAoc2hvdyA/ICdIaWRlJyA6ICdDb2RlJykgKyAnPC9zcGFuPicpOwogICAgdmFyIHNob3dDb2RlQnV0dG9uID0gJCgnPGJ1dHRvbiB0eXBlPSJidXR0b24iIGNsYXNzPSJidG4gYnRuLWRlZmF1bHQgYnRuLXhzIGNvZGUtZm9sZGluZy1idG4gcHVsbC1yaWdodCI+PC9idXR0b24+Jyk7CiAgICBzaG93Q29kZUJ1dHRvbi5hcHBlbmQoc2hvd0NvZGVUZXh0KTsKICAgIHNob3dDb2RlQnV0dG9uCiAgICAgICAgLmF0dHIoJ2RhdGEtdG9nZ2xlJywgJ2NvbGxhcHNlJykKICAgICAgICAuYXR0cignZGF0YS10YXJnZXQnLCAnIycgKyBpZCkKICAgICAgICAuYXR0cignYXJpYS1leHBhbmRlZCcsIHRydWUpCiAgICAgICAgLmF0dHIoJ2FyaWEtY29udHJvbHMnLCBpZCkKICAgICAgICAuY3NzKCdtYXJnaW4tYm90dG9tJywgJzRweCcpOwoKICAgIHZhciBidXR0b25Sb3cgPSAkKCc8ZGl2IGNsYXNzPSJyb3ciPjwvZGl2PicpOwogICAgdmFyIGJ1dHRvbkNvbCA9ICQoJzxkaXYgY2xhc3M9ImNvbC1tZC0xMiI+PC9kaXY+Jyk7CgogICAgYnV0dG9uQ29sLmFwcGVuZChzaG93Q29kZUJ1dHRvbik7CiAgICBidXR0b25Sb3cuYXBwZW5kKGJ1dHRvbkNvbCk7CgogICAgZGl2LmJlZm9yZShidXR0b25Sb3cpOwoKICAgIC8vIHVwZGF0ZSBzdGF0ZSBvZiBidXR0b24gb24gc2hvdy9oaWRlCiAgICBkaXYub24oJ2hpZGRlbi5icy5jb2xsYXBzZScsIGZ1bmN0aW9uICgpIHsKICAgICAgc2hvd0NvZGVUZXh0LnRleHQoJ0NvZGUnKTsKICAgIH0pOwogICAgZGl2Lm9uKCdzaG93LmJzLmNvbGxhcHNlJywgZnVuY3Rpb24gKCkgewogICAgICBzaG93Q29kZVRleHQudGV4dCgnSGlkZScpOwogICAgfSk7CiAgfSk7Cgp9Cg=="></script>
 <script>
 $(document).ready(function () {
   window.initializeCodeFolding("show" === "show");
@@ -115,6 +121,12 @@ $(document).ready(function () {
 
 <script>
 $(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
     // establish options
     var options = {
       selectors: "h1,h2",
@@ -123,7 +135,7 @@ $(document).ready(function ()  {
       hashGenerator: function (text) {
         return text.replace(/[.\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
       },
-      ignoreSelector: "h1.title, .toc-ignore",
+      ignoreSelector: ".toc-ignore",
       scrollTo: 0
     };
     options.showAndHide = true;
@@ -205,16 +217,17 @@ div.tocify {
 <div class="fluid-row" id="header">
 
 <div class="btn-group pull-right">
-<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="text-muted">Code</span> <span class="text-muted caret"></span></button>
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
 <ul class="dropdown-menu" style="min-width: 50px;">
 <li><a id="rmd-show-all-code" href="#">Show All</a></li>
 <li><a id="rmd-hide-all-code" href="#">Hide All</a></li>
 </ul>
 </div>
 
-<h1 class="title">Data Manipulation</h1>
+
+<h1 class="title toc-ignore">Data Manipulation</h1>
 <h4 class="author"><em>Steph Locke</em></h4>
-<h4 class="date"><em>2016-04-27</em></h4>
+<h4 class="date"><em>2016-05-03</em></h4>
 
 </div>
 
@@ -278,14 +291,14 @@ seqCrafted</code></pre>
 ordered</code></pre>
 <pre><code>## function (x, ...) 
 ## factor(x, ..., ordered = TRUE)
-## &lt;bytecode: 0x2c700a0&gt;
+## &lt;bytecode: 0x420cac0&gt;
 ## &lt;environment: namespace:base&gt;</code></pre>
 <pre class="r"><code>ordered&lt;-c(ordered,5)
 ordered</code></pre>
 <pre><code>## [[1]]
 ## function (x, ...) 
 ## factor(x, ..., ordered = TRUE)
-## &lt;bytecode: 0x2c700a0&gt;
+## &lt;bytecode: 0x420cac0&gt;
 ## &lt;environment: namespace:base&gt;
 ## 
 ## [[2]]
@@ -305,18 +318,18 @@ mode(seqCrafted)</code></pre>
 <p>Ordering of records works by providing the position numbers of values in a vector and then using those to produce a vector with the original components in new locations</p>
 <pre class="r"><code>preOrder&lt;-sample(letters, 6)
 preOrder</code></pre>
-<pre><code>## [1] &quot;q&quot; &quot;z&quot; &quot;a&quot; &quot;e&quot; &quot;x&quot; &quot;p&quot;</code></pre>
+<pre><code>## [1] &quot;u&quot; &quot;i&quot; &quot;h&quot; &quot;j&quot; &quot;t&quot; &quot;f&quot;</code></pre>
 <pre class="r"><code># Get order the values should appear in to be alphabetised
 order(preOrder)</code></pre>
-<pre><code>## [1] 3 4 6 1 5 2</code></pre>
+<pre><code>## [1] 6 3 2 4 5 1</code></pre>
 <pre class="r"><code># Use it to sort a vector
 ordered&lt;-preOrder[order(preOrder)]
 ordered</code></pre>
-<pre><code>## [1] &quot;a&quot; &quot;e&quot; &quot;p&quot; &quot;q&quot; &quot;x&quot; &quot;z&quot;</code></pre>
+<pre><code>## [1] &quot;f&quot; &quot;h&quot; &quot;i&quot; &quot;j&quot; &quot;t&quot; &quot;u&quot;</code></pre>
 <pre class="r"><code># Alternatively, use the sort() function for brevity
 sorted&lt;-sort(preOrder)
 sorted</code></pre>
-<pre><code>## [1] &quot;a&quot; &quot;e&quot; &quot;p&quot; &quot;q&quot; &quot;x&quot; &quot;z&quot;</code></pre>
+<pre><code>## [1] &quot;f&quot; &quot;h&quot; &quot;i&quot; &quot;j&quot; &quot;t&quot; &quot;u&quot;</code></pre>
 </div>
 <div id="metadata" class="section level2">
 <h2><span class="header-section-number">1.7</span> Metadata</h2>
@@ -366,7 +379,7 @@ namedList&lt;-list(p1=c(1,2,3,4),p2=LETTERS[5:8])</code></pre>
 ## [1] &quot;E&quot; &quot;F&quot; &quot;G&quot; &quot;H&quot;
 ## 
 ## [[2]]
-## [1]  0.71613865  0.77036630  0.88787949  0.56979560 -0.08866257</code></pre>
+## [1]  0.04728333 -0.72596854  0.04530409 -1.18240566  0.14095691</code></pre>
 <pre class="r"><code>namedList[&quot;p2&quot;]</code></pre>
 <pre><code>## $p2
 ## [1] &quot;E&quot; &quot;F&quot; &quot;G&quot; &quot;H&quot;</code></pre>
@@ -375,7 +388,7 @@ namedList&lt;-list(p1=c(1,2,3,4),p2=LETTERS[5:8])</code></pre>
 ## [1] 1 2 3 4
 ## 
 ## [[2]]
-## [1]  0.71613865  0.77036630  0.88787949  0.56979560 -0.08866257</code></pre>
+## [1]  0.04728333 -0.72596854  0.04530409 -1.18240566  0.14095691</code></pre>
 <pre class="r"><code>basicList[[1]]</code></pre>
 <pre><code>## [1] 1 2 3 4</code></pre>
 <pre class="r"><code>basicList[[-1]]</code></pre>
@@ -401,7 +414,7 @@ basicList[2]</code></pre>
 <pre class="r"><code>basicList[2]&lt;-NULL
 basicList[2]</code></pre>
 <pre><code>## [[1]]
-## [1]  0.71613865  0.77036630  0.88787949  0.56979560 -0.08866257</code></pre>
+## [1]  0.04728333 -0.72596854  0.04530409 -1.18240566  0.14095691</code></pre>
 <pre class="r"><code># Append by creating a list combining the original and the additional values
 basicList[[3]]&lt;-LETTERS[5:8]</code></pre>
 </div>
@@ -475,26 +488,26 @@ unorderedList[order(names(unorderedList))]</code></pre>
 <pre class="r"><code>df&lt;-data.frame(a=1:4, b=LETTERS[5:8], c=rnorm(4),row.names = letters[9:12])
 df</code></pre>
 <pre><code>##   a b          c
-## i 1 E -0.7252417
-## j 2 F -1.3612696
-## k 3 G -2.3232101
-## l 4 H -0.7176702</code></pre>
+## i 1 E  0.4737967
+## j 2 F  0.1602489
+## k 3 G -0.1683149
+## l 4 H  0.6016177</code></pre>
 </div>
 <div id="filter-2" class="section level2">
 <h2><span class="header-section-number">3.3</span> Filter</h2>
 <p>Alternatively called subsetting, we can filter a data.frame by using positive notations of position, negative notations of position, or the name of a element, or providing a boolean value for each item in the list.</p>
 <p>To filter using a condition requires the creation of a boolean vector based on a specific column. columns can be treated as vectors by using <code>df$colname</code></p>
 <pre class="r"><code>df[1, ]</code></pre>
-<pre><code>##   a b          c
-## i 1 E -0.7252417</code></pre>
+<pre><code>##   a b         c
+## i 1 E 0.4737967</code></pre>
 <pre class="r"><code>df[ ,1]</code></pre>
 <pre><code>## [1] 1 2 3 4</code></pre>
 <pre class="r"><code>df[1,1]</code></pre>
 <pre><code>## [1] 1</code></pre>
 <pre class="r"><code>df[-(3:4),]</code></pre>
-<pre><code>##   a b          c
-## i 1 E -0.7252417
-## j 2 F -1.3612696</code></pre>
+<pre><code>##   a b         c
+## i 1 E 0.4737967
+## j 2 F 0.1602489</code></pre>
 <pre class="r"><code>df[,&quot;a&quot;]</code></pre>
 <pre><code>## [1] 1 2 3 4</code></pre>
 <pre class="r"><code>df[ , c(TRUE, TRUE, FALSE)]</code></pre>
@@ -505,9 +518,9 @@ df</code></pre>
 ## l 4 H</code></pre>
 <pre class="r"><code>df[df$a&lt;4,]</code></pre>
 <pre><code>##   a b          c
-## i 1 E -0.7252417
-## j 2 F -1.3612696
-## k 3 G -2.3232101</code></pre>
+## i 1 E  0.4737967
+## j 2 F  0.1602489
+## k 3 G -0.1683149</code></pre>
 </div>
 <div id="update-2" class="section level2">
 <h2><span class="header-section-number">3.4</span> Update</h2>
@@ -515,44 +528,44 @@ df</code></pre>
 <pre class="r"><code>df[1,1]&lt;-2
 df</code></pre>
 <pre><code>##   a b          c
-## i 2 E -0.7252417
-## j 2 F -1.3612696
-## k 3 G -2.3232101
-## l 4 H -0.7176702</code></pre>
+## i 2 E  0.4737967
+## j 2 F  0.1602489
+## k 3 G -0.1683149
+## l 4 H  0.6016177</code></pre>
 <pre class="r"><code># Columns in a data.frame can be removed by making them NULL
 df[,2]</code></pre>
 <pre><code>## [1] E F G H
 ## Levels: E F G H</code></pre>
 <pre class="r"><code>df[,2]&lt;-NULL
 df[,2]</code></pre>
-<pre><code>## [1] -0.7252417 -1.3612696 -2.3232101 -0.7176702</code></pre>
+<pre><code>## [1]  0.4737967  0.1602489 -0.1683149  0.6016177</code></pre>
 <pre class="r"><code># Rows in a data.frame can be removed by subsetting without them
 df[2,]</code></pre>
-<pre><code>##   a        c
-## j 2 -1.36127</code></pre>
+<pre><code>##   a         c
+## j 2 0.1602489</code></pre>
 <pre class="r"><code>df&lt;-df[-2,]
 df[2,]</code></pre>
-<pre><code>##   a        c
-## k 3 -2.32321</code></pre>
+<pre><code>##   a          c
+## k 3 -0.1683149</code></pre>
 <pre class="r"><code># Appends can happen in a variety of ways
 superDF&lt;-data.frame(df,d=5:7)
 superDF</code></pre>
 <pre><code>##   a          c d
-## i 2 -0.7252417 5
-## k 3 -2.3232101 6
-## l 4 -0.7176702 7</code></pre>
+## i 2  0.4737967 5
+## k 3 -0.1683149 6
+## l 4  0.6016177 7</code></pre>
 <pre class="r"><code>df$newcol&lt;-5:7
 df</code></pre>
 <pre><code>##   a          c newcol
-## i 2 -0.7252417      5
-## k 3 -2.3232101      6
-## l 4 -0.7176702      7</code></pre>
+## i 2  0.4737967      5
+## k 3 -0.1683149      6
+## l 4  0.6016177      7</code></pre>
 <pre class="r"><code>df[4,]&lt;-c(1,1,1)
 df</code></pre>
 <pre><code>##   a          c newcol
-## i 2 -0.7252417      5
-## k 3 -2.3232101      6
-## l 4 -0.7176702      7
+## i 2  0.4737967      5
+## k 3 -0.1683149      6
+## l 4  0.6016177      7
 ## 4 1  1.0000000      1</code></pre>
 <!--
 
@@ -585,9 +598,9 @@ order(df$c)</code></pre>
 ordered&lt;-df[order(df$c),]
 ordered</code></pre>
 <pre><code>##   a          c newcol
-## k 3 -2.3232101      6
-## i 2 -0.7252417      5
-## l 4 -0.7176702      7
+## k 3 -0.1683149      6
+## i 2  0.4737967      5
+## l 4  0.6016177      7
 ## 4 1  1.0000000      1</code></pre>
 </div>
 <div id="metadata-2" class="section level2">
@@ -621,7 +634,7 @@ ordered</code></pre>
 <pre class="r"><code>str(df)</code></pre>
 <pre><code>## 'data.frame':    4 obs. of  3 variables:
 ##  $ a     : num  2 3 4 1
-##  $ c     : num  -0.725 -2.323 -0.718 1
+##  $ c     : num  0.474 -0.168 0.602 1
 ##  $ newcol: num  5 6 7 1</code></pre>
 </div>
 </div>
