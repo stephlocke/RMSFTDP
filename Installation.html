@@ -233,24 +233,44 @@ div.tocify {
 
 
 <p><a href="index.html">Home</a> | <a href="RMicrosoft.html">Prev</a> | <a href="GettingStarted.html">Next</a></p>
-<div id="the-software" class="section level1 tabset">
-<h1><span class="header-section-number">1</span> The software</h1>
+<div id="data-science-vm" class="section level1 tabset">
+<h1><span class="header-section-number">1</span> Data Science VM</h1>
+<p>Using either an existing subscription, a trial, or a voucher, we’ll need a Microsoft Data Science Virtual Machine.</p>
+<ul>
+<li>There are Windows and Linux variants - use your preferred option!</li>
+</ul>
+<div id="provision-the-vm" class="section level2">
+<h2><span class="header-section-number">1.1</span> Provision the VM</h2>
+<p>In <a href="http://portal.azure.com">Azure Portal</a>: 1. Hit <code>New</code> 2. Seach for <code>data science</code> 3. Select the Data Science Virtual Machine 4. You can do a <em>Next, Next, Next</em> install but you may wish to: + Give the VM a sensible name + Use security best practices like a strong password + Base the VM in Northern Europe + Use an A3 size (don’t forget to turn it off or downsize after)</p>
+</div>
+<div id="configure-the-vm" class="section level2">
+<h2><span class="header-section-number">1.2</span> Configure the VM</h2>
+<p>Use the <code>Connect</code> option on the portal to get an RDP connection to the VM</p>
+<ul>
+<li>Disable Enhanced Security by going to Server Manager &gt; Local Server &gt; IE Enhanced Security</li>
+<li>Install RStudio</li>
+<li>Using either Visual Studio 2015 Community Edition or RStudio, install the <code>devtools</code> package</li>
+</ul>
+</div>
+</div>
+<div id="misc.-install-instructions" class="section level1 tabset">
+<h1><span class="header-section-number">2</span> Misc. install instructions</h1>
 <!-- Source: github.com/stephlocke/Rtraining/inst/handouts/infrastructure/setting-up-a-windows-r-machine -->
-<p>This section outlines installation instructions for getting up to speed</p>
+<p>This section outlines some general installation notes - not necessarily ones that need to be followed for the data science VM but may prove useful generally</p>
 <div id="odbc-driver" class="section level2">
-<h2><span class="header-section-number">1.1</span> ODBC Driver</h2>
+<h2><span class="header-section-number">2.1</span> ODBC Driver</h2>
 <p>Get the relevant <a href="https://blogs.msdn.microsoft.com/joseph_idzioreks_blog/2015/09/13/azure-sql-database-sqlcmd-and-bcp-on-ubuntu-linux/">SQL Server ODBC 11 Preview</a> driver for your OS and install it. You can’t currently use the native drivers when connecting from R.</p>
 </div>
 <div id="r" class="section level2">
-<h2><span class="header-section-number">1.2</span> R</h2>
+<h2><span class="header-section-number">2.2</span> R</h2>
 <ul>
 <li>Download latest base R exe file from <a href="http://cran.rstudio.com/">cran.rstudio.com</a></li>
 <li>Also download Rtools latest exe (if using Windows)</li>
-<li>Install R then Rtools - if 64bit, install both 32 and 64 as it saves youz hassle with other drivers</li>
+<li>Install R then Rtools - if 64bit, install both 32 and 64 as it saves you hassle with other drivers</li>
 </ul>
 </div>
 <div id="git" class="section level2">
-<h2><span class="header-section-number">1.3</span> Git</h2>
+<h2><span class="header-section-number">2.3</span> Git</h2>
 <ul>
 <li>Download latest git version from <a href="https://msysgit.github.io/">msysgit.github.io</a></li>
 <li>Install</li>
@@ -262,7 +282,7 @@ div.tocify {
 </ul>
 </div>
 <div id="use-rstudio" class="section level2">
-<h2><span class="header-section-number">1.4</span> Use Rstudio</h2>
+<h2><span class="header-section-number">2.4</span> Use Rstudio</h2>
 <ul>
 <li>Go to <a href="http://www.rstudio.com/products/rstudio/download/">rstudio.com</a></li>
 <li>Select correct install file for your PC, and install</li>
@@ -274,19 +294,6 @@ div.tocify {
 </ul></li>
 <li>Go to the Packages area (bottom RHS) and select Install. Install <code>devtools</code></li>
 </ul>
-</div>
-<div id="use-visual-studio-with-vsrt" class="section level2">
-<h2><span class="header-section-number">1.5</span> Use Visual Studio with VSRT</h2>
-</div>
-</div>
-<div id="navigating-your-ide" class="section level1 tabset">
-<h1><span class="header-section-number">2</span> Navigating your IDE</h1>
-<div id="rstudio" class="section level2">
-<h2><span class="header-section-number">2.1</span> RStudio</h2>
-<p>This section provides a simple reference for working with Rstudio.</p>
-</div>
-<div id="visual-studio-with-vsrt" class="section level2">
-<h2><span class="header-section-number">2.2</span> Visual Studio with VSRT</h2>
 </div>
 </div>
 <div id="the-rmsftdp-package" class="section level1 tabset">
