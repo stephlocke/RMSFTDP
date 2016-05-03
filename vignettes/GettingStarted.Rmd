@@ -4,7 +4,7 @@ author: "Steph Locke"
 date: "`r Sys.Date()`"
 output: 
   rmarkdown::html_document: 
-    code_folding: hide
+    code_folding: show
     number_sections: yes
     toc: yes
     toc_float: true
@@ -118,7 +118,9 @@ Identifier | \` |  `` `1`<-2``
 1. Get the help text for the function `mean`
 1. Perform a test to see if R variable names are case sensitive
 
-```{r results='hide', collapse=TRUE,error=TRUE}
+## Answers
+
+```{r error=TRUE}
 #1
 Scores<-1:10
 #2
@@ -164,7 +166,8 @@ Classes | A class is like a formalised list and can also contain functions i.e. 
 1. Make a variable called `category` holding 52 randomly selected letters (using `sample`)
 1. Make a variable called `records` that is a data.frame containing `ID` and `category`
 
-```{r results='hide', collapse=TRUE,error=TRUE}
+## Answers
+```{r }
 #1
 ID<-1:52
 #2
@@ -202,10 +205,19 @@ data.frame(ID,category)
 - Use the `return()` function to output something specific `f<-function(){return(1)}; f()`
 - Make an argument optional by providing it with a default value or NULL
 
+```r
+myfunc<-function(arg1, arg2=NULL){
+print(arg1)
+if(!is.null(arg2)) return(arg2)
+}
+```
+
 ## Exercises
 1. Use the function `cut()` to produce split `floor(rnorm(n = 100, mean=50,sd=20))` into 5 bins with numbers representing the bins they were allocated
 1. Write a function that says "Hello world" or says hello to any string or number passed in
-```{r results='hide', collapse=TRUE,error=TRUE}
+
+## Answers
+```{r}
 #1
 nums<-floor(rnorm(n = 100, mean=50,sd=20))
 bins<-cut(nums, breaks=5, labels=FALSE)
