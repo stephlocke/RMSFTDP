@@ -120,6 +120,7 @@ ggplot(iris,aes(x=Sepal.Width))+
   geom_histogram()+
   facet_wrap(~Species)
 ```
+
 ## More resources
 
  - Hadley's documentation is top notch so check out the [ggplot2 documentation](http://docs.ggplot2.org/current/)
