@@ -109,6 +109,22 @@ attributes(named)
 str(named)
 ```
 
+## Exercises
+1. Create a vector containing upper case and lower case variants of the alphabet
+1. Create a new vector with a random sample of your new letter vector
+1. Filter out any lowercase letters
+
+## Answers
+```{r}
+#1
+lets<-c(LETTERS,letters)
+#2
+lets<-sample(lets,50)
+#3
+lets<-lets[tolower(lets)!=lets]
+lets
+```
+
 # Working with lists {.tabset}
 ## Intro
 Lists hold multiple objects together and form the basis of complex data objects like data.frames and model results.
