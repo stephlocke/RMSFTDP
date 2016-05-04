@@ -8,7 +8,7 @@ Authors@R: c(
 Description: Contains materials for the R in the Microsoft Data Platform training day,
              developed by Steph Locke and Andrew Fryer.
 Depends:
-    R (>= 3.2.4),
+    R (>= 3.2.0),
     RODBC,
     ggplot2
 License: file LICENSE
