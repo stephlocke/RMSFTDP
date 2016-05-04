@@ -17,9 +17,9 @@ The SQL Server BI world has been kind of static for a long time, now they’re b
 - [Getting started with R](GettingStarted.html)
 - [Data manipulation fundamentals](DataManipulation.html)
 - [Data visualisation basics](DataViz.html)
-- [Getting data from SQL Server into R and vice versa](DataIOSQLServerR.html)
-- Making predictions with R & Azure ML
-- Using R in SQL Server - overcoming SQL limitations and making predictions
+- [Getting data from SQL Server into R](DataIOSQLServerR.html)
+- [Using R in SQL Server](R%20with%20SQL%20Server%20Tutorial%20Document.docx)
+- [Making predictions with R & Azure ML](R%20with%20Azure%20Machine%20Learning%20Tutorial%20Document.docx)
 - High end dashboards with PowerBI & R
 
 ## Objectives
