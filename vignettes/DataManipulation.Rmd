@@ -197,6 +197,14 @@ attributes(namedList)
 str(namedList)
 ```
 
+## Exercise
+Create a linear regression model (`lm()`) for the iris dataset and extract the `fitted.values` element
+
+## Answers
+```{r}
+irisLM<-lm(Sepal.Width~Sepal.Length, iris)
+head(irisLM$fitted.values)
+```
 
 # Working with tables {.tabset}
 ## Intro
