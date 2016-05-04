@@ -296,3 +296,23 @@ mode(df)
 attributes(df)
 str(df)
 ```
+
+## Exercises
+1. Make a copy of the `iris` dataset to play with
+1. Add a column with the estimated area of the sepals
+1. Filter out any record with a petal width lower than average
+1. Sort by species name in descending order
+
+## Answers
+```{r}
+#1 
+myIris<-iris
+#2
+myIris$Sepal.Area<-myIris$Sepal.Width * myIris$Sepal.Length
+#3
+avg<-mean(myIris$Petal.Width)
+myIris<-myIris[myIris$Petal.Width>=avg,]
+#4
+myIris<-myIris[order(myIris$Species,decreasing = TRUE),]
+head(myIris)
+```
