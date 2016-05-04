@@ -7,11 +7,11 @@
 <meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
+
 
 <meta name="author" content="Steph Locke" />
 
-<meta name="date" content="2016-04-27" />
+<meta name="date" content="2016-05-03" />
 
 <title>Installation Instructions</title>
 
@@ -43,25 +43,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 
 
 
-
-</head>
-
-<body>
-
 <style type="text/css">
-.main-container {
-  max-width: 940px;
-  margin-left: auto;
-  margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
-}
-img {
-  max-width:100%;
-  height: auto;
-}
 h1 {
   font-size: 34px;
 }
@@ -83,6 +65,30 @@ h5 {
 h6 {
   font-size: 12px;
 }
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type="text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
 .tabbed-pane {
   padding-top: 12px;
 }
@@ -103,7 +109,7 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
-<script src="data:application/x-javascript;base64,Cgp3aW5kb3cuaW5pdGlhbGl6ZUNvZGVGb2xkaW5nID0gZnVuY3Rpb24oc2hvdykgewoKICAvLyBoYW5kbGVycyBmb3Igc2hvdy1hbGwgYW5kIGhpZGUgYWxsCiAgJCgiI3JtZC1zaG93LWFsbC1jb2RlIikuY2xpY2soZnVuY3Rpb24oKSB7CiAgICAkKCdkaXYuci1jb2RlLWNvbGxhcHNlJykuZWFjaChmdW5jdGlvbigpIHsKICAgICAgJCh0aGlzKS5jb2xsYXBzZSgnc2hvdycpOwogICAgfSk7CiAgfSk7CiAgJCgiI3JtZC1oaWRlLWFsbC1jb2RlIikuY2xpY2soZnVuY3Rpb24oKSB7CiAgICAkKCdkaXYuci1jb2RlLWNvbGxhcHNlJykuZWFjaChmdW5jdGlvbigpIHsKICAgICAgJCh0aGlzKS5jb2xsYXBzZSgnaGlkZScpOwogICAgfSk7CiAgfSk7CgogIC8vIGluZGV4IGZvciB1bmlxdWUgY29kZSBlbGVtZW50IGlkcwogIHZhciBjdXJyZW50SW5kZXggPSAxOwoKICAvLyBzZWxlY3QgYWxsIFIgY29kZSBibG9ja3MKICB2YXIgckNvZGVCbG9ja3MgPSAkKCdwcmUucicpOwogIHJDb2RlQmxvY2tzLmVhY2goZnVuY3Rpb24oKSB7CgogICAgLy8gY3JlYXRlIGEgY29sbGFwc2FibGUgZGl2IHRvIHdyYXAgdGhlIGNvZGUgaW4KICAgIHZhciBkaXYgPSAkKCc8ZGl2IGNsYXNzPSJjb2xsYXBzZSByLWNvZGUtY29sbGFwc2UiPjwvZGl2PicpOwogICAgaWYgKHNob3cpCiAgICAgIGRpdi5hZGRDbGFzcygnaW4nKTsKICAgIHZhciBpZCA9ICdyY29kZS02NDNFMEYzNicgKyBjdXJyZW50SW5kZXgrKzsKICAgIGRpdi5hdHRyKCdpZCcsIGlkKTsKICAgICQodGhpcykuYmVmb3JlKGRpdik7CiAgICAkKHRoaXMpLmRldGFjaCgpLmFwcGVuZFRvKGRpdik7CgogICAgLy8gYWRkIGEgc2hvdyBjb2RlIGJ1dHRvbiByaWdodCBhYm92ZQogICAgdmFyIHNob3dDb2RlVGV4dCA9ICQoJzxzcGFuIGNsYXNzPSJ0ZXh0LW11dGVkIj4nICsgKHNob3cgPyAnSGlkZScgOiAnQ29kZScpICsgJzwvc3Bhbj4nKTsKICAgIHZhciBzaG93Q29kZUJ1dHRvbiA9ICQoJzxidXR0b24gdHlwZT0iYnV0dG9uIiBjbGFzcz0iYnRuIGJ0bi1kZWZhdWx0IGJ0bi14cyBjb2RlLWZvbGRpbmctYnRuIHB1bGwtcmlnaHQiPjwvYnV0dG9uPicpOwogICAgc2hvd0NvZGVCdXR0b24uYXBwZW5kKHNob3dDb2RlVGV4dCk7CiAgICBzaG93Q29kZUJ1dHRvbgogICAgICAgIC5hdHRyKCdkYXRhLXRvZ2dsZScsICdjb2xsYXBzZScpCiAgICAgICAgLmF0dHIoJ2RhdGEtdGFyZ2V0JywgJyMnICsgaWQpCiAgICAgICAgLmF0dHIoJ2FyaWEtZXhwYW5kZWQnLCB0cnVlKQogICAgICAgIC5hdHRyKCdhcmlhLWNvbnRyb2xzJywgaWQpCiAgICAgICAgLmNzcygnbWFyZ2luLWJvdHRvbScsICc0cHgnKTsKCiAgICB2YXIgYnV0dG9uUm93ID0gJCgnPGRpdiBjbGFzcz0icm93Ij48L2Rpdj4nKTsKICAgIHZhciBidXR0b25Db2wgPSAkKCc8ZGl2IGNsYXNzPSJjb2wtbWQtMTIiPjwvZGl2PicpOwoKICAgIGJ1dHRvbkNvbC5hcHBlbmQoc2hvd0NvZGVCdXR0b24pOwogICAgYnV0dG9uUm93LmFwcGVuZChidXR0b25Db2wpOwoKICAgIGRpdi5iZWZvcmUoYnV0dG9uUm93KTsKCiAgICAvLyB1cGRhdGUgc3RhdGUgb2YgYnV0dG9uIG9uIHNob3cvaGlkZQogICAgZGl2Lm9uKCdoaWRkZW4uYnMuY29sbGFwc2UnLCBmdW5jdGlvbiAoKSB7CiAgICAgIHNob3dDb2RlVGV4dC50ZXh0KCdDb2RlJyk7CiAgICB9KTsKICAgIGRpdi5vbignc2hvdy5icy5jb2xsYXBzZScsIGZ1bmN0aW9uICgpIHsKICAgICAgc2hvd0NvZGVUZXh0LnRleHQoJ0hpZGUnKTsKICAgIH0pOwogIH0pOwoKfQo="></script>
+<script src="data:application/x-javascript;base64,Cgp3aW5kb3cuaW5pdGlhbGl6ZUNvZGVGb2xkaW5nID0gZnVuY3Rpb24oc2hvdykgewoKICAvLyBoYW5kbGVycyBmb3Igc2hvdy1hbGwgYW5kIGhpZGUgYWxsCiAgJCgiI3JtZC1zaG93LWFsbC1jb2RlIikuY2xpY2soZnVuY3Rpb24oKSB7CiAgICAkKCdkaXYuci1jb2RlLWNvbGxhcHNlJykuZWFjaChmdW5jdGlvbigpIHsKICAgICAgJCh0aGlzKS5jb2xsYXBzZSgnc2hvdycpOwogICAgfSk7CiAgfSk7CiAgJCgiI3JtZC1oaWRlLWFsbC1jb2RlIikuY2xpY2soZnVuY3Rpb24oKSB7CiAgICAkKCdkaXYuci1jb2RlLWNvbGxhcHNlJykuZWFjaChmdW5jdGlvbigpIHsKICAgICAgJCh0aGlzKS5jb2xsYXBzZSgnaGlkZScpOwogICAgfSk7CiAgfSk7CgogIC8vIGluZGV4IGZvciB1bmlxdWUgY29kZSBlbGVtZW50IGlkcwogIHZhciBjdXJyZW50SW5kZXggPSAxOwoKICAvLyBzZWxlY3QgYWxsIFIgY29kZSBibG9ja3MKICB2YXIgckNvZGVCbG9ja3MgPSAkKCdwcmUucicpOwogIHJDb2RlQmxvY2tzLmVhY2goZnVuY3Rpb24oKSB7CgogICAgLy8gY3JlYXRlIGEgY29sbGFwc2FibGUgZGl2IHRvIHdyYXAgdGhlIGNvZGUgaW4KICAgIHZhciBkaXYgPSAkKCc8ZGl2IGNsYXNzPSJjb2xsYXBzZSByLWNvZGUtY29sbGFwc2UiPjwvZGl2PicpOwogICAgaWYgKHNob3cpCiAgICAgIGRpdi5hZGRDbGFzcygnaW4nKTsKICAgIHZhciBpZCA9ICdyY29kZS02NDNFMEYzNicgKyBjdXJyZW50SW5kZXgrKzsKICAgIGRpdi5hdHRyKCdpZCcsIGlkKTsKICAgICQodGhpcykuYmVmb3JlKGRpdik7CiAgICAkKHRoaXMpLmRldGFjaCgpLmFwcGVuZFRvKGRpdik7CgogICAgLy8gYWRkIGEgc2hvdyBjb2RlIGJ1dHRvbiByaWdodCBhYm92ZQogICAgdmFyIHNob3dDb2RlVGV4dCA9ICQoJzxzcGFuPicgKyAoc2hvdyA/ICdIaWRlJyA6ICdDb2RlJykgKyAnPC9zcGFuPicpOwogICAgdmFyIHNob3dDb2RlQnV0dG9uID0gJCgnPGJ1dHRvbiB0eXBlPSJidXR0b24iIGNsYXNzPSJidG4gYnRuLWRlZmF1bHQgYnRuLXhzIGNvZGUtZm9sZGluZy1idG4gcHVsbC1yaWdodCI+PC9idXR0b24+Jyk7CiAgICBzaG93Q29kZUJ1dHRvbi5hcHBlbmQoc2hvd0NvZGVUZXh0KTsKICAgIHNob3dDb2RlQnV0dG9uCiAgICAgICAgLmF0dHIoJ2RhdGEtdG9nZ2xlJywgJ2NvbGxhcHNlJykKICAgICAgICAuYXR0cignZGF0YS10YXJnZXQnLCAnIycgKyBpZCkKICAgICAgICAuYXR0cignYXJpYS1leHBhbmRlZCcsIHRydWUpCiAgICAgICAgLmF0dHIoJ2FyaWEtY29udHJvbHMnLCBpZCkKICAgICAgICAuY3NzKCdtYXJnaW4tYm90dG9tJywgJzRweCcpOwoKICAgIHZhciBidXR0b25Sb3cgPSAkKCc8ZGl2IGNsYXNzPSJyb3ciPjwvZGl2PicpOwogICAgdmFyIGJ1dHRvbkNvbCA9ICQoJzxkaXYgY2xhc3M9ImNvbC1tZC0xMiI+PC9kaXY+Jyk7CgogICAgYnV0dG9uQ29sLmFwcGVuZChzaG93Q29kZUJ1dHRvbik7CiAgICBidXR0b25Sb3cuYXBwZW5kKGJ1dHRvbkNvbCk7CgogICAgZGl2LmJlZm9yZShidXR0b25Sb3cpOwoKICAgIC8vIHVwZGF0ZSBzdGF0ZSBvZiBidXR0b24gb24gc2hvdy9oaWRlCiAgICBkaXYub24oJ2hpZGRlbi5icy5jb2xsYXBzZScsIGZ1bmN0aW9uICgpIHsKICAgICAgc2hvd0NvZGVUZXh0LnRleHQoJ0NvZGUnKTsKICAgIH0pOwogICAgZGl2Lm9uKCdzaG93LmJzLmNvbGxhcHNlJywgZnVuY3Rpb24gKCkgewogICAgICBzaG93Q29kZVRleHQudGV4dCgnSGlkZScpOwogICAgfSk7CiAgfSk7Cgp9Cg=="></script>
 <script>
 $(document).ready(function () {
   window.initializeCodeFolding("show" === "show");
@@ -115,6 +121,12 @@ $(document).ready(function () {
 
 <script>
 $(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
     // establish options
     var options = {
       selectors: "h1,h2",
@@ -123,7 +135,7 @@ $(document).ready(function ()  {
       hashGenerator: function (text) {
         return text.replace(/[.\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
       },
-      ignoreSelector: "h1.title, .toc-ignore",
+      ignoreSelector: ".toc-ignore",
       scrollTo: 0
     };
     options.showAndHide = true;
@@ -205,39 +217,60 @@ div.tocify {
 <div class="fluid-row" id="header">
 
 <div class="btn-group pull-right">
-<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="text-muted">Code</span> <span class="text-muted caret"></span></button>
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
 <ul class="dropdown-menu" style="min-width: 50px;">
 <li><a id="rmd-show-all-code" href="#">Show All</a></li>
 <li><a id="rmd-hide-all-code" href="#">Hide All</a></li>
 </ul>
 </div>
 
-<h1 class="title">Installation Instructions</h1>
+
+<h1 class="title toc-ignore">Installation Instructions</h1>
 <h4 class="author"><em>Steph Locke</em></h4>
-<h4 class="date"><em>2016-04-27</em></h4>
+<h4 class="date"><em>2016-05-03</em></h4>
 
 </div>
 
 
 <p><a href="index.html">Home</a> | <a href="RMicrosoft.html">Prev</a> | <a href="GettingStarted.html">Next</a></p>
-<div id="the-software" class="section level1 tabset">
-<h1><span class="header-section-number">1</span> The software</h1>
+<div id="data-science-vm" class="section level1 tabset">
+<h1><span class="header-section-number">1</span> Data Science VM</h1>
+<p>Using either an existing subscription, a trial, or a voucher, we’ll need a Microsoft Data Science Virtual Machine.</p>
+<ul>
+<li>There are Windows and Linux variants - use your preferred option!</li>
+</ul>
+<div id="provision-the-vm" class="section level2">
+<h2><span class="header-section-number">1.1</span> Provision the VM</h2>
+<p>In <a href="http://portal.azure.com">Azure Portal</a>: 1. Hit <code>New</code> 2. Seach for <code>data science</code> 3. Select the Data Science Virtual Machine 4. You can do a <em>Next, Next, Next</em> install but you may wish to: + Give the VM a sensible name + Use security best practices like a strong password + Base the VM in Northern Europe + Use an A3 size (don’t forget to turn it off or downsize after)</p>
+</div>
+<div id="configure-the-vm" class="section level2">
+<h2><span class="header-section-number">1.2</span> Configure the VM</h2>
+<p>Use the <code>Connect</code> option on the portal to get an RDP connection to the VM</p>
+<ul>
+<li>Disable Enhanced Security by going to Server Manager &gt; Local Server &gt; IE Enhanced Security</li>
+<li>Install RStudio</li>
+<li>Using either Visual Studio 2015 Community Edition or RStudio, install the <code>devtools</code> package</li>
+</ul>
+</div>
+</div>
+<div id="misc.-install-instructions" class="section level1 tabset">
+<h1><span class="header-section-number">2</span> Misc. install instructions</h1>
 <!-- Source: github.com/stephlocke/Rtraining/inst/handouts/infrastructure/setting-up-a-windows-r-machine -->
-<p>This section outlines installation instructions for getting up to speed</p>
+<p>This section outlines some general installation notes - not necessarily ones that need to be followed for the data science VM but may prove useful generally</p>
 <div id="odbc-driver" class="section level2">
-<h2><span class="header-section-number">1.1</span> ODBC Driver</h2>
+<h2><span class="header-section-number">2.1</span> ODBC Driver</h2>
 <p>Get the relevant <a href="https://blogs.msdn.microsoft.com/joseph_idzioreks_blog/2015/09/13/azure-sql-database-sqlcmd-and-bcp-on-ubuntu-linux/">SQL Server ODBC 11 Preview</a> driver for your OS and install it. You can’t currently use the native drivers when connecting from R.</p>
 </div>
 <div id="r" class="section level2">
-<h2><span class="header-section-number">1.2</span> R</h2>
+<h2><span class="header-section-number">2.2</span> R</h2>
 <ul>
 <li>Download latest base R exe file from <a href="http://cran.rstudio.com/">cran.rstudio.com</a></li>
 <li>Also download Rtools latest exe (if using Windows)</li>
-<li>Install R then Rtools - if 64bit, install both 32 and 64 as it saves youz hassle with other drivers</li>
+<li>Install R then Rtools - if 64bit, install both 32 and 64 as it saves you hassle with other drivers</li>
 </ul>
 </div>
 <div id="git" class="section level2">
-<h2><span class="header-section-number">1.3</span> Git</h2>
+<h2><span class="header-section-number">2.3</span> Git</h2>
 <ul>
 <li>Download latest git version from <a href="https://msysgit.github.io/">msysgit.github.io</a></li>
 <li>Install</li>
@@ -249,7 +282,7 @@ div.tocify {
 </ul>
 </div>
 <div id="use-rstudio" class="section level2">
-<h2><span class="header-section-number">1.4</span> Use Rstudio</h2>
+<h2><span class="header-section-number">2.4</span> Use Rstudio</h2>
 <ul>
 <li>Go to <a href="http://www.rstudio.com/products/rstudio/download/">rstudio.com</a></li>
 <li>Select correct install file for your PC, and install</li>
@@ -261,19 +294,6 @@ div.tocify {
 </ul></li>
 <li>Go to the Packages area (bottom RHS) and select Install. Install <code>devtools</code></li>
 </ul>
-</div>
-<div id="use-visual-studio-with-vsrt" class="section level2">
-<h2><span class="header-section-number">1.5</span> Use Visual Studio with VSRT</h2>
-</div>
-</div>
-<div id="navigating-your-ide" class="section level1 tabset">
-<h1><span class="header-section-number">2</span> Navigating your IDE</h1>
-<div id="rstudio" class="section level2">
-<h2><span class="header-section-number">2.1</span> RStudio</h2>
-<p>This section provides a simple reference for working with Rstudio.</p>
-</div>
-<div id="visual-studio-with-vsrt" class="section level2">
-<h2><span class="header-section-number">2.2</span> Visual Studio with VSRT</h2>
 </div>
 </div>
 <div id="the-rmsftdp-package" class="section level1 tabset">

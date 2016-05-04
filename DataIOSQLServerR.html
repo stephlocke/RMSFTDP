@@ -7,11 +7,11 @@
 <meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
+
 
 <meta name="author" content="Steph Locke" />
 
-<meta name="date" content="2016-04-27" />
+<meta name="date" content="2016-05-03" />
 
 <title>Calling SQL Server from R and vice versa</title>
 
@@ -43,25 +43,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 
 
 
-
-</head>
-
-<body>
-
 <style type="text/css">
-.main-container {
-  max-width: 940px;
-  margin-left: auto;
-  margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
-}
-img {
-  max-width:100%;
-  height: auto;
-}
 h1 {
   font-size: 34px;
 }
@@ -83,6 +65,30 @@ h5 {
 h6 {
   font-size: 12px;
 }
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type="text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
 .tabbed-pane {
   padding-top: 12px;
 }
@@ -103,7 +109,7 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
-<script src="data:application/x-javascript;base64,Cgp3aW5kb3cuaW5pdGlhbGl6ZUNvZGVGb2xkaW5nID0gZnVuY3Rpb24oc2hvdykgewoKICAvLyBoYW5kbGVycyBmb3Igc2hvdy1hbGwgYW5kIGhpZGUgYWxsCiAgJCgiI3JtZC1zaG93LWFsbC1jb2RlIikuY2xpY2soZnVuY3Rpb24oKSB7CiAgICAkKCdkaXYuci1jb2RlLWNvbGxhcHNlJykuZWFjaChmdW5jdGlvbigpIHsKICAgICAgJCh0aGlzKS5jb2xsYXBzZSgnc2hvdycpOwogICAgfSk7CiAgfSk7CiAgJCgiI3JtZC1oaWRlLWFsbC1jb2RlIikuY2xpY2soZnVuY3Rpb24oKSB7CiAgICAkKCdkaXYuci1jb2RlLWNvbGxhcHNlJykuZWFjaChmdW5jdGlvbigpIHsKICAgICAgJCh0aGlzKS5jb2xsYXBzZSgnaGlkZScpOwogICAgfSk7CiAgfSk7CgogIC8vIGluZGV4IGZvciB1bmlxdWUgY29kZSBlbGVtZW50IGlkcwogIHZhciBjdXJyZW50SW5kZXggPSAxOwoKICAvLyBzZWxlY3QgYWxsIFIgY29kZSBibG9ja3MKICB2YXIgckNvZGVCbG9ja3MgPSAkKCdwcmUucicpOwogIHJDb2RlQmxvY2tzLmVhY2goZnVuY3Rpb24oKSB7CgogICAgLy8gY3JlYXRlIGEgY29sbGFwc2FibGUgZGl2IHRvIHdyYXAgdGhlIGNvZGUgaW4KICAgIHZhciBkaXYgPSAkKCc8ZGl2IGNsYXNzPSJjb2xsYXBzZSByLWNvZGUtY29sbGFwc2UiPjwvZGl2PicpOwogICAgaWYgKHNob3cpCiAgICAgIGRpdi5hZGRDbGFzcygnaW4nKTsKICAgIHZhciBpZCA9ICdyY29kZS02NDNFMEYzNicgKyBjdXJyZW50SW5kZXgrKzsKICAgIGRpdi5hdHRyKCdpZCcsIGlkKTsKICAgICQodGhpcykuYmVmb3JlKGRpdik7CiAgICAkKHRoaXMpLmRldGFjaCgpLmFwcGVuZFRvKGRpdik7CgogICAgLy8gYWRkIGEgc2hvdyBjb2RlIGJ1dHRvbiByaWdodCBhYm92ZQogICAgdmFyIHNob3dDb2RlVGV4dCA9ICQoJzxzcGFuIGNsYXNzPSJ0ZXh0LW11dGVkIj4nICsgKHNob3cgPyAnSGlkZScgOiAnQ29kZScpICsgJzwvc3Bhbj4nKTsKICAgIHZhciBzaG93Q29kZUJ1dHRvbiA9ICQoJzxidXR0b24gdHlwZT0iYnV0dG9uIiBjbGFzcz0iYnRuIGJ0bi1kZWZhdWx0IGJ0bi14cyBjb2RlLWZvbGRpbmctYnRuIHB1bGwtcmlnaHQiPjwvYnV0dG9uPicpOwogICAgc2hvd0NvZGVCdXR0b24uYXBwZW5kKHNob3dDb2RlVGV4dCk7CiAgICBzaG93Q29kZUJ1dHRvbgogICAgICAgIC5hdHRyKCdkYXRhLXRvZ2dsZScsICdjb2xsYXBzZScpCiAgICAgICAgLmF0dHIoJ2RhdGEtdGFyZ2V0JywgJyMnICsgaWQpCiAgICAgICAgLmF0dHIoJ2FyaWEtZXhwYW5kZWQnLCB0cnVlKQogICAgICAgIC5hdHRyKCdhcmlhLWNvbnRyb2xzJywgaWQpCiAgICAgICAgLmNzcygnbWFyZ2luLWJvdHRvbScsICc0cHgnKTsKCiAgICB2YXIgYnV0dG9uUm93ID0gJCgnPGRpdiBjbGFzcz0icm93Ij48L2Rpdj4nKTsKICAgIHZhciBidXR0b25Db2wgPSAkKCc8ZGl2IGNsYXNzPSJjb2wtbWQtMTIiPjwvZGl2PicpOwoKICAgIGJ1dHRvbkNvbC5hcHBlbmQoc2hvd0NvZGVCdXR0b24pOwogICAgYnV0dG9uUm93LmFwcGVuZChidXR0b25Db2wpOwoKICAgIGRpdi5iZWZvcmUoYnV0dG9uUm93KTsKCiAgICAvLyB1cGRhdGUgc3RhdGUgb2YgYnV0dG9uIG9uIHNob3cvaGlkZQogICAgZGl2Lm9uKCdoaWRkZW4uYnMuY29sbGFwc2UnLCBmdW5jdGlvbiAoKSB7CiAgICAgIHNob3dDb2RlVGV4dC50ZXh0KCdDb2RlJyk7CiAgICB9KTsKICAgIGRpdi5vbignc2hvdy5icy5jb2xsYXBzZScsIGZ1bmN0aW9uICgpIHsKICAgICAgc2hvd0NvZGVUZXh0LnRleHQoJ0hpZGUnKTsKICAgIH0pOwogIH0pOwoKfQo="></script>
+<script src="data:application/x-javascript;base64,Cgp3aW5kb3cuaW5pdGlhbGl6ZUNvZGVGb2xkaW5nID0gZnVuY3Rpb24oc2hvdykgewoKICAvLyBoYW5kbGVycyBmb3Igc2hvdy1hbGwgYW5kIGhpZGUgYWxsCiAgJCgiI3JtZC1zaG93LWFsbC1jb2RlIikuY2xpY2soZnVuY3Rpb24oKSB7CiAgICAkKCdkaXYuci1jb2RlLWNvbGxhcHNlJykuZWFjaChmdW5jdGlvbigpIHsKICAgICAgJCh0aGlzKS5jb2xsYXBzZSgnc2hvdycpOwogICAgfSk7CiAgfSk7CiAgJCgiI3JtZC1oaWRlLWFsbC1jb2RlIikuY2xpY2soZnVuY3Rpb24oKSB7CiAgICAkKCdkaXYuci1jb2RlLWNvbGxhcHNlJykuZWFjaChmdW5jdGlvbigpIHsKICAgICAgJCh0aGlzKS5jb2xsYXBzZSgnaGlkZScpOwogICAgfSk7CiAgfSk7CgogIC8vIGluZGV4IGZvciB1bmlxdWUgY29kZSBlbGVtZW50IGlkcwogIHZhciBjdXJyZW50SW5kZXggPSAxOwoKICAvLyBzZWxlY3QgYWxsIFIgY29kZSBibG9ja3MKICB2YXIgckNvZGVCbG9ja3MgPSAkKCdwcmUucicpOwogIHJDb2RlQmxvY2tzLmVhY2goZnVuY3Rpb24oKSB7CgogICAgLy8gY3JlYXRlIGEgY29sbGFwc2FibGUgZGl2IHRvIHdyYXAgdGhlIGNvZGUgaW4KICAgIHZhciBkaXYgPSAkKCc8ZGl2IGNsYXNzPSJjb2xsYXBzZSByLWNvZGUtY29sbGFwc2UiPjwvZGl2PicpOwogICAgaWYgKHNob3cpCiAgICAgIGRpdi5hZGRDbGFzcygnaW4nKTsKICAgIHZhciBpZCA9ICdyY29kZS02NDNFMEYzNicgKyBjdXJyZW50SW5kZXgrKzsKICAgIGRpdi5hdHRyKCdpZCcsIGlkKTsKICAgICQodGhpcykuYmVmb3JlKGRpdik7CiAgICAkKHRoaXMpLmRldGFjaCgpLmFwcGVuZFRvKGRpdik7CgogICAgLy8gYWRkIGEgc2hvdyBjb2RlIGJ1dHRvbiByaWdodCBhYm92ZQogICAgdmFyIHNob3dDb2RlVGV4dCA9ICQoJzxzcGFuPicgKyAoc2hvdyA/ICdIaWRlJyA6ICdDb2RlJykgKyAnPC9zcGFuPicpOwogICAgdmFyIHNob3dDb2RlQnV0dG9uID0gJCgnPGJ1dHRvbiB0eXBlPSJidXR0b24iIGNsYXNzPSJidG4gYnRuLWRlZmF1bHQgYnRuLXhzIGNvZGUtZm9sZGluZy1idG4gcHVsbC1yaWdodCI+PC9idXR0b24+Jyk7CiAgICBzaG93Q29kZUJ1dHRvbi5hcHBlbmQoc2hvd0NvZGVUZXh0KTsKICAgIHNob3dDb2RlQnV0dG9uCiAgICAgICAgLmF0dHIoJ2RhdGEtdG9nZ2xlJywgJ2NvbGxhcHNlJykKICAgICAgICAuYXR0cignZGF0YS10YXJnZXQnLCAnIycgKyBpZCkKICAgICAgICAuYXR0cignYXJpYS1leHBhbmRlZCcsIHRydWUpCiAgICAgICAgLmF0dHIoJ2FyaWEtY29udHJvbHMnLCBpZCkKICAgICAgICAuY3NzKCdtYXJnaW4tYm90dG9tJywgJzRweCcpOwoKICAgIHZhciBidXR0b25Sb3cgPSAkKCc8ZGl2IGNsYXNzPSJyb3ciPjwvZGl2PicpOwogICAgdmFyIGJ1dHRvbkNvbCA9ICQoJzxkaXYgY2xhc3M9ImNvbC1tZC0xMiI+PC9kaXY+Jyk7CgogICAgYnV0dG9uQ29sLmFwcGVuZChzaG93Q29kZUJ1dHRvbik7CiAgICBidXR0b25Sb3cuYXBwZW5kKGJ1dHRvbkNvbCk7CgogICAgZGl2LmJlZm9yZShidXR0b25Sb3cpOwoKICAgIC8vIHVwZGF0ZSBzdGF0ZSBvZiBidXR0b24gb24gc2hvdy9oaWRlCiAgICBkaXYub24oJ2hpZGRlbi5icy5jb2xsYXBzZScsIGZ1bmN0aW9uICgpIHsKICAgICAgc2hvd0NvZGVUZXh0LnRleHQoJ0NvZGUnKTsKICAgIH0pOwogICAgZGl2Lm9uKCdzaG93LmJzLmNvbGxhcHNlJywgZnVuY3Rpb24gKCkgewogICAgICBzaG93Q29kZVRleHQudGV4dCgnSGlkZScpOwogICAgfSk7CiAgfSk7Cgp9Cg=="></script>
 <script>
 $(document).ready(function () {
   window.initializeCodeFolding("show" === "show");
@@ -115,6 +121,12 @@ $(document).ready(function () {
 
 <script>
 $(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
     // establish options
     var options = {
       selectors: "h1,h2",
@@ -123,7 +135,7 @@ $(document).ready(function ()  {
       hashGenerator: function (text) {
         return text.replace(/[.\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
       },
-      ignoreSelector: "h1.title, .toc-ignore",
+      ignoreSelector: ".toc-ignore",
       scrollTo: 0
     };
     options.showAndHide = true;
@@ -205,16 +217,17 @@ div.tocify {
 <div class="fluid-row" id="header">
 
 <div class="btn-group pull-right">
-<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="text-muted">Code</span> <span class="text-muted caret"></span></button>
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
 <ul class="dropdown-menu" style="min-width: 50px;">
 <li><a id="rmd-show-all-code" href="#">Show All</a></li>
 <li><a id="rmd-hide-all-code" href="#">Hide All</a></li>
 </ul>
 </div>
 
-<h1 class="title">Calling SQL Server from R and vice versa</h1>
+
+<h1 class="title toc-ignore">Calling SQL Server from R and vice versa</h1>
 <h4 class="author"><em>Steph Locke</em></h4>
-<h4 class="date"><em>2016-04-27</em></h4>
+<h4 class="date"><em>2016-05-03</em></h4>
 
 </div>
 
@@ -244,12 +257,91 @@ if(conn!=-1L) sqlTables(conn,schema = &quot;dbo&quot;)</code></pre>
 ## 2 AdventureWorks2016CTP3         dbo    DatabaseLog      TABLE    &lt;NA&gt;
 ## 3 AdventureWorks2016CTP3         dbo       ErrorLog      TABLE    &lt;NA&gt;</code></pre>
 </div>
-<div id="using-the-connection" class="section level2">
-<h2><span class="header-section-number">1.2</span> Using the connection</h2>
+<div id="rodbc-functions" class="section level2">
+<h2><span class="header-section-number">1.2</span> RODBC functions</h2>
+<p>RODBC comes with some built-in functions for working with your database</p>
+<pre class="r"><code>dt&lt;- sqlFetch(conn, &quot;DatabaseLog&quot;)
+sqlCopy( conn, &quot;select * from DatabaseLog&quot;, &quot;DatabaseLog2&quot;)
+sqlSave( conn, dt[1:100,], &quot;DatabaseLog2&quot;)
+sqlClear(conn, &quot;DatabaseLog2&quot;)
+sqlDrop( conn, &quot;DatabaseLog2&quot;)</code></pre>
 </div>
+<div id="sql" class="section level2">
+<h2><span class="header-section-number">1.3</span> SQL</h2>
+<p>Use normal SQL statements using <code>sqlQuery()</code> - must send one statement at a time to get the results back from each.</p>
+<pre class="r"><code>dt&lt;- sqlQuery(conn,&quot;
+         SELECT 
+          DatabaseLogID
+          ,DatabaseUser
+          ,Event
+          ,[Schema]
+          ,Object
+          FROM DatabaseLog
+         &quot;)
+knitr::kable(head(dt))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right">DatabaseLogID</th>
+<th align="left">DatabaseUser</th>
+<th align="left">Event</th>
+<th align="left">Schema</th>
+<th align="left">Object</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">dbo</td>
+<td align="left">CREATE_TABLE</td>
+<td align="left">dbo</td>
+<td align="left">ErrorLog</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="left">dbo</td>
+<td align="left">ALTER_TABLE</td>
+<td align="left">dbo</td>
+<td align="left">ErrorLog</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="left">dbo</td>
+<td align="left">CREATE_TYPE</td>
+<td align="left">dbo</td>
+<td align="left">AccountNumber</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="left">dbo</td>
+<td align="left">CREATE_TYPE</td>
+<td align="left">dbo</td>
+<td align="left">Flag</td>
+</tr>
+<tr class="odd">
+<td align="right">21</td>
+<td align="left">dbo</td>
+<td align="left">CREATE_XML_SCHEMA_COLLECTION</td>
+<td align="left">HumanResources</td>
+<td align="left">HRResumeSchemaCollection</td>
+</tr>
+<tr class="even">
+<td align="right">23</td>
+<td align="left">dbo</td>
+<td align="left">ALTER_XML_SCHEMA_COLLECTION</td>
+<td align="left">Production</td>
+<td align="left">ProductDescriptionSchemaCollection</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>str( sqlQuery(conn,&quot;
+        SELECT COUNT(*) as Vol FROM DatabaseLog;
+         SELECT DatabaseLogID FROM DatabaseLog;
+         &quot;)
+)</code></pre>
+<pre><code>## 'data.frame':    1 obs. of  1 variable:
+##  $ Vol: int 179</code></pre>
 </div>
-<div id="calling-r-from-sql-server" class="section level1 tabset">
-<h1><span class="header-section-number">2</span> Calling R from SQL Server</h1>
 </div>
 
 
