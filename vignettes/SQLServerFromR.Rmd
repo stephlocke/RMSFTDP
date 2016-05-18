@@ -69,3 +69,8 @@ str( sqlQuery(conn,"
          ")
 )
 ```
+
+## Work "at scale"
+Microsoft R Server comes with an additional package `RevoScaleR` that allows you to connect to SQL Server and process very large amounts of data without loading it all into memory. This package is not available in R or Microsoft R Server Open.
+
+Read more about it [Getting Started with RevoScaleR](https://msdn.microsoft.com/en-us/microsoft-r/rserver/rserver-scaler-getting-started)
