@@ -233,10 +233,8 @@ div.tocify {
 
 
 <p><a href="index.html">Home</a> | <a href="DataViz.html">Prev</a> | <a href="RFromSQLServer.html">Next</a></p>
-<div id="calling-sql-server-from-r" class="section level1">
-<h1><span class="header-section-number">1</span> Calling SQL Server from R</h1>
 <div id="building-a-connection" class="section level2">
-<h2><span class="header-section-number">1.1</span> Building a connection</h2>
+<h2>Building a connection</h2>
 <ul>
 <li>Need a driver name!</li>
 <li>Need credentials (you can do trusted AD connections too)</li>
@@ -534,7 +532,7 @@ if(conn!=-1L) knitr::kable(sqlTables(conn,schema = &quot;dbo&quot;))</code></pre
 </table>
 </div>
 <div id="rodbc-functions" class="section level2">
-<h2><span class="header-section-number">1.2</span> RODBC functions</h2>
+<h2>RODBC functions</h2>
 <p>RODBC comes with some built-in functions for working with your database</p>
 <pre class="r"><code>dt&lt;- sqlFetch(conn, &quot;DatabaseLog&quot;)
 sqlCopy( conn, &quot;select * from DatabaseLog&quot;, &quot;DatabaseLog2&quot;)
@@ -543,7 +541,7 @@ sqlClear(conn, &quot;DatabaseLog2&quot;)
 sqlDrop( conn, &quot;DatabaseLog2&quot;)</code></pre>
 </div>
 <div id="sql" class="section level2">
-<h2><span class="header-section-number">1.3</span> SQL</h2>
+<h2>SQL</h2>
 <p>Use normal SQL statements using <code>sqlQuery()</code> - must send one statement at a time to get the results back from each.</p>
 <pre class="r"><code>dt&lt;- sqlQuery(conn,&quot;
          SELECT 
@@ -617,41 +615,6 @@ knitr::kable(head(dt))</code></pre>
 )</code></pre>
 <pre><code>## 'data.frame':    1 obs. of  1 variable:
 ##  $ Vol: int 96</code></pre>
-</div>
-</div>
-<div id="calling-r-from-sql-server" class="section level1 tabset">
-<h1><span class="header-section-number">2</span> Calling R from SQL Server</h1>
-<div id="executing-r" class="section level2">
-<h2><span class="header-section-number">2.1</span> Executing R</h2>
-<p>Executing R from SQL Server requires the execution of a stored procedure called <code>sp_execute_external_script</code> that takes three main parameters:</p>
-<ul>
-<li><code>@language</code> This gets set to R but isn’t isn’t it an interesting parameter with lots of possibilities for the future?</li>
-<li><code>@script</code> This is the R code to be executed</li>
-<li><code>@input_data_1</code> This is a SQL statement that will produce the starting dataset in R</li>
-</ul>
-<p>Unfortunately, the return schema is not inherited by SQL Server so you (ideally) should provide an output specification via <code>WITH RESULT SETS</code></p>
-<pre class="r"><code>sqlServer(
-&quot;EXECUTE   sp_execute_external_script
-                @language = N'R'
-              , @script = N'OutputDataSet &lt;- InputDataSet'
-              , @input_data_1 = N'SELECT 1 as Col'
- WITH RESULT SETS ((col int not null))           &quot;
-)</code></pre>
-<pre><code>##   col
-## 1   1</code></pre>
-</div>
-<div id="limitations" class="section level2">
-<h2><span class="header-section-number">2.2</span> Limitations</h2>
-<ul>
-<li>Output schema not inherited</li>
-<li>Single table passthrough</li>
-<li>Just one output</li>
-</ul>
-</div>
-<div id="installation-notes" class="section level2">
-<h2><span class="header-section-number">2.3</span> Installation notes</h2>
-<p><a href="https://msdn.microsoft.com/en-us/library/mt604845.aspx">BOL</a></p>
-</div>
 </div>
 
 
