@@ -49,10 +49,22 @@ sqlServer(
 )
 ```
 
+## Modelling in R
+```{r}
+sqlServer(
+"EXECUTE   sp_execute_external_script
+                @language = N'R'
+              , @script = N'OutputDataSet <- InputDataSet'
+              , @input_data_1 = N'SELECT 1 as Col'
+ WITH RESULT SETS ((col int not null))    
+"
+)
+```
+
 ## Limitations
 - Output schema not inherited
-- Single table passthrough
-- Just one output
+- Single table passthrough (both ways)
+- Output must be a data.frame
 
-## Installation notes
+## Useful links
 [BOL](https://msdn.microsoft.com/en-us/library/mt604845.aspx)
