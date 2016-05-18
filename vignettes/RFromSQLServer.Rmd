@@ -1,0 +1,50 @@
+---
+title: "Calling R from SQL Server"
+author: "Steph Locke"
+date: "`r Sys.Date()`"
+output: 
+  rmarkdown::html_document: 
+    code_folding: show
+    number_sections: yes
+    toc: yes
+    toc_float: true
+    toc_depth: 2
+vignette: >
+  %\VignetteIndexEntry{Calling R from SQL Server}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+[Home](index.html) | [Prev](SQLServerFromR.html) | [Next]()
+
+## Executing R
+Executing R from SQL Server requires the execution of a stored procedure called `sp_execute_external_script` that takes three main parameters:
+
+- `@language` This gets set to R but isn't isn't it an interesting parameter with lots of possibilities for the future?
+- `@script` This is the R code to be executed
+- `@input_data_1` This is a SQL statement that will produce the starting dataset in R
+
+Unfortunately, the return schema is not inherited by SQL Server so you (ideally) should provide an output specification  via `WITH RESULT SETS`
+```{r echo=FALSE}
+# convenience function
+sqlServer<-function(sql) sqlQuery(conn, sql)
+```
+
+
+```{r}
+sqlServer(
+"EXECUTE   sp_execute_external_script
+                @language = N'R'
+              , @script = N'OutputDataSet <- InputDataSet'
+              , @input_data_1 = N'SELECT 1 as Col'
+ WITH RESULT SETS ((col int not null))           "
+)
+```
+
+## Limitations
+- Output schema not inherited
+- Single table passthrough
+- Just one output
+
+## Installation notes
+[BOL](https://msdn.microsoft.com/en-us/library/mt604845.aspx)

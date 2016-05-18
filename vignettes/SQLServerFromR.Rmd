@@ -1,5 +1,5 @@
 ---
-title: "Calling SQL Server from R and vice versa"
+title: "Calling SQL Server from R"
 author: "Steph Locke"
 date: "`r Sys.Date()`"
 output: 
@@ -10,14 +10,14 @@ output:
     toc_float: true
     toc_depth: 2
 vignette: >
-  %\VignetteIndexEntry{Calling SQL Server from R and vice versa}
+  %\VignetteIndexEntry{Calling SQL Server from R}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
-[Home](index.html) | [Prev](DataViz.html) | [Next]()
+[Home](index.html) | [Prev](DataViz.html) | [Next](RFromSQLServer.html)
 
-# Calling SQL Server from R {.tabset}
+# Calling SQL Server from R
 
 ## Building a connection
 - Need a driver name!
