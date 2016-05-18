@@ -252,16 +252,118 @@ div.tocify {
 <pre><code>##   col
 ## 1   1</code></pre>
 </div>
+<div id="overcoming-sql-limitations" class="section level2">
+<h2>Overcoming SQL limitations</h2>
+<p>R can come in handy when you want to do something but it’s really ugly in SQL to achieve.</p>
+<p>For instance, if I had to produce monthly sales figures per reseller with months as columns, I’d have to use a dynamic PIVOT effect in SQL. In R the complexity is much reduced because pivoting is really simple in R</p>
+<pre class="r"><code>res&lt;-sqlServer(
+&quot;
+EXECUTE   sp_execute_external_script
+                @language = N'R'
+              , @script = N'
+              # My preferred tbl manip pkg
+              library(data.table)
+              setDT(InputDataSet)
+              # Pivot!        
+              OutputDataSet &lt;- dcast(
+              InputDataSet[
+              order(OrderDateKey)
+              ,.(MonthTotal=sum(SalesAmount) )
+              ,.(ResellerName,Month= paste0(CalendarYear,\&quot;-\&quot;, MonthNumberOfYear)
+              ) ]
+              , ResellerName ~ Month)
+              # Need to add our headers as an extra row to save worrying about specifying them
+              cols&lt;-as.list(colnames(OutputDataSet))
+              OutputDataSet&lt;-rbindlist(list(cols,OutputDataSet), use.names=FALSE, fill=FALSE)
+              '
+              
+              , @input_data_1 = N'select 
+              r.ResellerName,
+              f.OrderDateKey,
+              d.CalendarYear,
+              d.MonthNumberOfYear,
+              f.SalesAmount
+              from FactResellerSales f
+              inner join DimReseller r on f.ResellerKey=r.ResellerKey
+              inner join DimDate d on d.DateKey=f.OrderDateKey'
+          
+&quot;
+)
+
+knitr::kable(head(res[,1:6]))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">.1</th>
+<th align="left">.2</th>
+<th align="left">.3</th>
+<th align="left">.4</th>
+<th align="left">.5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">ResellerName</td>
+<td align="left">2010-12</td>
+<td align="left">2011-1</td>
+<td align="left">2011-10</td>
+<td align="left">2011-11</td>
+<td align="left">2011-12</td>
+</tr>
+<tr class="even">
+<td align="left">A Bike Store</td>
+<td align="left">NA</td>
+<td align="left">10993.3942</td>
+<td align="left">26119.0572</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">A Great Bicycle Company</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">1677.8356</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">A Typical Bike Shop</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">29522.6946</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">Acceptable Sales &amp; Service</td>
+<td align="left">NA</td>
+<td align="left">419.4589</td>
+<td align="left">838.9178</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">Accessories Network</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
 <div id="limitations" class="section level2">
 <h2>Limitations</h2>
 <ul>
 <li>Output schema not inherited</li>
-<li>Single table passthrough</li>
-<li>Just one output</li>
+<li>Single table passthrough (both ways)</li>
+<li>Output must be a data.frame</li>
 </ul>
 </div>
-<div id="installation-notes" class="section level2">
-<h2>Installation notes</h2>
+<div id="useful-links" class="section level2">
+<h2>Useful links</h2>
 <p><a href="https://msdn.microsoft.com/en-us/library/mt604845.aspx">BOL</a></p>
 </div>
 
