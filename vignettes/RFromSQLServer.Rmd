@@ -49,16 +49,46 @@ sqlServer(
 )
 ```
 
-## Modelling in R
+## Overcoming SQL limitations
+R can come in handy when you want to do something but it's really ugly in SQL to achieve. 
+
+For instance, if I had to produce monthly sales figures per reseller with months as columns, I'd have to use a dynamic PIVOT effect in SQL. In R the complexity is much reduced because pivoting is really simple in R
 ```{r}
-sqlServer(
-"EXECUTE   sp_execute_external_script
+res<-sqlServer(
+"
+EXECUTE   sp_execute_external_script
                 @language = N'R'
-              , @script = N'OutputDataSet <- InputDataSet'
-              , @input_data_1 = N'SELECT 1 as Col'
- WITH RESULT SETS ((col int not null))    
+              , @script = N'
+			  # My preferred tbl manip pkg
+			  library(data.table)
+			  setDT(InputDataSet)
+			  # Pivot!		  
+			  OutputDataSet <- dcast(
+			  InputDataSet[
+			  order(OrderDateKey)
+			  ,.(MonthTotal=sum(SalesAmount) )
+			  ,.(ResellerName,Month= paste0(CalendarYear,\"-\", MonthNumberOfYear)
+			  ) ]
+			  , ResellerName ~ Month)
+			  # Need to add our headers as an extra row to save worrying about specifying them
+			  cols<-as.list(colnames(OutputDataSet))
+			  OutputDataSet<-rbindlist(list(cols,OutputDataSet), use.names=FALSE, fill=FALSE)
+			  '
+			  
+              , @input_data_1 = N'select 
+              r.ResellerName,
+              f.OrderDateKey,
+              d.CalendarYear,
+              d.MonthNumberOfYear,
+              f.SalesAmount
+              from FactResellerSales f
+              inner join DimReseller r on f.ResellerKey=r.ResellerKey
+              inner join DimDate d on d.DateKey=f.OrderDateKey'
+          
 "
 )
+
+knitr::kable(head(res[,1:6]))
 ```
 
 ## Limitations
