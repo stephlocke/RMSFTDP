@@ -41,12 +41,12 @@ Use the `Connect` option on the portal to get an RDP connection to the VM
 - Install RStudio
 - Using either Visual Studio 2015 Community Edition or RStudio, install the `devtools` package
 
-# Misc. install instructions {.tabset}
+# Installation instructions {.tabset}
 <!-- Source: github.com/stephlocke/Rtraining/inst/handouts/infrastructure/setting-up-a-windows-r-machine -->
-This section outlines some general installation notes - not necessarily ones that need to be followed for the data science VM but may prove useful generally
+This section outlines general installation notes that should be followed when configuring an R environment. The data science VM generally precludes their necessity.
 
 ## ODBC Driver
-Get the relevant [SQL Server ODBC 11 Preview](https://blogs.msdn.microsoft.com/joseph_idzioreks_blog/2015/09/13/azure-sql-database-sqlcmd-and-bcp-on-ubuntu-linux/) driver for your OS and install it. You can't currently use the native drivers when connecting from R.
+Get the relevant [SQL Server ODBC 11 Preview](https://blogs.msdn.microsoft.com/joseph_idzioreks_blog/2015/09/13/azure-sql-database-sqlcmd-and-bcp-on-ubuntu-linux/) driver for your OS and install it. You can use the native driver as it's ODBC compatible but amendments to connection strings in the training material will be required.
 
 ## R
  * Download latest base R exe file from [cran.rstudio.com](http://cran.rstudio.com/)
@@ -77,7 +77,7 @@ This section introduces the package R in the Microsoft Data Platform, or **RMSFT
 ## Purpose
 ## Get it 
  * Open RStudio
- * Get the project from source control by going to New Project in Rstudio, selecting from version control, and pasting in the URL `https://github.com/stephlocke/RMSFTDP.git
+ * Get the project from source control by going to New Project in Rstudio, selecting from version control, and pasting in the URL `https://github.com/stephlocke/RMSFTDP.git`
  * Run `devtools::install()` to install the package
 
 ## Contents
