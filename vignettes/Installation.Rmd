@@ -19,6 +19,9 @@ vignette: >
 
 
 # Data Science VM {.tabset}
+This is an optinal way of getting most things configured for use.
+
+## Intro
 Using either an existing subscription, a trial, or a voucher, we'll need a Microsoft Data Science Virtual Machine.
 
 - There are Windows and Linux variants - use your preferred option!
@@ -72,9 +75,10 @@ Get the relevant [SQL Server ODBC 11 Preview](https://blogs.msdn.microsoft.com/j
 
 
 # The RMSFTDP package {.tabset}
-This section introduces the package R in the Microsoft Data Platform, or **RMSFTDP** for short.
 
 ## Purpose
+This section introduces the package R in the Microsoft Data Platform, or **RMSFTDP** for short.
+
 ## Get it 
  * Open RStudio
  * Get the project from source control by going to New Project in Rstudio, selecting from version control, and pasting in the URL `https://github.com/stephlocke/RMSFTDP.git`
