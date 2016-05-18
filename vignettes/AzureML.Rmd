@@ -16,3 +16,12 @@ vignette: >
 
 [Home](index.html) | [Prev](RFromSQLServer.html) | [Next]()
 
+# Overview
+AzureML is a GUI for developing statistical models and then exposing them via an API for applications to interact with. Additionally, there is now a notebook facility for making interactive analyses.
+
+AzureML can use "off-the-shelf" modules, R code and custom packages, and Python so it's really extensible.
+![AzureML Poster](https://raw.githubusercontent.com/stephlocke/lazyCDN/master/AzureMLPoster.png)
+
+
+# Useful links
+[Main site](https://studio.azureml.net/)
