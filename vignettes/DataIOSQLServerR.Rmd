@@ -25,10 +25,11 @@ vignette: >
 - Need to store the connection for use
 ```{r}
 library(RODBC)
-host<-"Insufficientdata.northeurope.cloudapp.azure.com"
-db<-"AdventureWorks2016CTP3"
+#host<-"rmsftdp.northeurope.cloudapp.azure.com"
+host<-"104.45.80.173"
+db<-"AWDW16"
 uname<-"Rdemo"
-pwd<-"SQLbits16!"
+pwd<-"tugait"
 connstring<-sprintf("DRIVER={ODBC Driver 11 for SQL Server};Server=%1$s;Database=%2$s;Uid=%3$s;Pwd=%4$s;",host,db,uname,pwd)
 
 conn<-odbcDriverConnect(connstring)
