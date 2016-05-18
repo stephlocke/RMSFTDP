@@ -34,7 +34,7 @@ connstring<-sprintf("DRIVER={ODBC Driver 11 for SQL Server};Server=%1$s;Database
 
 conn<-odbcDriverConnect(connstring)
 # Test!
-if(conn!=-1L) sqlTables(conn,schema = "dbo")
+if(conn!=-1L) knitr::kable(sqlTables(conn,schema = "dbo"))
 ```
 
 ## RODBC functions
