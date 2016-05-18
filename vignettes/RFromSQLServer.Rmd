@@ -26,6 +26,15 @@ Executing R from SQL Server requires the execution of a stored procedure called 
 
 Unfortunately, the return schema is not inherited by SQL Server so you (ideally) should provide an output specification  via `WITH RESULT SETS`
 ```{r echo=FALSE}
+library(RODBC)
+#host<-"rmsftdp.northeurope.cloudapp.azure.com"
+host<-"104.45.80.173"
+db<-"AWDW16"
+uname<-"Rdemo"
+pwd<-"tugait"
+connstring<-sprintf("DRIVER={ODBC Driver 11 for SQL Server};Server=%1$s;Database=%2$s;Uid=%3$s;Pwd=%4$s;",host,db,uname,pwd)
+
+conn<-odbcDriverConnect(connstring)
 # convenience function
 sqlServer<-function(sql) sqlQuery(conn, sql)
 ```
