@@ -11,7 +11,7 @@
 
 <meta name="author" content="Steph Locke" />
 
-<meta name="date" content="2016-05-04" />
+<meta name="date" content="2016-05-18" />
 
 <title>Calling SQL Server from R</title>
 
@@ -227,7 +227,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Calling SQL Server from R</h1>
 <h4 class="author"><em>Steph Locke</em></h4>
-<h4 class="date"><em>2016-05-04</em></h4>
+<h4 class="date"><em>2016-05-18</em></h4>
 
 </div>
 
@@ -243,19 +243,94 @@ div.tocify {
 <li>Need to store the connection for use</li>
 </ul>
 <pre class="r"><code>library(RODBC)
-host&lt;-&quot;Insufficientdata.northeurope.cloudapp.azure.com&quot;
-db&lt;-&quot;AdventureWorks2016CTP3&quot;
+#host&lt;-&quot;rmsftdp.northeurope.cloudapp.azure.com&quot;
+host&lt;-&quot;104.45.80.173&quot;
+db&lt;-&quot;AWDW16&quot;
 uname&lt;-&quot;Rdemo&quot;
-pwd&lt;-&quot;SQLbits16!&quot;
+pwd&lt;-&quot;tugait&quot;
 connstring&lt;-sprintf(&quot;DRIVER={ODBC Driver 11 for SQL Server};Server=%1$s;Database=%2$s;Uid=%3$s;Pwd=%4$s;&quot;,host,db,uname,pwd)
 
 conn&lt;-odbcDriverConnect(connstring)
 # Test!
 if(conn!=-1L) sqlTables(conn,schema = &quot;dbo&quot;)</code></pre>
-<pre><code>##                TABLE_CAT TABLE_SCHEM     TABLE_NAME TABLE_TYPE REMARKS
-## 1 AdventureWorks2016CTP3         dbo AWBuildVersion      TABLE    &lt;NA&gt;
-## 2 AdventureWorks2016CTP3         dbo    DatabaseLog      TABLE    &lt;NA&gt;
-## 3 AdventureWorks2016CTP3         dbo       ErrorLog      TABLE    &lt;NA&gt;</code></pre>
+<pre><code>##    TABLE_CAT TABLE_SCHEM                                    TABLE_NAME
+## 1     AWDW16         dbo                  AdventureWorksDWBuildVersion
+## 2     AWDW16         dbo                                   DatabaseLog
+## 3     AWDW16         dbo                                    DimAccount
+## 4     AWDW16         dbo                                   DimCurrency
+## 5     AWDW16         dbo                                   DimCustomer
+## 6     AWDW16         dbo                                       DimDate
+## 7     AWDW16         dbo                            DimDepartmentGroup
+## 8     AWDW16         dbo                                   DimEmployee
+## 9     AWDW16         dbo                                  DimGeography
+## 10    AWDW16         dbo                               DimOrganization
+## 11    AWDW16         dbo                                    DimProduct
+## 12    AWDW16         dbo                            DimProductCategory
+## 13    AWDW16         dbo                         DimProductSubcategory
+## 14    AWDW16         dbo                                  DimPromotion
+## 15    AWDW16         dbo                                   DimReseller
+## 16    AWDW16         dbo                                DimSalesReason
+## 17    AWDW16         dbo                             DimSalesTerritory
+## 18    AWDW16         dbo                                   DimScenario
+## 19    AWDW16         dbo FactAdditionalInternationalProductDescription
+## 20    AWDW16         dbo                                FactCallCenter
+## 21    AWDW16         dbo                              FactCurrencyRate
+## 22    AWDW16         dbo                                   FactFinance
+## 23    AWDW16         dbo                             FactInternetSales
+## 24    AWDW16         dbo                       FactInternetSalesReason
+## 25    AWDW16         dbo                          FactProductInventory
+## 26    AWDW16         dbo                             FactResellerSales
+## 27    AWDW16         dbo                       FactResellerSalesXL_CCI
+## 28    AWDW16         dbo            FactResellerSalesXL_PageCompressed
+## 29    AWDW16         dbo                                FactSalesQuota
+## 30    AWDW16         dbo                            FactSurveyResponse
+## 31    AWDW16         dbo                           NewFactCurrencyRate
+## 32    AWDW16         dbo                              ProspectiveBuyer
+## 33    AWDW16         dbo                                   sysdiagrams
+## 34    AWDW16         dbo                            vAssocSeqLineItems
+## 35    AWDW16         dbo                               vAssocSeqOrders
+## 36    AWDW16         dbo                                       vDMPrep
+## 37    AWDW16         dbo                                   vTargetMail
+## 38    AWDW16         dbo                                   vTimeSeries
+##    TABLE_TYPE REMARKS
+## 1       TABLE    &lt;NA&gt;
+## 2       TABLE    &lt;NA&gt;
+## 3       TABLE    &lt;NA&gt;
+## 4       TABLE    &lt;NA&gt;
+## 5       TABLE    &lt;NA&gt;
+## 6       TABLE    &lt;NA&gt;
+## 7       TABLE    &lt;NA&gt;
+## 8       TABLE    &lt;NA&gt;
+## 9       TABLE    &lt;NA&gt;
+## 10      TABLE    &lt;NA&gt;
+## 11      TABLE    &lt;NA&gt;
+## 12      TABLE    &lt;NA&gt;
+## 13      TABLE    &lt;NA&gt;
+## 14      TABLE    &lt;NA&gt;
+## 15      TABLE    &lt;NA&gt;
+## 16      TABLE    &lt;NA&gt;
+## 17      TABLE    &lt;NA&gt;
+## 18      TABLE    &lt;NA&gt;
+## 19      TABLE    &lt;NA&gt;
+## 20      TABLE    &lt;NA&gt;
+## 21      TABLE    &lt;NA&gt;
+## 22      TABLE    &lt;NA&gt;
+## 23      TABLE    &lt;NA&gt;
+## 24      TABLE    &lt;NA&gt;
+## 25      TABLE    &lt;NA&gt;
+## 26      TABLE    &lt;NA&gt;
+## 27      TABLE    &lt;NA&gt;
+## 28      TABLE    &lt;NA&gt;
+## 29      TABLE    &lt;NA&gt;
+## 30      TABLE    &lt;NA&gt;
+## 31      TABLE    &lt;NA&gt;
+## 32      TABLE    &lt;NA&gt;
+## 33      TABLE    &lt;NA&gt;
+## 34       VIEW    &lt;NA&gt;
+## 35       VIEW    &lt;NA&gt;
+## 36       VIEW    &lt;NA&gt;
+## 37       VIEW    &lt;NA&gt;
+## 38       VIEW    &lt;NA&gt;</code></pre>
 </div>
 <div id="rodbc-functions" class="section level2">
 <h2><span class="header-section-number">1.2</span> RODBC functions</h2>
@@ -293,44 +368,44 @@ knitr::kable(head(dt))</code></pre>
 <tr class="odd">
 <td align="right">1</td>
 <td align="left">dbo</td>
-<td align="left">CREATE_TABLE</td>
+<td align="left">CREATE_FUNCTION</td>
 <td align="left">dbo</td>
-<td align="left">ErrorLog</td>
+<td align="left">udfBuildISO8601Date</td>
 </tr>
 <tr class="even">
 <td align="right">2</td>
 <td align="left">dbo</td>
-<td align="left">ALTER_TABLE</td>
+<td align="left">CREATE_FUNCTION</td>
 <td align="left">dbo</td>
-<td align="left">ErrorLog</td>
+<td align="left">udfMinimumDate</td>
+</tr>
+<tr class="odd">
+<td align="right">4</td>
+<td align="left">dbo</td>
+<td align="left">CREATE_TABLE</td>
+<td align="left">dbo</td>
+<td align="left">AdventureWorksDWBuildVersion</td>
+</tr>
+<tr class="even">
+<td align="right">3</td>
+<td align="left">dbo</td>
+<td align="left">CREATE_FUNCTION</td>
+<td align="left">dbo</td>
+<td align="left">udfTwoDigitZeroFill</td>
 </tr>
 <tr class="odd">
 <td align="right">5</td>
 <td align="left">dbo</td>
-<td align="left">CREATE_TYPE</td>
+<td align="left">CREATE_TABLE</td>
 <td align="left">dbo</td>
-<td align="left">AccountNumber</td>
+<td align="left">DimAccount</td>
 </tr>
 <tr class="even">
-<td align="right">6</td>
+<td align="right">20</td>
 <td align="left">dbo</td>
-<td align="left">CREATE_TYPE</td>
+<td align="left">CREATE_TABLE</td>
 <td align="left">dbo</td>
-<td align="left">Flag</td>
-</tr>
-<tr class="odd">
-<td align="right">21</td>
-<td align="left">dbo</td>
-<td align="left">CREATE_XML_SCHEMA_COLLECTION</td>
-<td align="left">HumanResources</td>
-<td align="left">HRResumeSchemaCollection</td>
-</tr>
-<tr class="even">
-<td align="right">23</td>
-<td align="left">dbo</td>
-<td align="left">ALTER_XML_SCHEMA_COLLECTION</td>
-<td align="left">Production</td>
-<td align="left">ProductDescriptionSchemaCollection</td>
+<td align="left">DimScenario</td>
 </tr>
 </tbody>
 </table>
@@ -340,7 +415,7 @@ knitr::kable(head(dt))</code></pre>
          &quot;)
 )</code></pre>
 <pre><code>## 'data.frame':    1 obs. of  1 variable:
-##  $ Vol: int 179</code></pre>
+##  $ Vol: int 96</code></pre>
 </div>
 </div>
 

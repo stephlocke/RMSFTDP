@@ -11,7 +11,7 @@
 
 <meta name="author" content="Steph Locke" />
 
-<meta name="date" content="2016-05-04" />
+<meta name="date" content="2016-05-18" />
 
 <title>Installation Instructions</title>
 
@@ -227,7 +227,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Installation Instructions</h1>
 <h4 class="author"><em>Steph Locke</em></h4>
-<h4 class="date"><em>2016-05-04</em></h4>
+<h4 class="date"><em>2016-05-18</em></h4>
 
 </div>
 
@@ -253,13 +253,13 @@ div.tocify {
 </ul>
 </div>
 </div>
-<div id="misc.-install-instructions" class="section level1 tabset">
-<h1><span class="header-section-number">2</span> Misc. install instructions</h1>
+<div id="installation-instructions" class="section level1 tabset">
+<h1><span class="header-section-number">2</span> Installation instructions</h1>
 <!-- Source: github.com/stephlocke/Rtraining/inst/handouts/infrastructure/setting-up-a-windows-r-machine -->
-<p>This section outlines some general installation notes - not necessarily ones that need to be followed for the data science VM but may prove useful generally</p>
+<p>This section outlines general installation notes that should be followed when configuring an R environment. The data science VM generally precludes their necessity.</p>
 <div id="odbc-driver" class="section level2">
 <h2><span class="header-section-number">2.1</span> ODBC Driver</h2>
-<p>Get the relevant <a href="https://blogs.msdn.microsoft.com/joseph_idzioreks_blog/2015/09/13/azure-sql-database-sqlcmd-and-bcp-on-ubuntu-linux/">SQL Server ODBC 11 Preview</a> driver for your OS and install it. You can’t currently use the native drivers when connecting from R.</p>
+<p>Get the relevant <a href="https://blogs.msdn.microsoft.com/joseph_idzioreks_blog/2015/09/13/azure-sql-database-sqlcmd-and-bcp-on-ubuntu-linux/">SQL Server ODBC 11 Preview</a> driver for your OS and install it. You can use the native driver as it’s ODBC compatible but amendments to connection strings in the training material will be required.</p>
 </div>
 <div id="r" class="section level2">
 <h2><span class="header-section-number">2.2</span> R</h2>
@@ -306,7 +306,7 @@ div.tocify {
 <h2><span class="header-section-number">3.2</span> Get it</h2>
 <ul>
 <li>Open RStudio</li>
-<li>Get the project from source control by going to New Project in Rstudio, selecting from version control, and pasting in the URL `<a href="https://github.com/stephlocke/RMSFTDP.git" class="uri">https://github.com/stephlocke/RMSFTDP.git</a></li>
+<li>Get the project from source control by going to New Project in Rstudio, selecting from version control, and pasting in the URL <code>https://github.com/stephlocke/RMSFTDP.git</code></li>
 <li>Run <code>devtools::install()</code> to install the package</li>
 </ul>
 </div>
