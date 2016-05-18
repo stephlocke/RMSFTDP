@@ -14,7 +14,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-[Home](index.html) | [Prev](SQLServerFromR.html) | [Next]()
+[Home](index.html) | [Prev](SQLServerFromR.html) | [Next](AzureML.html)
 
 ## Executing R
 Executing R from SQL Server requires the execution of a stored procedure called `sp_execute_external_script` that takes three main parameters:
