@@ -11,7 +11,7 @@
 
 <meta name="author" content="Steph Locke" />
 
-<meta name="date" content="2016-05-18" />
+<meta name="date" content="2016-05-19" />
 
 <title>Data Manipulation</title>
 
@@ -227,7 +227,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Data Manipulation</h1>
 <h4 class="author"><em>Steph Locke</em></h4>
-<h4 class="date"><em>2016-05-18</em></h4>
+<h4 class="date"><em>2016-05-19</em></h4>
 
 </div>
 
@@ -291,14 +291,14 @@ seqCrafted</code></pre>
 ordered</code></pre>
 <pre><code>## function (x, ...) 
 ## factor(x, ..., ordered = TRUE)
-## &lt;bytecode: 0x3f18858&gt;
+## &lt;bytecode: 0x3673858&gt;
 ## &lt;environment: namespace:base&gt;</code></pre>
 <pre class="r"><code>ordered&lt;-c(ordered,5)
 ordered</code></pre>
 <pre><code>## [[1]]
 ## function (x, ...) 
 ## factor(x, ..., ordered = TRUE)
-## &lt;bytecode: 0x3f18858&gt;
+## &lt;bytecode: 0x3673858&gt;
 ## &lt;environment: namespace:base&gt;
 ## 
 ## [[2]]
@@ -318,18 +318,18 @@ mode(seqCrafted)</code></pre>
 <p>Ordering of records works by providing the position numbers of values in a vector and then using those to produce a vector with the original components in new locations</p>
 <pre class="r"><code>preOrder&lt;-sample(letters, 6)
 preOrder</code></pre>
-<pre><code>## [1] &quot;w&quot; &quot;i&quot; &quot;y&quot; &quot;p&quot; &quot;j&quot; &quot;c&quot;</code></pre>
+<pre><code>## [1] &quot;l&quot; &quot;f&quot; &quot;j&quot; &quot;o&quot; &quot;q&quot; &quot;a&quot;</code></pre>
 <pre class="r"><code># Get order the values should appear in to be alphabetised
 order(preOrder)</code></pre>
-<pre><code>## [1] 6 2 5 4 1 3</code></pre>
+<pre><code>## [1] 6 2 3 1 4 5</code></pre>
 <pre class="r"><code># Use it to sort a vector
 ordered&lt;-preOrder[order(preOrder)]
 ordered</code></pre>
-<pre><code>## [1] &quot;c&quot; &quot;i&quot; &quot;j&quot; &quot;p&quot; &quot;w&quot; &quot;y&quot;</code></pre>
+<pre><code>## [1] &quot;a&quot; &quot;f&quot; &quot;j&quot; &quot;l&quot; &quot;o&quot; &quot;q&quot;</code></pre>
 <pre class="r"><code># Alternatively, use the sort() function for brevity
 sorted&lt;-sort(preOrder)
 sorted</code></pre>
-<pre><code>## [1] &quot;c&quot; &quot;i&quot; &quot;j&quot; &quot;p&quot; &quot;w&quot; &quot;y&quot;</code></pre>
+<pre><code>## [1] &quot;a&quot; &quot;f&quot; &quot;j&quot; &quot;l&quot; &quot;o&quot; &quot;q&quot;</code></pre>
 </div>
 <div id="metadata" class="section level2">
 <h2><span class="header-section-number">1.7</span> Metadata</h2>
@@ -372,8 +372,8 @@ lets&lt;-sample(lets,50)
 #3
 lets&lt;-lets[tolower(lets)!=lets]
 lets</code></pre>
-<pre><code>##  [1] &quot;I&quot; &quot;O&quot; &quot;T&quot; &quot;H&quot; &quot;L&quot; &quot;B&quot; &quot;W&quot; &quot;Y&quot; &quot;F&quot; &quot;R&quot; &quot;D&quot; &quot;A&quot; &quot;M&quot; &quot;J&quot; &quot;U&quot; &quot;S&quot; &quot;V&quot;
-## [18] &quot;G&quot; &quot;X&quot; &quot;Q&quot; &quot;K&quot; &quot;N&quot; &quot;C&quot; &quot;P&quot; &quot;E&quot;</code></pre>
+<pre><code>##  [1] &quot;Y&quot; &quot;C&quot; &quot;U&quot; &quot;H&quot; &quot;R&quot; &quot;T&quot; &quot;M&quot; &quot;V&quot; &quot;N&quot; &quot;B&quot; &quot;E&quot; &quot;Q&quot; &quot;A&quot; &quot;X&quot; &quot;K&quot; &quot;J&quot; &quot;O&quot;
+## [18] &quot;D&quot; &quot;G&quot; &quot;W&quot; &quot;Z&quot; &quot;I&quot; &quot;S&quot; &quot;L&quot; &quot;F&quot; &quot;P&quot;</code></pre>
 </div>
 </div>
 <div id="working-with-lists" class="section level1 tabset">
@@ -399,7 +399,7 @@ namedList&lt;-list(p1=c(1,2,3,4),p2=LETTERS[5:8])</code></pre>
 ## [1] &quot;E&quot; &quot;F&quot; &quot;G&quot; &quot;H&quot;
 ## 
 ## [[2]]
-## [1]  2.0071644 -0.2127146  0.9464600 -0.1281254 -0.4821689</code></pre>
+## [1]  0.02653343 -0.23797337  1.25331546 -2.04739901 -0.02841391</code></pre>
 <pre class="r"><code>namedList[&quot;p2&quot;]</code></pre>
 <pre><code>## $p2
 ## [1] &quot;E&quot; &quot;F&quot; &quot;G&quot; &quot;H&quot;</code></pre>
@@ -408,7 +408,7 @@ namedList&lt;-list(p1=c(1,2,3,4),p2=LETTERS[5:8])</code></pre>
 ## [1] 1 2 3 4
 ## 
 ## [[2]]
-## [1]  2.0071644 -0.2127146  0.9464600 -0.1281254 -0.4821689</code></pre>
+## [1]  0.02653343 -0.23797337  1.25331546 -2.04739901 -0.02841391</code></pre>
 <pre class="r"><code>basicList[[1]]</code></pre>
 <pre><code>## [1] 1 2 3 4</code></pre>
 <pre class="r"><code>basicList[[-1]]</code></pre>
@@ -434,7 +434,7 @@ basicList[2]</code></pre>
 <pre class="r"><code>basicList[2]&lt;-NULL
 basicList[2]</code></pre>
 <pre><code>## [[1]]
-## [1]  2.0071644 -0.2127146  0.9464600 -0.1281254 -0.4821689</code></pre>
+## [1]  0.02653343 -0.23797337  1.25331546 -2.04739901 -0.02841391</code></pre>
 <pre class="r"><code># Append by creating a list combining the original and the additional values
 basicList[[3]]&lt;-LETTERS[5:8]</code></pre>
 </div>
@@ -518,11 +518,11 @@ head(irisLM$fitted.values)</code></pre>
 </ul>
 <pre class="r"><code>df&lt;-data.frame(a=1:4, b=LETTERS[5:8], c=rnorm(4),row.names = letters[9:12])
 df</code></pre>
-<pre><code>##   a b           c
-## i 1 E  0.61998984
-## j 2 F -0.66156983
-## k 3 G -0.59889852
-## l 4 H  0.06519317</code></pre>
+<pre><code>##   a b          c
+## i 1 E -1.6619324
+## j 2 F -1.1858811
+## k 3 G -1.1265436
+## l 4 H  0.4258181</code></pre>
 </div>
 <div id="filter-2" class="section level2">
 <h2><span class="header-section-number">3.3</span> Filter</h2>
@@ -530,15 +530,15 @@ df</code></pre>
 <p>To filter using a condition requires the creation of a boolean vector based on a specific column. columns can be treated as vectors by using <code>df$colname</code></p>
 <pre class="r"><code>df[1, ]</code></pre>
 <pre><code>##   a b         c
-## i 1 E 0.6199898</code></pre>
+## i 1 E -1.661932</code></pre>
 <pre class="r"><code>df[ ,1]</code></pre>
 <pre><code>## [1] 1 2 3 4</code></pre>
 <pre class="r"><code>df[1,1]</code></pre>
 <pre><code>## [1] 1</code></pre>
 <pre class="r"><code>df[-(3:4),]</code></pre>
-<pre><code>##   a b          c
-## i 1 E  0.6199898
-## j 2 F -0.6615698</code></pre>
+<pre><code>##   a b         c
+## i 1 E -1.661932
+## j 2 F -1.185881</code></pre>
 <pre class="r"><code>df[,&quot;a&quot;]</code></pre>
 <pre><code>## [1] 1 2 3 4</code></pre>
 <pre class="r"><code>df[ , c(TRUE, TRUE, FALSE)]</code></pre>
@@ -548,56 +548,56 @@ df</code></pre>
 ## k 3 G
 ## l 4 H</code></pre>
 <pre class="r"><code>df[df$a&lt;4,]</code></pre>
-<pre><code>##   a b          c
-## i 1 E  0.6199898
-## j 2 F -0.6615698
-## k 3 G -0.5988985</code></pre>
+<pre><code>##   a b         c
+## i 1 E -1.661932
+## j 2 F -1.185881
+## k 3 G -1.126544</code></pre>
 </div>
 <div id="update-2" class="section level2">
 <h2><span class="header-section-number">3.4</span> Update</h2>
 <p>You can update values in a data.frame by referencing it’s position using the same subsetting capabilities as noted in the Filter section.</p>
 <pre class="r"><code>df[1,1]&lt;-2
 df</code></pre>
-<pre><code>##   a b           c
-## i 2 E  0.61998984
-## j 2 F -0.66156983
-## k 3 G -0.59889852
-## l 4 H  0.06519317</code></pre>
+<pre><code>##   a b          c
+## i 2 E -1.6619324
+## j 2 F -1.1858811
+## k 3 G -1.1265436
+## l 4 H  0.4258181</code></pre>
 <pre class="r"><code># Columns in a data.frame can be removed by making them NULL
 df[,2]</code></pre>
 <pre><code>## [1] E F G H
 ## Levels: E F G H</code></pre>
 <pre class="r"><code>df[,2]&lt;-NULL
 df[,2]</code></pre>
-<pre><code>## [1]  0.61998984 -0.66156983 -0.59889852  0.06519317</code></pre>
+<pre><code>## [1] -1.6619324 -1.1858811 -1.1265436  0.4258181</code></pre>
 <pre class="r"><code># Rows in a data.frame can be removed by subsetting without them
 df[2,]</code></pre>
-<pre><code>##   a          c
-## j 2 -0.6615698</code></pre>
+<pre><code>##   a         c
+## j 2 -1.185881</code></pre>
 <pre class="r"><code>df&lt;-df[-2,]
 df[2,]</code></pre>
-<pre><code>##   a          c
-## k 3 -0.5988985</code></pre>
+<pre><code>##   a         c
+## k 3 -1.126544</code></pre>
 <pre class="r"><code># Appends can happen in a variety of ways
 superDF&lt;-data.frame(df,d=5:7)
 superDF</code></pre>
-<pre><code>##   a           c d
-## i 2  0.61998984 5
-## k 3 -0.59889852 6
-## l 4  0.06519317 7</code></pre>
+<pre><code>##   a          c d
+## i 2 -1.6619324 5
+## k 3 -1.1265436 6
+## l 4  0.4258181 7</code></pre>
 <pre class="r"><code>df$newcol&lt;-5:7
 df</code></pre>
-<pre><code>##   a           c newcol
-## i 2  0.61998984      5
-## k 3 -0.59889852      6
-## l 4  0.06519317      7</code></pre>
+<pre><code>##   a          c newcol
+## i 2 -1.6619324      5
+## k 3 -1.1265436      6
+## l 4  0.4258181      7</code></pre>
 <pre class="r"><code>df[4,]&lt;-c(1,1,1)
 df</code></pre>
-<pre><code>##   a           c newcol
-## i 2  0.61998984      5
-## k 3 -0.59889852      6
-## l 4  0.06519317      7
-## 4 1  1.00000000      1</code></pre>
+<pre><code>##   a          c newcol
+## i 2 -1.6619324      5
+## k 3 -1.1265436      6
+## l 4  0.4258181      7
+## 4 1  1.0000000      1</code></pre>
 <!--
 
 ## Manipulate
@@ -624,15 +624,15 @@ lapply(basicList,mode)
 <p>Ordering of data.frames works by providing the position numbers of row numbers in a vector and then using these to return data.frame rows in a specific order</p>
 <pre class="r"><code># Get order the values should appear in
 order(df$c)</code></pre>
-<pre><code>## [1] 2 3 1 4</code></pre>
+<pre><code>## [1] 1 2 3 4</code></pre>
 <pre class="r"><code># Use it to sort a table
 ordered&lt;-df[order(df$c),]
 ordered</code></pre>
-<pre><code>##   a           c newcol
-## k 3 -0.59889852      6
-## l 4  0.06519317      7
-## i 2  0.61998984      5
-## 4 1  1.00000000      1</code></pre>
+<pre><code>##   a          c newcol
+## i 2 -1.6619324      5
+## k 3 -1.1265436      6
+## l 4  0.4258181      7
+## 4 1  1.0000000      1</code></pre>
 </div>
 <div id="metadata-2" class="section level2">
 <h2><span class="header-section-number">3.6</span> Metadata</h2>
@@ -665,7 +665,7 @@ ordered</code></pre>
 <pre class="r"><code>str(df)</code></pre>
 <pre><code>## 'data.frame':    4 obs. of  3 variables:
 ##  $ a     : num  2 3 4 1
-##  $ c     : num  0.62 -0.5989 0.0652 1
+##  $ c     : num  -1.662 -1.127 0.426 1
 ##  $ newcol: num  5 6 7 1</code></pre>
 </div>
 <div id="exercises-1" class="section level2">
