@@ -24,7 +24,7 @@ Executing R from SQL Server requires the execution of a stored procedure called 
 - `@input_data_1` This is a SQL statement that will produce the starting dataset in R
 
 Unfortunately, the return schema is not inherited by SQL Server so you (ideally) should provide an output specification  via `WITH RESULT SETS`
-```{r echo=FALSE}
+```{r}
 library(RODBC)
 #host<-"rmsftdp.northeurope.cloudapp.azure.com"
 host<-"104.45.80.173"
@@ -98,3 +98,28 @@ knitr::kable(head(res[,1:6]))
 
 ## Useful links
 [BOL](https://msdn.microsoft.com/en-us/library/mt604845.aspx)
+
+## Exercise
+1. Calculate daily volumes and totals of SalesAmount from FactResellerSales in SQL
+2. Pass these values into an R query and build a (`lm`) model that predicts daily SalesAmount from daily sales volumes. Return the coefficients.
+
+## Answer
+```{r}
+res<-sqlServer(
+"
+EXECUTE   sp_execute_external_script
+                @language = N'R'
+              , @script = N'
+			  mod<-lm(SalesAmount ~ Volume, InputDataSet)
+			  OutputDataSet<-data.frame(coefficients(mod), names(coefficients(mod)))
+			  ', @input_data_1 = N'select 
+              sum(f.SalesAmount)  as SalesAmount,
+              count(*) as Volume
+              from FactResellerSales f
+              inner join DimReseller r on f.ResellerKey=r.ResellerKey
+              group by OrderDateKey'
+          
+"
+)
+res
+```
