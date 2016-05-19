@@ -14,4 +14,4 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-[Home](index.html) | [Prev](AzureML)
+[Home](index.html) | [Prev](AzureML.html)
