@@ -173,7 +173,8 @@ ID<-1:52
 #2
 category<-sample(LETTERS,52, replace=TRUE)
 #3
-data.frame(ID,category)
+records<-data.frame(ID,category)
+head(records)
 ```
 
 
