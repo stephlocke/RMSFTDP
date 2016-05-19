@@ -242,6 +242,17 @@ div.tocify {
 <li><code>@input_data_1</code> This is a SQL statement that will produce the starting dataset in R</li>
 </ul>
 <p>Unfortunately, the return schema is not inherited by SQL Server so you (ideally) should provide an output specification via <code>WITH RESULT SETS</code></p>
+<pre class="r"><code>library(RODBC)
+#host&lt;-&quot;rmsftdp.northeurope.cloudapp.azure.com&quot;
+host&lt;-&quot;104.45.80.173&quot;
+db&lt;-&quot;AWDW16&quot;
+uname&lt;-&quot;Rdemo&quot;
+pwd&lt;-&quot;tugait&quot;
+connstring&lt;-sprintf(&quot;DRIVER={ODBC Driver 11 for SQL Server};Server=%1$s;Database=%2$s;Uid=%3$s;Pwd=%4$s;&quot;,host,db,uname,pwd)
+
+conn&lt;-odbcDriverConnect(connstring)
+# convenience function
+sqlServer&lt;-function(sql) sqlQuery(conn, sql)</code></pre>
 <pre class="r"><code>sqlServer(
 &quot;EXECUTE   sp_execute_external_script
                 @language = N'R'
@@ -365,6 +376,36 @@ knitr::kable(head(res[,1:6]))</code></pre>
 <div id="useful-links" class="section level2">
 <h2>Useful links</h2>
 <p><a href="https://msdn.microsoft.com/en-us/library/mt604845.aspx">BOL</a></p>
+</div>
+<div id="exercise" class="section level2">
+<h2>Exercise</h2>
+<ol style="list-style-type: decimal">
+<li>Calculate daily volumes and totals of SalesAmount from FactResellerSales in SQL</li>
+<li>Pass these values into an R query and build a (<code>lm</code>) model that predicts daily SalesAmount from daily sales volumes. Return the coefficients.</li>
+</ol>
+</div>
+<div id="answer" class="section level2">
+<h2>Answer</h2>
+<pre class="r"><code>res&lt;-sqlServer(
+&quot;
+EXECUTE   sp_execute_external_script
+                @language = N'R'
+              , @script = N'
+              mod&lt;-lm(SalesAmount ~ Volume, InputDataSet)
+              OutputDataSet&lt;-data.frame(coefficients(mod), names(coefficients(mod)))
+              ', @input_data_1 = N'select 
+              sum(f.SalesAmount)  as SalesAmount,
+              count(*) as Volume
+              from FactResellerSales f
+              inner join DimReseller r on f.ResellerKey=r.ResellerKey
+              group by OrderDateKey'
+          
+&quot;
+)
+res</code></pre>
+<pre><code>##                       .1
+## 1 395086.637 (Intercept)
+## 2   1062.314      Volume</code></pre>
 </div>
 
 

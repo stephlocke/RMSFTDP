@@ -251,6 +251,7 @@ connstring&lt;-sprintf(&quot;DRIVER={ODBC Driver 11 for SQL Server};Server=%1$s;
 conn&lt;-odbcDriverConnect(connstring)
 # Test!
 if(conn!=-1L) knitr::kable(sqlTables(conn,schema = &quot;dbo&quot;))</code></pre>
+<pre><code>## Warning: closing unused RODBC handle 1</code></pre>
 <table>
 <thead>
 <tr class="header">
