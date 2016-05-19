@@ -215,7 +215,7 @@ if(!is.null(arg2)) return(arg2)
 
 ## Exercises
 1. Use the function `cut()` to produce split `floor(rnorm(n = 100, mean=50,sd=20))` into 5 bins with numbers representing the bins they were allocated
-1. Write a function that says "Hello world" or says hello to any string or number passed in
+1. Write a function that says "Hello world" or says hello to any string or number passed in (use `paste`)
 
 ## Answers
 ```{r}
