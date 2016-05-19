@@ -100,7 +100,7 @@ knitr::kable(head(res[,1:6]))
 [BOL](https://msdn.microsoft.com/en-us/library/mt604845.aspx)
 
 ## Exercise
-1. Calculate daily volumes and totals of SalesAmount from FactResellerSales in SQL
+1. Calculate daily order volumes and totals of SalesAmount from FactResellerSales in SQL
 2. Pass these values into an R query and build a (`lm`) model that predicts daily SalesAmount from daily sales volumes. Return the coefficients.
 
 ## Answer
