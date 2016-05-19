@@ -126,7 +126,7 @@ Scores<-1:10
 #2
 (Scores %% 2) ==0
 #3
-?mean
+#?mean
 #4
 scores
 ```
